@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About | ShadowDeck&trade; Nail-Free Timber Decking</title>
+<meta name="description" content="ShadowDeck - Nail-Free Timber Decking System. Pre-grooved Kwila timber and hidden fasteners for a sleek, splinter-free, long-lasting deck. BRANZ Appraised. NZ made.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== ShadowDeck shared styles ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#1a2a27;
+  --ink-2:#1e2e2a;        /* nav */
+  --teal:#0e7d6e;         /* brand accent */
+  --teal-2:#4db3a2;       /* lighter teal */
+  --sand:#ffffff;         /* white body */
+  --offwhite:#f4f7f6;     /* alt section bg */
+  --line:rgba(255,255,255,.12);
+  --muted:#6b7b78;
+  /* keep --timber as alias for teal for compat */
+  --timber:#0e7d6e;
+  --timber-2:#4db3a2;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Barlow',-apple-system,sans-serif;
+  color:var(--ink);background:#fff;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden
+}
+h1,h2,h3,h4{font-family:'Barlow Condensed',sans-serif;font-weight:600;line-height:1.1;letter-spacing:.3px;text-transform:none}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.btn{display:inline-block;background:var(--teal);color:#fff;font-family:'Barlow Condensed',sans-serif;
+  font-weight:600;text-transform:uppercase;letter-spacing:1.5px;font-size:1rem;
+  padding:13px 32px;border-radius:3px;transition:.25s;border:none;cursor:pointer}
+.btn:hover{background:#0a6359;transform:translateY(-2px)}
+.btn-ghost{background:transparent;border:1.5px solid var(--teal);color:var(--teal)}
+.btn-ghost:hover{background:var(--teal);color:#fff}
+
+/* nav */
+header{position:sticky;top:0;z-index:1000;background:var(--ink-2);border-bottom:1px solid rgba(255,255,255,.08)}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1280px;margin:0 auto;gap:20px}
+.brand{display:flex;flex-direction:column;line-height:1}
+.brand img{height:42px;width:auto}
+.brand .logo-txt{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.9rem;color:#fff;letter-spacing:1px}
+.brand small{color:var(--teal-2);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;margin-top:3px}
+nav ul{list-style:none;display:flex;gap:24px;align-items:center}
+nav a{color:#d4e8e4;font-family:'Barlow Condensed',sans-serif;font-weight:500;text-transform:uppercase;
+  letter-spacing:1px;font-size:1rem;transition:.2s;padding:6px 0;border-bottom:2px solid transparent}
+nav a:hover,nav a.active{color:#fff;border-bottom-color:var(--teal)}
+.nav-cta{display:flex;align-items:center;gap:18px}
+.nav-cta .phone{color:var(--teal-2);font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.05rem;white-space:nowrap}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+.burger span{width:26px;height:2px;background:#fff;transition:.3s}
+
+/* sections */
+section{padding:80px 0}
+.alt{background:var(--offwhite)}
+.eyebrow{color:var(--teal);font-family:'Barlow Condensed',sans-serif;font-weight:600;
+  text-transform:uppercase;letter-spacing:3px;font-size:.9rem;margin-bottom:10px}
+h2.title{font-size:2.4rem;margin-bottom:20px;color:var(--ink)}
+.lead{font-size:1.1rem;color:#3a4f4a;max-width:760px}
+
+/* dark CTA band only */
+.dark-band{background:var(--ink-2);color:#e8f0ee}
+.dark-band h2{color:#fff}
+.dark-band .lead{color:#b0cbc5}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:.65s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* footer */
+footer{background:var(--ink-2);color:#9dbdb7;padding:56px 0 24px}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
+footer h4{color:#fff;font-size:1.2rem;margin-bottom:14px}
+footer a{color:#9dbdb7;transition:.2s}footer a:hover{color:var(--teal-2)}
+footer .social{display:flex;gap:12px;margin-top:14px}
+footer .social a{width:36px;height:36px;border:1px solid rgba(255,255,255,.2);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:.25s}
+footer .social a:hover{background:var(--teal);border-color:var(--teal);color:#fff}
+footer .copy{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-align:center;font-size:.85rem;color:#6a8f89}
+
+@media(max-width:900px){
+  nav ul{display:none;position:absolute;top:100%;left:0;right:0;background:var(--ink-2);
+    flex-direction:column;gap:0;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+  nav ul.open{display:flex}
+  nav li{width:100%}nav a{display:block;padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .burger{display:flex}
+  .nav-cta .phone{display:none}
+  h2.title{font-size:2rem}
+  footer .cols{grid-template-columns:1fr;gap:24px}
+  section{padding:56px 0}
+}
+
+
+.pagehero{height:46vh;min-height:340px;background-size:cover;background-position:center;position:relative;display:flex;align-items:flex-end}
+.pagehero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.7))}
+.pagehero .wrap{position:relative;z-index:2;padding-bottom:46px}
+.pagehero h1{color:#fff;font-size:clamp(2.4rem,5vw,4rem)}
+.pagehero .eyebrow{color:var(--timber-2)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.ticks{list-style:none;margin:24px 0}
+.ticks li{padding:8px 0 8px 34px;position:relative;font-size:1.1rem}
+.ticks li::before{content:"\2713";position:absolute;left:0;color:var(--timber);font-weight:700;font-size:1.2rem}
+@media(max-width:900px){.split{grid-template-columns:1fr;gap:32px}}
+
+</style>
+</head>
+<body>
+<header>
+<div class="topbar">
+  <a href="index.html" class="brand">
+    <img src="images/shadowdeck-logo-white.png" alt="ShadowDeck" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span class="logo-txt" style="display:none">ShadowDeck</span>
+    <small>Nail Free Timber Decking System</small>
+  </a>
+  <nav>
+    <button class="burger" aria-label="Menu" onclick="document.getElementById('m').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="m"><li><a href="index.html">Home</a></li><li><a href="about.html" class="active">About</a></li><li><a href="products.html">Our Products</a></li><li><a href="frame.html">Aluminium Framing</a></li><li><a href="installation-guide.html">Installation Guide</a></li><li><a href="contact.html">Contact Us</a></li></ul>
+  </nav>
+  <div class="nav-cta">
+    <span class="phone">0800 742 369</span>
+    <a href="contact.html" class="btn" style="padding:11px 24px;font-size:.95rem">Request Quote</a>
+  </div>
+</div>
+</header>
+
+<section class="pagehero" style="background-image:url('images/IMG_3730.png')">
+  <div class="wrap"><div class="eyebrow">About</div><h1>The Story Behind ShadowDeck&trade;</h1></div>
+</section>
+
+<section>
+  <div class="wrap split">
+    <div class="reveal">
+      <div class="eyebrow">Simply the best on the market</div>
+      <h2 class="title">Nail Free. Unbeatable Finish.</h2>
+      <p class="lead">ShadowDeck&trade; is a "Nail Free Timber Decking System" which gives an unbeatable finish with natural hardwood timber. Simply the best on the marketplace and BRANZ Appraised.</p>
+      <ul class="ticks">
+        <li>Safe on toes</li><li>Easy to install</li><li>Gives a superior finish</li><li>Longer lasting</li>
+      </ul>
+      <a href="contact.html" class="btn">Get Started Today</a>
+    </div>
+    <div class="reveal"><img src="images/IMG_3537.jpg" alt="ShadowDeck finished deck" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='220px';this.alt='[image: IMG_3537.jpg]'"></div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="reveal" style="max-width:820px">
+      <div class="eyebrow">Our origin</div>
+      <h2 class="title">How ShadowDeck&trade; Came to Life</h2>
+      <p class="lead">ShadowDeck&trade; was born from the vision of Darrel, a passionate entrepreneur with a love for outdoor living and a desire to create a decking system that was both beautiful and built to last. Frustrated by the limitations of traditional timber decking &mdash; which often showed unsightly nails and screws and was prone to warping and splitting &mdash; Darrel set out to find a better solution.</p>
+      <p class="lead" style="margin-top:16px;color:#3a4f4a">After years of research, development, and collaboration with industry experts, ShadowDeck&trade; was created. The result is a nail-free timber decking system that provides a sleek, durable, and long-lasting finish, while allowing the timber to naturally expand and contract with the seasons.</p>
+      <p class="lead" style="margin-top:16px">Today, Darrel's vision has transformed into a product that's redefining outdoor spaces, offering homeowners and builders alike a smarter, more sophisticated way to enjoy timber decking. Founder Darrel Grace is a veteran of 26 years within the New Zealand building industry, with extensive experience and knowledge of the building trades both here and internationally &mdash; having worked as far afield as London, Japan, Australia and the USA.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap split">
+    <div class="reveal"><img src="images/IMG_0931.jpg" alt="ShadowDeck boards" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='220px';this.alt='[image: IMG_0931.jpg]'"></div>
+    <div class="reveal">
+      <div class="eyebrow">About the system</div>
+      <h2 class="title">About ShadowDeck&trade;</h2>
+      <ul class="ticks">
+        <li>Revolutionary nail-free timber decking system designed for performance, durability, and style</li>
+        <li>Uses pre-grooved timber and hidden fasteners to create a sleek, seamless finish without visible nails or screws</li>
+        <li>Allows timber to naturally expand and contract, preventing warping and splitting over time</li>
+        <li>High-quality, low-maintenance decking option that enhances the beauty and longevity of your outdoor space</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+<div class="wrap">
+  <div class="cols">
+    <div>
+      <h4>ShadowDeck&trade;</h4>
+      <p style="max-width:380px">The Nail-Free Timber Decking System. Pre-grooved Kwila timber and hidden fasteners for an unbeatable, splinter-free finish. BRANZ Appraised.</p>
+      <div class="social">
+        <a href="https://www.facebook.com/shadowdeck" aria-label="Facebook" target="_blank" rel="noopener">f</a>
+        <a href="https://pin.it/4yDrW4tse" aria-label="Pinterest" target="_blank" rel="noopener">P</a>
+        <a href="https://www.instagram.com/shadow_deck/" aria-label="Instagram" target="_blank" rel="noopener">ig</a>
+      </div>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <p><a href="about.html">About</a></p>
+      <p><a href="products.html">Our Products</a></p>
+      <p><a href="frame.html">Aluminium Framing</a></p>
+      <p><a href="installation-guide.html">Installation Guide</a></p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p><a href="tel:0800742369">0800 742 369</a></p>
+      <p>Tech: <a href="tel:+6421415632">+64 21 415 632</a></p>
+      <p><a href="mailto:info@shadowdeck.co.nz">info@shadowdeck.co.nz</a></p>
+      <p><a href="https://archipro.co.nz/professional/shadowdeck" target="_blank" rel="noopener">ArchiPro</a></p>
+    </div>
+  </div>
+  <div class="copy">&copy; 2026 Smarter Products Limited. All rights reserved. Powered by Strand Media Ltd.</div>
+</div>
+</footer>
+<script>
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>

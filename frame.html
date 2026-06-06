@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aluminium Framing | ShadowDeck&trade; SuperSpan System</title>
+<meta name="description" content="ShadowDeck - Nail-Free Timber Decking System. Pre-grooved Kwila timber and hidden fasteners for a sleek, splinter-free, long-lasting deck. BRANZ Appraised. NZ made.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== ShadowDeck shared styles ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#1a2a27;
+  --ink-2:#1e2e2a;        /* nav */
+  --teal:#0e7d6e;         /* brand accent */
+  --teal-2:#4db3a2;       /* lighter teal */
+  --sand:#ffffff;         /* white body */
+  --offwhite:#f4f7f6;     /* alt section bg */
+  --line:rgba(255,255,255,.12);
+  --muted:#6b7b78;
+  /* keep --timber as alias for teal for compat */
+  --timber:#0e7d6e;
+  --timber-2:#4db3a2;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Barlow',-apple-system,sans-serif;
+  color:var(--ink);background:#fff;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden
+}
+h1,h2,h3,h4{font-family:'Barlow Condensed',sans-serif;font-weight:600;line-height:1.1;letter-spacing:.3px;text-transform:none}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.btn{display:inline-block;background:var(--teal);color:#fff;font-family:'Barlow Condensed',sans-serif;
+  font-weight:600;text-transform:uppercase;letter-spacing:1.5px;font-size:1rem;
+  padding:13px 32px;border-radius:3px;transition:.25s;border:none;cursor:pointer}
+.btn:hover{background:#0a6359;transform:translateY(-2px)}
+.btn-ghost{background:transparent;border:1.5px solid var(--teal);color:var(--teal)}
+.btn-ghost:hover{background:var(--teal);color:#fff}
+
+/* nav */
+header{position:sticky;top:0;z-index:1000;background:var(--ink-2);border-bottom:1px solid rgba(255,255,255,.08)}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1280px;margin:0 auto;gap:20px}
+.brand{display:flex;flex-direction:column;line-height:1}
+.brand img{height:42px;width:auto}
+.brand .logo-txt{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.9rem;color:#fff;letter-spacing:1px}
+.brand small{color:var(--teal-2);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;margin-top:3px}
+nav ul{list-style:none;display:flex;gap:24px;align-items:center}
+nav a{color:#d4e8e4;font-family:'Barlow Condensed',sans-serif;font-weight:500;text-transform:uppercase;
+  letter-spacing:1px;font-size:1rem;transition:.2s;padding:6px 0;border-bottom:2px solid transparent}
+nav a:hover,nav a.active{color:#fff;border-bottom-color:var(--teal)}
+.nav-cta{display:flex;align-items:center;gap:18px}
+.nav-cta .phone{color:var(--teal-2);font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.05rem;white-space:nowrap}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+.burger span{width:26px;height:2px;background:#fff;transition:.3s}
+
+/* sections */
+section{padding:80px 0}
+.alt{background:var(--offwhite)}
+.eyebrow{color:var(--teal);font-family:'Barlow Condensed',sans-serif;font-weight:600;
+  text-transform:uppercase;letter-spacing:3px;font-size:.9rem;margin-bottom:10px}
+h2.title{font-size:2.4rem;margin-bottom:20px;color:var(--ink)}
+.lead{font-size:1.1rem;color:#3a4f4a;max-width:760px}
+
+/* dark CTA band only */
+.dark-band{background:var(--ink-2);color:#e8f0ee}
+.dark-band h2{color:#fff}
+.dark-band .lead{color:#b0cbc5}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:.65s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* footer */
+footer{background:var(--ink-2);color:#9dbdb7;padding:56px 0 24px}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
+footer h4{color:#fff;font-size:1.2rem;margin-bottom:14px}
+footer a{color:#9dbdb7;transition:.2s}footer a:hover{color:var(--teal-2)}
+footer .social{display:flex;gap:12px;margin-top:14px}
+footer .social a{width:36px;height:36px;border:1px solid rgba(255,255,255,.2);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:.25s}
+footer .social a:hover{background:var(--teal);border-color:var(--teal);color:#fff}
+footer .copy{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-align:center;font-size:.85rem;color:#6a8f89}
+
+@media(max-width:900px){
+  nav ul{display:none;position:absolute;top:100%;left:0;right:0;background:var(--ink-2);
+    flex-direction:column;gap:0;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+  nav ul.open{display:flex}
+  nav li{width:100%}nav a{display:block;padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .burger{display:flex}
+  .nav-cta .phone{display:none}
+  h2.title{font-size:2rem}
+  footer .cols{grid-template-columns:1fr;gap:24px}
+  section{padding:56px 0}
+}
+
+
+.pagehero{height:44vh;min-height:320px;background-size:cover;background-position:center;position:relative;display:flex;align-items:flex-end}
+.pagehero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.7))}
+.pagehero .wrap{position:relative;z-index:2;padding-bottom:46px}
+.pagehero h1{color:#fff;font-size:clamp(2.4rem,5vw,4rem)}
+.pagehero .eyebrow{color:var(--timber-2)}
+.cardgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:44px}
+.card{background:#fff;border-radius:4px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.08);transition:.3s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-6px);box-shadow:0 16px 44px rgba(0,0,0,.14)}
+.card .ph{aspect-ratio:4/3;background:#ece4d8;overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover}
+.card .body{padding:24px;flex:1;display:flex;flex-direction:column}
+.card h3{font-size:1.35rem;margin-bottom:10px;color:var(--ink)}
+.card p{font-size:.96rem;color:#3a4f4a}
+.section-intro{max-width:780px}
+.calcbox{background:var(--ink-2);color:#e8e2d9;border-left:4px solid var(--timber);padding:32px 34px;border-radius:4px;margin-top:40px}
+.calcbox h3{color:#fff;font-size:1.5rem;margin-bottom:10px}
+@media(max-width:900px){.cardgrid{grid-template-columns:1fr}}
+@media(min-width:901px) and (max-width:1100px){.cardgrid{grid-template-columns:repeat(2,1fr)}}
+
+.video-wrap{position:relative;padding-bottom:56.25%;height:0;border-radius:4px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.25);margin-top:30px}
+.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.tagline{display:flex;gap:30px;flex-wrap:wrap;justify-content:center;margin:30px 0 0}
+.tagline span{font-family:'Barlow Condensed';font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--timber);font-size:1.05rem}
+@media(max-width:900px){.split{grid-template-columns:1fr;gap:32px}}
+
+</style>
+</head>
+<body>
+<header>
+<div class="topbar">
+  <a href="index.html" class="brand">
+    <img src="images/shadowdeck-logo-white.png" alt="ShadowDeck" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span class="logo-txt" style="display:none">ShadowDeck</span>
+    <small>Nail Free Timber Decking System</small>
+  </a>
+  <nav>
+    <button class="burger" aria-label="Menu" onclick="document.getElementById('m').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="m"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="products.html">Our Products</a></li><li><a href="frame.html" class="active">Aluminium Framing</a></li><li><a href="installation-guide.html">Installation Guide</a></li><li><a href="contact.html">Contact Us</a></li></ul>
+  </nav>
+  <div class="nav-cta">
+    <span class="phone">0800 742 369</span>
+    <a href="contact.html" class="btn" style="padding:11px 24px;font-size:.95rem">Request Quote</a>
+  </div>
+</div>
+</header>
+
+<section class="pagehero" style="background-image:url('images/Deck-100.jpg')">
+  <div class="wrap"><div class="eyebrow">SuperSpan</div><h1>Aluminium Framing</h1></div>
+</section>
+
+<section>
+  <div class="wrap" style="text-align:center">
+    <div class="reveal" style="max-width:520px;margin:0 auto"><img src="images/ShadowDeck-Superspan-Logo.png" alt="ShadowDeck SuperSpan" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: ShadowDeck-Superspan-Logo.png]'"></div>
+    <div class="tagline reveal"><span>&check; Easy Installation</span><span>&check; Low Profile</span><span>&check; Durable &amp; Versatile</span></div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap split">
+    <div class="reveal"><img src="images/IMG_3730.png" alt="SuperSpan aluminium subframing" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: IMG_3730.png]'"></div>
+    <div class="reveal">
+      <div class="eyebrow">Decking Substrate</div>
+      <h2 class="title">A Smarter Substrate</h2>
+      <p class="lead">Finish your deck with tiling and/or timber decking by using our exclusive patented ShadowDeck SuperSpan Aluminium SubFraming System &amp; fasteners.</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="reveal section-intro" style="margin:0 auto;text-align:center">
+      <div class="eyebrow">How it works</div>
+      <h2 class="title">The SuperSpan System</h2>
+      <p class="lead" style="margin:0 auto">ShadowDeck&trade; SuperSpan is an innovative aluminium framing system which can be used with decking and tiles. The clever design lets you change from tiles to decking without changing your framing. Just flip the aluminium joist and insert the fasteners for tiles or a nail-free timber solution.</p>
+    </div>
+    <div class="reveal video-wrap">
+      <iframe src="https://www.youtube.com/embed/NmCtPm3Jlbc" title="SuperSpan framing video" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="reveal section-intro">
+      <div class="eyebrow">Layouts</div>
+      <h2 class="title">Floating Aluminium Deck Frame Layouts</h2>
+      <p class="lead">The FlippnClick&trade; aluminium framing system has key advantages over traditional timber framing. Its simplicity and lightweight design means even apprentices can quickly master it. A key feature is the ability to click the frame directly into a self-levelling Nurajack head &mdash; making installation 80% faster than timber, while still offering an incredibly stable surface with wide spans between jacks.</p>
+    </div>
+    <div class="cardgrid" style="grid-template-columns:1fr 1fr">
+      <div class="card reveal"><div class="ph"><img src="images/Joist-layout.png" alt="Joist layout" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Joist-layout.png]'"></div><div class="body"><h3>Joist Layout</h3><p>Designed for spaces with low clearance. The joists are clipped directly into a Nurajack at 1200 centres.</p></div></div>
+      <div class="card reveal"><div class="ph"><img src="images/bearer-layout.png" alt="Joist and bearer layout" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: bearer-layout.png]'"></div><div class="body"><h3>Joist &amp; Bearer Layout</h3><p>Designed to be extra strong. Joists are fixed to the bearer using Joist to Bearer Side Clips, and the bearers clip into a Nurajack at 1200 centres.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark" style="padding-top:0">
+  <div class="wrap">
+    <div class="reveal section-intro"><div class="eyebrow">Profiles</div><h2 class="title">SuperSpan SubFraming Profiles</h2></div>
+    <div class="cardgrid"><div class="card reveal"><div class="ph"><img src="images/Joist-Bearer-30mm-Profile.jpg" alt="Joist/Bearer 30mm" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Joist-Bearer-30mm-Profile.jpg]'"></div><div class="body"><h3>Joist/Bearer 30mm</h3><p>Frame 30mm high &times; 60mm wide &mdash; and can go as low as 30mm.</p></div></div><div class="card reveal"><div class="ph"><img src="images/Joist-Bearer-60mm-Profile.jpg" alt="Joist/Bearer 60mm" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Joist-Bearer-60mm-Profile.jpg]'"></div><div class="body"><h3>Joist/Bearer 60mm</h3><p>Frame 60mm high &times; 60mm wide.</p></div></div><div class="card reveal"><div class="ph"><img src="images/Joist-Bearer-120mm-Profile.jpg" alt="Joist/Bearer 120mm" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Joist-Bearer-120mm-Profile.jpg]'"></div><div class="body"><h3>Joist/Bearer 120mm</h3><p>Frame 120mm high &times; 60mm wide.</p></div></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="reveal section-intro"><div class="eyebrow">Components</div><h2 class="title">SuperSpan SubFraming Components</h2></div>
+    <div class="cardgrid"><div class="card reveal"><div class="ph"><img src="images/side-clip.png" alt="Joist to Bearer Side Clip" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: side-clip.png]'"></div><div class="body"><h3>Joist to Bearer Side Clip</h3><p>Turn the clip into the bearer framing to lock the joist edge securely in place. Can be secured with or without screws.</p></div></div><div class="card reveal"><div class="ph"><img src="images/joiner-layout.png" alt="Joist/Bearer Framing Joiner" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: joiner-layout.png]'"></div><div class="body"><h3>Joist/Bearer Framing Joiner</h3><p>Joins and extends framing or bearer aluminium lengths, reinforcing for additional strength.</p></div></div><div class="card reveal"><div class="ph"><img src="images/corner-clip.png" alt="Joist/Bearer Corner Bracket" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: corner-clip.png]'"></div><div class="body"><h3>Joist/Bearer Corner Bracket</h3><p>For 90-degree angle connections. Slides inside the frame and screws through pre-drilled holes.</p></div></div></div>
+    <div style="text-align:center;margin-top:40px"><a href="contact.html" class="btn">Want to find out more? Contact us</a></div>
+  </div>
+</section>
+
+<footer>
+<div class="wrap">
+  <div class="cols">
+    <div>
+      <h4>ShadowDeck&trade;</h4>
+      <p style="max-width:380px">The Nail-Free Timber Decking System. Pre-grooved Kwila timber and hidden fasteners for an unbeatable, splinter-free finish. BRANZ Appraised.</p>
+      <div class="social">
+        <a href="https://www.facebook.com/shadowdeck" aria-label="Facebook" target="_blank" rel="noopener">f</a>
+        <a href="https://pin.it/4yDrW4tse" aria-label="Pinterest" target="_blank" rel="noopener">P</a>
+        <a href="https://www.instagram.com/shadow_deck/" aria-label="Instagram" target="_blank" rel="noopener">ig</a>
+      </div>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <p><a href="about.html">About</a></p>
+      <p><a href="products.html">Our Products</a></p>
+      <p><a href="frame.html">Aluminium Framing</a></p>
+      <p><a href="installation-guide.html">Installation Guide</a></p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p><a href="tel:0800742369">0800 742 369</a></p>
+      <p>Tech: <a href="tel:+6421415632">+64 21 415 632</a></p>
+      <p><a href="mailto:info@shadowdeck.co.nz">info@shadowdeck.co.nz</a></p>
+      <p><a href="https://archipro.co.nz/professional/shadowdeck" target="_blank" rel="noopener">ArchiPro</a></p>
+    </div>
+  </div>
+  <div class="copy">&copy; 2026 Smarter Products Limited. All rights reserved. Powered by Strand Media Ltd.</div>
+</div>
+</footer>
+<script>
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>

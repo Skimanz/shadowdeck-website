@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our Products | ShadowDeck&trade; Fasteners &amp; Kwila Profiles</title>
+<meta name="description" content="ShadowDeck - Nail-Free Timber Decking System. Pre-grooved Kwila timber and hidden fasteners for a sleek, splinter-free, long-lasting deck. BRANZ Appraised. NZ made.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== ShadowDeck shared styles ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#1a2a27;
+  --ink-2:#1e2e2a;        /* nav */
+  --teal:#0e7d6e;         /* brand accent */
+  --teal-2:#4db3a2;       /* lighter teal */
+  --sand:#ffffff;         /* white body */
+  --offwhite:#f4f7f6;     /* alt section bg */
+  --line:rgba(255,255,255,.12);
+  --muted:#6b7b78;
+  /* keep --timber as alias for teal for compat */
+  --timber:#0e7d6e;
+  --timber-2:#4db3a2;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Barlow',-apple-system,sans-serif;
+  color:var(--ink);background:#fff;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden
+}
+h1,h2,h3,h4{font-family:'Barlow Condensed',sans-serif;font-weight:600;line-height:1.1;letter-spacing:.3px;text-transform:none}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.btn{display:inline-block;background:var(--teal);color:#fff;font-family:'Barlow Condensed',sans-serif;
+  font-weight:600;text-transform:uppercase;letter-spacing:1.5px;font-size:1rem;
+  padding:13px 32px;border-radius:3px;transition:.25s;border:none;cursor:pointer}
+.btn:hover{background:#0a6359;transform:translateY(-2px)}
+.btn-ghost{background:transparent;border:1.5px solid var(--teal);color:var(--teal)}
+.btn-ghost:hover{background:var(--teal);color:#fff}
+
+/* nav */
+header{position:sticky;top:0;z-index:1000;background:var(--ink-2);border-bottom:1px solid rgba(255,255,255,.08)}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1280px;margin:0 auto;gap:20px}
+.brand{display:flex;flex-direction:column;line-height:1}
+.brand img{height:42px;width:auto}
+.brand .logo-txt{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.9rem;color:#fff;letter-spacing:1px}
+.brand small{color:var(--teal-2);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;margin-top:3px}
+nav ul{list-style:none;display:flex;gap:24px;align-items:center}
+nav a{color:#d4e8e4;font-family:'Barlow Condensed',sans-serif;font-weight:500;text-transform:uppercase;
+  letter-spacing:1px;font-size:1rem;transition:.2s;padding:6px 0;border-bottom:2px solid transparent}
+nav a:hover,nav a.active{color:#fff;border-bottom-color:var(--teal)}
+.nav-cta{display:flex;align-items:center;gap:18px}
+.nav-cta .phone{color:var(--teal-2);font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.05rem;white-space:nowrap}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+.burger span{width:26px;height:2px;background:#fff;transition:.3s}
+
+/* sections */
+section{padding:80px 0}
+.alt{background:var(--offwhite)}
+.eyebrow{color:var(--teal);font-family:'Barlow Condensed',sans-serif;font-weight:600;
+  text-transform:uppercase;letter-spacing:3px;font-size:.9rem;margin-bottom:10px}
+h2.title{font-size:2.4rem;margin-bottom:20px;color:var(--ink)}
+.lead{font-size:1.1rem;color:#3a4f4a;max-width:760px}
+
+/* dark CTA band only */
+.dark-band{background:var(--ink-2);color:#e8f0ee}
+.dark-band h2{color:#fff}
+.dark-band .lead{color:#b0cbc5}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:.65s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* footer */
+footer{background:var(--ink-2);color:#9dbdb7;padding:56px 0 24px}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
+footer h4{color:#fff;font-size:1.2rem;margin-bottom:14px}
+footer a{color:#9dbdb7;transition:.2s}footer a:hover{color:var(--teal-2)}
+footer .social{display:flex;gap:12px;margin-top:14px}
+footer .social a{width:36px;height:36px;border:1px solid rgba(255,255,255,.2);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:.25s}
+footer .social a:hover{background:var(--teal);border-color:var(--teal);color:#fff}
+footer .copy{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-align:center;font-size:.85rem;color:#6a8f89}
+
+@media(max-width:900px){
+  nav ul{display:none;position:absolute;top:100%;left:0;right:0;background:var(--ink-2);
+    flex-direction:column;gap:0;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+  nav ul.open{display:flex}
+  nav li{width:100%}nav a{display:block;padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .burger{display:flex}
+  .nav-cta .phone{display:none}
+  h2.title{font-size:2rem}
+  footer .cols{grid-template-columns:1fr;gap:24px}
+  section{padding:56px 0}
+}
+
+
+.pagehero{height:44vh;min-height:320px;background-size:cover;background-position:center;position:relative;display:flex;align-items:flex-end}
+.pagehero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.7))}
+.pagehero .wrap{position:relative;z-index:2;padding-bottom:46px}
+.pagehero h1{color:#fff;font-size:clamp(2.4rem,5vw,4rem)}
+.pagehero .eyebrow{color:var(--timber-2)}
+.cardgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:44px}
+.card{background:#fff;border-radius:4px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.08);transition:.3s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-6px);box-shadow:0 16px 44px rgba(0,0,0,.14)}
+.card .ph{aspect-ratio:4/3;background:#ece4d8;overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover}
+.card .body{padding:24px;flex:1;display:flex;flex-direction:column}
+.card h3{font-size:1.35rem;margin-bottom:10px;color:var(--ink)}
+.card p{font-size:.96rem;color:#3a4f4a}
+.section-intro{max-width:780px}
+.calcbox{background:var(--ink-2);color:#e8e2d9;border-left:4px solid var(--timber);padding:32px 34px;border-radius:4px;margin-top:40px}
+.calcbox h3{color:#fff;font-size:1.5rem;margin-bottom:10px}
+@media(max-width:900px){.cardgrid{grid-template-columns:1fr}}
+@media(min-width:901px) and (max-width:1100px){.cardgrid{grid-template-columns:repeat(2,1fr)}}
+
+</style>
+</head>
+<body>
+<header>
+<div class="topbar">
+  <a href="index.html" class="brand">
+    <img src="images/shadowdeck-logo-white.png" alt="ShadowDeck" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span class="logo-txt" style="display:none">ShadowDeck</span>
+    <small>Nail Free Timber Decking System</small>
+  </a>
+  <nav>
+    <button class="burger" aria-label="Menu" onclick="document.getElementById('m').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="m"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="products.html" class="active">Our Products</a></li><li><a href="frame.html">Aluminium Framing</a></li><li><a href="installation-guide.html">Installation Guide</a></li><li><a href="contact.html">Contact Us</a></li></ul>
+  </nav>
+  <div class="nav-cta">
+    <span class="phone">0800 742 369</span>
+    <a href="contact.html" class="btn" style="padding:11px 24px;font-size:.95rem">Request Quote</a>
+  </div>
+</div>
+</header>
+
+<section class="pagehero" style="background-image:url('images/IMG_0931.jpg')">
+  <div class="wrap"><div class="eyebrow">Our Products</div><h1>ShadowDeck&trade; Range</h1></div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="reveal section-intro">
+      <div class="eyebrow">Fasteners</div>
+      <h2 class="title">ShadowDeck&trade; Fasteners</h2>
+      <p class="lead">Made from UV-resistant, high-strength nylon and designed for outdoor conditions, our fasteners resist sun damage and maintain their strength over time.</p>
+    </div>
+    <div class="cardgrid"><div class="card reveal"><div class="ph"><img src="images/ShadowDeck-Fasteners-Screws-2.jpg" alt="3mm Hidden Deck Fastener" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: ShadowDeck-Fasteners-Screws-2.jpg]'"></div><div class="body"><h3>3mm Hidden Deck Fastener</h3><p>Used with Kwila pre-grooved timber, creating a consistent 3mm space between boards.</p></div></div><div class="card reveal"><div class="ph"><img src="images/t-shaped.jpg" alt="T-Shaped Fastener" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: t-shaped.jpg]'"></div><div class="body"><h3>T-Shaped Fastener</h3><p>Joins the boundary board to the ends of the decking boards for a clean junction.</p></div></div><div class="card reveal"><div class="ph"><img src="images/80mm.jpg" alt="80mm Butt-Joint Double Screw Fastener" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: 80mm.jpg]'"></div><div class="body"><h3>80mm Butt-Joint Double Screw Fastener</h3><p>Wider fastener that picks up the edge of two boards where they meet at a joint.</p></div></div><div class="card reveal"><div class="ph"><img src="images/100mm.jpg" alt="100mm Butt-Joint Biscuit" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: 100mm.jpg]'"></div><div class="body"><h3>100mm Butt-Joint Biscuit</h3><p>Ensures decking and picture frame boards sit at the same height and adds strength to joints.</p></div></div><div class="card reveal"><div class="ph"><img src="images/house-2-deck.jpg" alt="12mm Deck-2-House Spacer" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: house-2-deck.jpg]'"></div><div class="body"><h3>12mm Deck-2-House Spacer</h3><p>Creates a clean 12mm space between the house and the deck, and picks up the first board.</p></div></div><div class="card reveal"><div class="ph"><img src="images/Spax.jpg" alt="SPAX Stainless Screws 6g 50mm" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Spax.jpg]'"></div><div class="body"><h3>SPAX Stainless Screws 6g 50mm</h3><p>Made in Germany, specifically designed for hardwood decking applications.</p></div></div></div>
+    <div style="text-align:center;margin-top:40px"><a href="contact.html" class="btn">Enquire about our range</a></div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="reveal section-intro">
+      <div class="eyebrow">Kwila Timber</div>
+      <h2 class="title">ShadowDeck&trade; Kwila Timber Profiles</h2>
+      <p class="lead">Premium Kwila Timber Profiles designed to pair with the ShadowDeck&trade; Nail-Free system. Profiles shown are indicative and not to scale.</p>
+    </div>
+    <div class="cardgrid"><div class="card reveal"><div class="ph"><img src="images/140x21mm-Decking-Board-Profile-2-sided-Groove.jpeg" alt="140x21mm Domed Decking Board" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: 140x21mm-Decking-Board-Profile-2-sided-Groove.webp]'"></div><div class="body"><h3>140x21mm Domed Decking Board</h3><p>2-sided groove. Our most common product. Domed for water shedding and grooved both sides for fast nail-free fixing.</p></div></div><div class="card reveal"><div class="ph"><img src="images/140x21-Picture-Frame-1-sided-groove.jpeg" alt="140x21mm Bull Nose Picture Frame &amp; Step Profile" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: 140x21-Picture-Frame-1-sided-groove.webp]'"></div><div class="body"><h3>140x21mm Bull Nose Picture Frame &amp; Step Profile</h3><p>1-sided groove. Perimeter board for a picture-frame effect, also used on step treads.</p></div></div><div class="card reveal"><div class="ph"><img src="images/140x21mm-Picture-Frame-Profile-1-sided-groove.jpeg" alt="140x21mm Picture Frame &amp; Step Profile" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: 140x21mm-Picture-Frame-Profile-1-sided-groove.webp]'"></div><div class="body"><h3>140x21mm Picture Frame &amp; Step Profile</h3><p>1-sided groove. For picture framing the deck. The groove underneath the perimeter edge picks up the fascia board.</p></div></div><div class="card reveal"><div class="ph"><img src="images/140x21mm-Flat-Decking-Profile-2-sided-Groove.jpeg" alt="140x21mm Flat Decking Profile" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: 140x21mm-Flat-Decking-Profile-2-sided-Groove.webp]'"></div><div class="body"><h3>140x21mm Flat Decking Profile</h3><p>2-sided groove. Traditional flat finish, 140mm wide, for a best-in-class result.</p></div></div><div class="card reveal"><div class="ph"><img src="images/180x19mm-Facia-Profile.jpeg" alt="180x19mm Fascia Profile" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: 180x19mm-Facia-Profile.webp]'"></div><div class="body"><h3>180x19mm Fascia Profile</h3><p>Multipurpose fascia profile, 19x180mm, to finish the outside edge of your deck.</p></div></div></div>
+    <div class="calcbox reveal">
+      <h3>Lineal Metres Calculator</h3>
+      <p>To calculate the amount of decking you need in lineal metres, multiply the width of the deck by the length. For a full breakdown including wastage and fascia boards, see our <a href="installation-guide.html" style="color:var(--timber-2);text-decoration:underline">Installation Guide</a>.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+<div class="wrap">
+  <div class="cols">
+    <div>
+      <h4>ShadowDeck&trade;</h4>
+      <p style="max-width:380px">The Nail-Free Timber Decking System. Pre-grooved Kwila timber and hidden fasteners for an unbeatable, splinter-free finish. BRANZ Appraised.</p>
+      <div class="social">
+        <a href="https://www.facebook.com/shadowdeck" aria-label="Facebook" target="_blank" rel="noopener">f</a>
+        <a href="https://pin.it/4yDrW4tse" aria-label="Pinterest" target="_blank" rel="noopener">P</a>
+        <a href="https://www.instagram.com/shadow_deck/" aria-label="Instagram" target="_blank" rel="noopener">ig</a>
+      </div>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <p><a href="about.html">About</a></p>
+      <p><a href="products.html">Our Products</a></p>
+      <p><a href="frame.html">Aluminium Framing</a></p>
+      <p><a href="installation-guide.html">Installation Guide</a></p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p><a href="tel:0800742369">0800 742 369</a></p>
+      <p>Tech: <a href="tel:+6421415632">+64 21 415 632</a></p>
+      <p><a href="mailto:info@shadowdeck.co.nz">info@shadowdeck.co.nz</a></p>
+      <p><a href="https://archipro.co.nz/professional/shadowdeck" target="_blank" rel="noopener">ArchiPro</a></p>
+    </div>
+  </div>
+  <div class="copy">&copy; 2026 Smarter Products Limited. All rights reserved. Powered by Strand Media Ltd.</div>
+</div>
+</footer>
+<script>
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
