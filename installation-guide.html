@@ -3,74 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Installation Guide | ShadowDeck&trade;</title>
-<meta name="description" content="ShadowDeck - Nail-Free Timber Decking System. Pre-grooved Kwila timber and hidden fasteners for a sleek, splinter-free, long-lasting deck. BRANZ Appraised. NZ made.">
+<title>Installation Guide | ShadowDeck<sup class="tm">™</sup></title>
+<meta name="description" content="ShadowDeck - Nail-Free Timber Decking System. Pre-grooved Kwila timber and hidden fasteners for a sleek, splinter-free, long-lasting deck. BRANZ Appraised.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ===== ShadowDeck shared styles ===== */
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
   --ink:#1a2a27;
-  --ink-2:#1e2e2a;        /* nav */
-  --teal:#0e7d6e;         /* brand accent */
-  --teal-2:#4db3a2;       /* lighter teal */
-  --sand:#ffffff;         /* white body */
-  --offwhite:#f4f7f6;     /* alt section bg */
-  --line:rgba(255,255,255,.12);
-  --muted:#6b7b78;
-  /* keep --timber as alias for teal for compat */
+  --ink-2:#1e2e2a;
+  --teal:#0e7d6e;
+  --teal-2:#4db3a2;
+  --sand:#ffffff;
+  --offwhite:#f4f7f6;
+  --line:rgba(255,255,255,.1);
   --timber:#0e7d6e;
   --timber-2:#4db3a2;
 }
 html{scroll-behavior:smooth}
-body{
-  font-family:'Barlow',-apple-system,sans-serif;
-  color:var(--ink);background:#fff;line-height:1.65;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden
-}
+body{font-family:'Barlow',-apple-system,sans-serif;color:var(--ink);background:#fff;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 h1,h2,h3,h4{font-family:'Barlow Condensed',sans-serif;font-weight:600;line-height:1.1;letter-spacing:.3px;text-transform:none}
+.tm{font-size:.52em;vertical-align:super;line-height:0;font-weight:inherit}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
-.btn{display:inline-block;background:var(--teal);color:#fff;font-family:'Barlow Condensed',sans-serif;
-  font-weight:600;text-transform:uppercase;letter-spacing:1.5px;font-size:1rem;
-  padding:13px 32px;border-radius:3px;transition:.25s;border:none;cursor:pointer}
+.btn{display:inline-block;background:var(--teal);color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;font-size:.95rem;padding:11px 26px;border-radius:3px;transition:.25s;border:none;cursor:pointer}
 .btn:hover{background:#0a6359;transform:translateY(-2px)}
 .btn-ghost{background:transparent;border:1.5px solid var(--teal);color:var(--teal)}
 .btn-ghost:hover{background:var(--teal);color:#fff}
 
 /* nav */
-header{position:sticky;top:0;z-index:1000;background:var(--ink-2);border-bottom:1px solid rgba(255,255,255,.08)}
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1280px;margin:0 auto;gap:20px}
-.brand{display:flex;flex-direction:column;line-height:1}
-.brand img{height:42px;width:auto}
-.brand .logo-txt{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.9rem;color:#fff;letter-spacing:1px}
-.brand small{color:var(--teal-2);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;margin-top:3px}
-nav ul{list-style:none;display:flex;gap:24px;align-items:center}
-nav a{color:#d4e8e4;font-family:'Barlow Condensed',sans-serif;font-weight:500;text-transform:uppercase;
-  letter-spacing:1px;font-size:1rem;transition:.2s;padding:6px 0;border-bottom:2px solid transparent}
+header{position:sticky;top:0;z-index:1000;background:var(--ink-2)}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;max-width:1380px;margin:0 auto;gap:16px;flex-wrap:nowrap}
+.brand{display:flex;flex-direction:column;line-height:1;flex-shrink:0}
+.brand img{height:34px;width:auto}
+.brand .logo-txt{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.7rem;color:#fff;letter-spacing:1px}
+.brand small{color:rgba(255,255,255,.85);font-size:.65rem;letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+nav{flex:1;display:flex;justify-content:center}
+nav ul{list-style:none;display:flex;gap:20px;align-items:center}
+nav a{color:#d4e8e4;font-family:'Barlow Condensed',sans-serif;font-weight:500;text-transform:uppercase;letter-spacing:.8px;font-size:.95rem;transition:.2s;padding:6px 0;border-bottom:2px solid transparent;white-space:nowrap}
 nav a:hover,nav a.active{color:#fff;border-bottom-color:var(--teal)}
-.nav-cta{display:flex;align-items:center;gap:18px}
-.nav-cta .phone{color:var(--teal-2);font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.05rem;white-space:nowrap}
+.nav-cta{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.nav-phone{color:var(--teal-2);font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1rem;white-space:nowrap;transition:.2s}
+.nav-phone:hover{color:#fff}
 .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
 .burger span{width:26px;height:2px;background:#fff;transition:.3s}
 
 /* sections */
 section{padding:80px 0}
 .alt{background:var(--offwhite)}
-.eyebrow{color:var(--teal);font-family:'Barlow Condensed',sans-serif;font-weight:600;
-  text-transform:uppercase;letter-spacing:3px;font-size:.9rem;margin-bottom:10px}
+.eyebrow{color:var(--teal);font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:3px;font-size:.9rem;margin-bottom:10px}
 h2.title{font-size:2.4rem;margin-bottom:20px;color:var(--ink)}
 .lead{font-size:1.1rem;color:#3a4f4a;max-width:760px}
 
-/* dark CTA band only */
-.dark-band{background:var(--ink-2);color:#e8f0ee}
-.dark-band h2{color:#fff}
-.dark-band .lead{color:#b0cbc5}
+/* cards */
+.card{background:#fff;border-radius:4px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.08);transition:.3s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-5px);box-shadow:0 12px 36px rgba(0,0,0,.13)}
+.card .ph{aspect-ratio:4/3;background:#fff;overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover}
+.card .body{padding:22px;flex:1;display:flex;flex-direction:column}
+.card h3{font-size:1.25rem;margin-bottom:8px;color:var(--ink)}
+.card p{font-size:.95rem;color:#3a4f4a}
+
+/* profile cards — small centred diagrams */
+.profile-card .ph{aspect-ratio:unset;height:150px;background:#fff;display:flex;align-items:center;justify-content:center;padding:16px;border-bottom:1px solid #e8efee}
+.profile-card .ph img{max-height:118px;width:auto;object-fit:contain}
+.profile-card h3{color:var(--teal);font-size:1.05rem}
 
 /* reveal */
 .reveal{opacity:0;transform:translateY(24px);transition:.65s ease}
 .reveal.in{opacity:1;transform:none}
+
+/* quote modal */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:9999;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:6px;padding:38px;max-width:460px;width:100%;position:relative}
+.modal-close{position:absolute;top:14px;right:18px;background:none;border:none;font-size:1.6rem;cursor:pointer;color:#888;line-height:1}
+.modal-box h3{font-family:'Barlow Condensed';font-size:1.9rem;margin-bottom:20px;color:var(--ink)}
+.modal-box label{display:block;font-family:'Barlow Condensed';font-weight:600;text-transform:uppercase;letter-spacing:1px;font-size:.88rem;margin:14px 0 5px;color:var(--ink)}
+.modal-box input,.modal-box select{width:100%;padding:11px 13px;border:1px solid #d0dbd8;border-radius:3px;font-family:'Barlow';font-size:.98rem;background:#fafcfb}
+.modal-box input:focus{outline:none;border-color:var(--teal)}
+.req{color:var(--teal)}
 
 /* footer */
 footer{background:var(--ink-2);color:#9dbdb7;padding:56px 0 24px}
@@ -78,18 +91,17 @@ footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bott
 footer h4{color:#fff;font-size:1.2rem;margin-bottom:14px}
 footer a{color:#9dbdb7;transition:.2s}footer a:hover{color:var(--teal-2)}
 footer .social{display:flex;gap:12px;margin-top:14px}
-footer .social a{width:36px;height:36px;border:1px solid rgba(255,255,255,.2);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:.25s}
+footer .social a{width:36px;height:36px;border:1px solid rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:.25s}
 footer .social a:hover{background:var(--teal);border-color:var(--teal);color:#fff}
 footer .copy{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-align:center;font-size:.85rem;color:#6a8f89}
 
-@media(max-width:900px){
-  nav ul{display:none;position:absolute;top:100%;left:0;right:0;background:var(--ink-2);
-    flex-direction:column;gap:0;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+@media(max-width:960px){
+  nav ul{display:none;position:absolute;top:100%;left:0;right:0;background:var(--ink-2);flex-direction:column;gap:0;padding:10px 0}
   nav ul.open{display:flex}
-  nav li{width:100%}nav a{display:block;padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.08)}
+  nav{justify-content:flex-end}
+  nav li{width:100%}nav a{display:block;padding:13px 24px;border-bottom:1px solid rgba(255,255,255,.07)}
   .burger{display:flex}
-  .nav-cta .phone{display:none}
+  .nav-phone{display:none}
   h2.title{font-size:2rem}
   footer .cols{grid-template-columns:1fr;gap:24px}
   section{padding:56px 0}
@@ -146,17 +158,33 @@ footer .copy{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-ali
     <button class="burger" aria-label="Menu" onclick="document.getElementById('m').classList.toggle('open')">
       <span></span><span></span><span></span>
     </button>
-    <ul id="m"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="products.html">Our Products</a></li><li><a href="frame.html">Aluminium Framing</a></li><li><a href="installation-guide.html" class="active">Installation Guide</a></li><li><a href="contact.html">Contact Us</a></li></ul>
+    <ul id="m"><li><a href="about.html">About</a></li><li><a href="products.html">Our Products</a></li><li><a href="frame.html">Aluminium Framing</a></li><li><a href="installation-guide.html" class="active">Installation Guide</a></li><li><a href="contact.html">Contact Us</a></li></ul>
   </nav>
   <div class="nav-cta">
-    <span class="phone">0800 742 369</span>
-    <a href="contact.html" class="btn" style="padding:11px 24px;font-size:.95rem">Request Quote</a>
+    <a href="tel:0800742369" class="nav-phone">0800 742 369</a>
+    <button class="btn" onclick="document.getElementById('quote-modal').classList.add('open')" style="font-size:.88rem;padding:10px 20px">Request Quote</button>
   </div>
 </div>
 </header>
+<div class="modal-overlay" id="quote-modal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('quote-modal').classList.remove('open')">&times;</button>
+    <h3>Request a Quote</h3>
+    <form action="https://formspree.io/f/mqeoeddl" method="POST">
+      <label>Your Name <span class="req">*</span></label>
+      <input type="text" name="name" required>
+      <label>Your Phone <span class="req">*</span></label>
+      <input type="tel" name="phone" required>
+      <label>Deck Size</label>
+      <input type="text" name="deck_size" placeholder="e.g. 4m x 3m">
+      <input type="hidden" name="_subject" value="Quote Request — ShadowDeck">
+      <button type="submit" class="btn" style="width:100%;margin-top:20px">Submit Request</button>
+    </form>
+  </div>
+</div>
 
 <section class="pagehero" style="background-image:url('images/IMG_3538.jpg')">
-  <div class="wrap"><div class="eyebrow">ShadowDeck&trade;</div><h1>Installation Guide</h1></div>
+  <div class="wrap"><div class="eyebrow">ShadowDeck<sup class="tm">™</sup></div><h1>Installation Guide</h1></div>
 </section>
 
 <section>
@@ -164,13 +192,13 @@ footer .copy{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-ali
     <aside class="toc">
       <button class="btn print-btn" onclick="printGuide()">&#128424; Print / Save as PDF</button>
       <h4>Contents</h4>
-      <ul><li><a href="#planning">Planning Your ShadowDeck&trade;</a></li><li><a href="#first-board">Installing Your First Board</a></li><li><a href="#decking-boards">Installing Decking Boards</a></li><li><a href="#last-board">Installing the Final Board</a></li><li><a href="#fascia-board">Installing the 180x19mm Fascia Board</a></li><li><a href="#butt-joint">ShadowDeck&trade; Butt-Joint</a></li><li><a href="#house-2-deck">ShadowDeck&trade; House to Deck Spacer</a></li><li><a href="#picture-framing">Picture Framing Your ShadowDeck&trade;</a></li><li><a href="#screw-plug">Screw &amp; Plug Technique</a></li><li><a href="#steps">Steps</a></li><li><a href="#picture-steps">Picture Frame Steps</a></li><li><a href="#bull-nose">Using a Bull Nose Profile</a></li><li><a href="#maintenance">Deck Maintenance</a></li><li><a href="#tools">Tools</a></li><li><a href="#layout-example">3&times;2 Picture Frame Deck Layout Example</a></li></ul>
+      <ul><li><a href="#planning">Planning Your ShadowDeck<sup class="tm">™</sup></a></li><li><a href="#first-board">Installing Your First Board</a></li><li><a href="#decking-boards">Installing Decking Boards</a></li><li><a href="#last-board">Installing the Final Board</a></li><li><a href="#fascia-board">Installing the 180x19mm Fascia Board</a></li><li><a href="#butt-joint">ShadowDeck<sup class="tm">™</sup> Butt-Joint</a></li><li><a href="#house-2-deck">ShadowDeck<sup class="tm">™</sup> House to Deck Spacer</a></li><li><a href="#picture-framing">Picture Framing Your ShadowDeck<sup class="tm">™</sup></a></li><li><a href="#screw-plug">Screw &amp; Plug Technique</a></li><li><a href="#steps">Steps</a></li><li><a href="#picture-steps">Picture Frame Steps</a></li><li><a href="#bull-nose">Using a Bull Nose Profile</a></li><li><a href="#maintenance">Deck Maintenance</a></li><li><a href="#tools">Tools</a></li><li><a href="#layout-example">3&times;2 Picture Frame Deck Layout Example</a></li></ul>
     </aside>
     <div>
       <div class="notice"><strong>Disclaimer:</strong> This installation guide is a recommendation only. Please consult your local council and the building code for exact specifications.</div>
-      <div class="notice"><strong>Intellectual Property:</strong> The Intellectual Property contained in this document and the ShadowDeck&trade; system is owned by Smarter Products Limited &mdash; including all trade marks, patents, designs, copyright and confidential information. This document may only be used in connection with genuine ShadowDeck&trade; products and services provided by Smarter Products Limited, without altering or removing any trade mark, copyright or other intellectual property.</div>
-      <div class="ig-sec" id="planning"><h2>Planning Your ShadowDeck&trade;</h2>
-<p>It is important to take some time to plan the layout of your ShadowDeck&trade;. We recommend running the decking boards parallel to the house to highlight the timber and conceal the 3mm gap, but ultimately it's a matter of personal preference.</p>
+      <div class="notice"><strong>Intellectual Property:</strong> The Intellectual Property contained in this document and the ShadowDeck<sup class="tm">™</sup> system is owned by Smarter Products Limited &mdash; including all trade marks, patents, designs, copyright and confidential information. This document may only be used in connection with genuine ShadowDeck<sup class="tm">™</sup> products and services provided by Smarter Products Limited, without altering or removing any trade mark, copyright or other intellectual property.</div>
+      <div class="ig-sec" id="planning"><h2>Planning Your ShadowDeck<sup class="tm">™</sup></h2>
+<p>It is important to take some time to plan the layout of your ShadowDeck<sup class="tm">™</sup>. We recommend running the decking boards parallel to the house to highlight the timber and conceal the 3mm gap, but ultimately it's a matter of personal preference.</p>
 <p>To work out how many fasteners and the lineal metres of decking boards you require, use the formulae below.</p>
 <div class="formula"><b>Width &times; Length = m&sup2;</b><br>Example: 3m &times; 4m = 12m&sup2;</div>
 <p>One box of fasteners will fasten 12 square metres using our 140mm wide Kwila decking.</p>
@@ -178,15 +206,15 @@ footer .copy{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-ali
 <div class="formula">1000 &divide; (board width + 3mm gap) = LM + 10% wastage<br>1000 &divide; 143 = 7.7 (&times;1.1)</div>
 <h3>Total Linear Metres of Decking Required</h3>
 <div class="formula"><b>m&sup2; &times; 7.7 = L</b><br>Example: 12m&sup2; &times; 7.7 = 92.4m</div>
-<div class="notice"><strong>Note:</strong> You will also need to account for ShadowDeck&trade; 180x19mm fascia boards around the outside of your decking.</div>
+<div class="notice"><strong>Note:</strong> You will also need to account for ShadowDeck<sup class="tm">™</sup> 180x19mm fascia boards around the outside of your decking.</div>
 <p>The standard width of the decking boards is 140mm, on top of which you must allow a 3mm gap. Divide the width of the deck by 143mm (140mm board + 3mm gap), adjusting as needed, to ensure you use the full width of the boards from start to finish. This helps avoid having to rip down any boards. Make sure your perimeter joists end 30mm shorter than your last decking board so the fascia board tucks up nicely under the last board with a 10mm overhang.</p>
-<p>Allow a 12mm space between the house and your first decking board. Using a ShadowDeck&trade; 12mm House2Deck spacer makes it easy to ensure your first board starts 12mm out from the house.</p>
+<p>Allow a 12mm space between the house and your first decking board. Using a ShadowDeck<sup class="tm">™</sup> 12mm House2Deck spacer makes it easy to ensure your first board starts 12mm out from the house.</p>
 <p><strong>Example:</strong> For a 2m deck out from the house, divide 2000mm by 143mm, which gives roughly 13.98 boards. Round up to 14 boards &times; 143mm = 2002mm. Add the 12mm house gap for a finished deck width of 2014mm. To find your outside boundary joist measurement, subtract 29&ndash;30mm: 2014mm &minus; 30mm = 1985mm, allowing a fascia board with a 10mm overhang.</p>
 <p>If your decking boards run parallel to the length of the house, your joists should run perpendicular to the house at 400mm centres. Once boundary joists are in place, evenly space your joists at 400mm centres.</p>
 <div class="diagram"><img src="images/Layout.webp" alt="Layout of your ShadowDeck" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Layout.webp]'"></div>
 <div class="diagram"><img src="images/Artboard-1.webp" alt="Deck edge cross section" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Artboard-1.webp]'"></div>
 <div class="diagram"><img src="images/Installation-Diagram-1.png" alt="Installation guide diagram" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Installation-Diagram-1.png]'"></div>
-</div><div class="ig-sec" id="first-board"><h2>Installing Your First Board</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>Start at the house side of your deck. Use the 12mm House2Deck spacer to set your first board 12mm off the house, then fix the first board down. Sit the hidden fastener into the groove and screw it to the joist at every joist centre, keeping the board straight as you go.</p><div class="diagram"><img src="images/Tightening-Perimeter-Board.webp" alt="Tightening the perimeter board" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Tightening-Perimeter-Board.webp]'"></div></div><div class="ig-sec" id="decking-boards"><h2>Installing Decking Boards</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>Lay the next board against the fixed fasteners and push it home so the fastener seats into the groove, automatically creating the 3mm gap. Add a fastener at each joist, then repeat across the deck. Check your spacing every few boards and adjust if needed so you finish on a full board.</p><div class="diagram"><img src="images/Installation-Diagram-1.png" alt="Installing decking boards" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Installation-Diagram-1.png]'"></div></div><div class="ig-sec" id="last-board"><h2>Installing the Final Board</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>The final board often needs the groove picked up by a T-shaped fastener or screwed and plugged, as you can't always slide a hidden fastener in from the outside edge. Set it to leave room for your fascia board and a 10mm overhang.</p><div class="diagram"><img src="images/Artboard-1.webp" alt="Installing the final board" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Artboard-1.webp]'"></div></div><div class="ig-sec" id="fascia-board"><h2>Installing the 180x19mm Fascia Board</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>Fix the 180x19mm fascia board to the boundary joist so it tucks up under the last decking board, leaving a 10mm overhang for a clean shadow line around the perimeter of the deck.</p><div class="diagram"><img src="images/Artboard-1.webp" alt="Fascia board cross section" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Artboard-1.webp]'"></div></div><div class="ig-sec" id="butt-joint"><h2>ShadowDeck™ Butt-Joint</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>Where two boards meet end-to-end along their length, use the 80mm Butt-Joint Double Screw Fastener or 100mm Butt-Joint Biscuit. These pick up the edge of both boards at the joint, keep them level, and add strength.</p><div class="diagram"><img src="images/Butt-Joint.webp" alt="ShadowDeck butt-joint diagram" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Butt-Joint.webp]'"></div></div><div class="ig-sec" id="house-2-deck"><h2>ShadowDeck™ House to Deck Spacer</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>The 12mm House2Deck spacer creates a consistent, clean 12mm gap between the house and the deck and picks up the first board, giving a neat start and allowing for drainage and ventilation.</p><div class="diagram"><img src="images/House2Deck.webp" alt="House to deck spacer diagram" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: House2Deck.webp]'"></div></div><div class="ig-sec" id="picture-framing"><h2>Picture Framing Your ShadowDeck™</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>Picture framing the perimeter gives a premium, finished look. Use the 1-sided groove Picture Frame profile around the edge; the groove underneath the perimeter edge picks up the fascia board. Mitre the corners for a clean 45-degree join.</p><div class="diagram"><img src="images/Picture-Frame-Layout.webp" alt="Picture frame layout diagram" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Picture-Frame-Layout.webp]'"></div></div><div class="ig-sec" id="screw-plug"><h2>Screw & Plug Technique</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>Where a hidden fastener cannot be used (such as the final board or a tight perimeter), pre-drill, countersink and screw the board down, then glue a matching timber plug into the hole. Sand flush once cured for a near-invisible fixing.</p><div class="diagram"><img src="images/Installation-Diagram-1.png" alt="Screw and plug technique" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Installation-Diagram-1.png]'"></div></div><div class="ig-sec" id="steps"><h2>Steps</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>Build step framing to suit your rise and going, then deck the treads using the same hidden fastener method. A Bull Nose profile on the front edge of each tread gives a comfortable, rounded step edge.</p><div class="diagram"><img src="images/Steps-Layout.webp" alt="Steps layout diagram" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Steps-Layout.webp]'"></div></div><div class="ig-sec" id="picture-steps"><h2>Picture Frame Steps</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>For a high-end finish, picture frame each step tread so the grain wraps the edges. Combine the Bull Nose front profile with picture-frame sides and mitre the corners.</p><div class="diagram"><img src="images/Picture-Frame-Step.webp" alt="Picture frame step diagram" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Picture-Frame-Step.webp]'"></div></div><div class="ig-sec" id="bull-nose"><h2>Using a Bull Nose Profile</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>The Bull Nose Picture Frame & Step profile has a rounded leading edge, ideal for step treads and any exposed deck edge where a softer, barefoot-friendly finish is wanted.</p><div class="diagram"><img src="images/140x21-Picture-Frame-1-sided-groove.jpeg" alt="Bull nose profile" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: 140x21-Picture-Frame-1-sided-groove.webp]'"></div></div><div class="ig-sec" id="maintenance"><h2>Deck Maintenance</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>Kwila is a durable hardwood. Wash the deck periodically with clean water and a stiff broom. New Kwila will leach tannins initially — rinse off as needed. To maintain colour, apply a quality decking oil following the manufacturer's directions; left untreated, Kwila will silver off over time.</p><div class="diagram"><img src="images/Deck.jpg" alt="Deck maintenance" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Deck.jpg]'"></div></div><div class="ig-sec" id="tools"><h2>Tools</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>Typical tools: cordless drill/driver, the recommended driver bit for ShadowDeck fasteners, drop saw or circular saw, tape measure, square, string line, spacers (12mm House2Deck), and standard PPE. A nurajack key is handy if using the SuperSpan aluminium system.</p><div class="diagram"><img src="images/ShadowDeck-Fasteners-Screws-2.jpg" alt="Tools" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: ShadowDeck-Fasteners-Screws-2.jpg]'"></div></div><div class="ig-sec" id="layout-example"><h2>3×2 Picture Frame Deck Layout Example</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>A worked example of a 3m × 2m picture-framed deck showing joist spacing at 400mm centres, board counts, perimeter picture-frame boards and fascia. Use the planning formulae above to adapt to your own dimensions.</p><div class="diagram"><img src="images/Layout.webp" alt="3x2 finished deck layout example" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Layout.webp]'"></div></div>
+</div><div class="ig-sec" id="first-board"><h2>Installing Your First Board</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>Start at the house side of your deck. Use the 12mm House2Deck spacer to set your first board 12mm off the house, then fix the first board down. Sit the hidden fastener into the groove and screw it to the joist at every joist centre, keeping the board straight as you go.</p><div class="diagram"><img src="images/Tightening-Perimeter-Board.webp" alt="Tightening the perimeter board" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Tightening-Perimeter-Board.webp]'"></div></div><div class="ig-sec" id="decking-boards"><h2>Installing Decking Boards</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>Lay the next board against the fixed fasteners and push it home so the fastener seats into the groove, automatically creating the 3mm gap. Add a fastener at each joist, then repeat across the deck. Check your spacing every few boards and adjust if needed so you finish on a full board.</p><div class="diagram"><img src="images/Installation-Diagram-1.png" alt="Installing decking boards" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Installation-Diagram-1.png]'"></div></div><div class="ig-sec" id="last-board"><h2>Installing the Final Board</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>The final board often needs the groove picked up by a T-shaped fastener or screwed and plugged, as you can't always slide a hidden fastener in from the outside edge. Set it to leave room for your fascia board and a 10mm overhang.</p><div class="diagram"><img src="images/Artboard-1.webp" alt="Installing the final board" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Artboard-1.webp]'"></div></div><div class="ig-sec" id="fascia-board"><h2>Installing the 180x19mm Fascia Board</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>Fix the 180x19mm fascia board to the boundary joist so it tucks up under the last decking board, leaving a 10mm overhang for a clean shadow line around the perimeter of the deck.</p><div class="diagram"><img src="images/Artboard-1.webp" alt="Fascia board cross section" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Artboard-1.webp]'"></div></div><div class="ig-sec" id="butt-joint"><h2>ShadowDeck™ Butt-Joint</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>Where two boards meet end-to-end along their length, use the 80mm Butt-Joint Double Screw Fastener or 100mm Butt-Joint Biscuit. These pick up the edge of both boards at the joint, keep them level, and add strength.</p><div class="diagram"><img src="images/Butt-Joint.webp" alt="ShadowDeck butt-joint diagram" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Butt-Joint.webp]'"></div></div><div class="ig-sec" id="house-2-deck"><h2>ShadowDeck™ House to Deck Spacer</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>The 12mm House2Deck spacer creates a consistent, clean 12mm gap between the house and the deck and picks up the first board, giving a neat start and allowing for drainage and ventilation.</p><div class="diagram"><img src="images/House2Deck.webp" alt="House to deck spacer diagram" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: House2Deck.webp]'"></div></div><div class="ig-sec" id="picture-framing"><h2>Picture Framing Your ShadowDeck™</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>Picture framing the perimeter gives a premium, finished look. Use the 1-sided groove Picture Frame profile around the edge; the groove underneath the perimeter edge picks up the fascia board. Mitre the corners for a clean 45-degree join.</p><div class="diagram"><img src="images/Picture-Frame-Layout.webp" alt="Picture frame layout diagram" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Picture-Frame-Layout.webp]'"></div></div><div class="ig-sec" id="screw-plug"><h2>Screw & Plug Technique</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>Where a hidden fastener cannot be used (such as the final board or a tight perimeter), pre-drill, countersink and screw the board down, then glue a matching timber plug into the hole. Sand flush once cured for a near-invisible fixing.</p><div class="diagram"><img src="images/Installation-Diagram-1.png" alt="Screw and plug technique" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Installation-Diagram-1.png]'"></div></div><div class="ig-sec" id="steps"><h2>Steps</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>Build step framing to suit your rise and going, then deck the treads using the same hidden fastener method. A Bull Nose profile on the front edge of each tread gives a comfortable, rounded step edge.</p><div class="diagram"><img src="images/Steps-Layout.webp" alt="Steps layout diagram" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Steps-Layout.webp]'"></div></div><div class="ig-sec" id="picture-steps"><h2>Picture Frame Steps</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>For a high-end finish, picture frame each step tread so the grain wraps the edges. Combine the Bull Nose front profile with picture-frame sides and mitre the corners.</p><div class="diagram"><img src="images/Picture-Frame-Step.webp" alt="Picture frame step diagram" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Picture-Frame-Step.webp]'"></div></div><div class="ig-sec" id="bull-nose"><h2>Using a Bull Nose Profile</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>The Bull Nose Picture Frame & Step profile has a rounded leading edge, ideal for step treads and any exposed deck edge where a softer, barefoot-friendly finish is wanted.</p><div class="diagram"><img src="images/140x21-Picture-Frame-1-sided-groove.webp" alt="Bull nose profile" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: 140x21-Picture-Frame-1-sided-groove.webp]'"></div></div><div class="ig-sec" id="maintenance"><h2>Deck Maintenance</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>Kwila is a durable hardwood. Wash the deck periodically with clean water and a stiff broom. New Kwila will leach tannins initially — rinse off as needed. To maintain colour, apply a quality decking oil following the manufacturer's directions; left untreated, Kwila will silver off over time.</p><div class="diagram"><img src="images/Deck.jpg" alt="Deck maintenance" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Deck.jpg]'"></div></div><div class="ig-sec" id="tools"><h2>Tools</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>Typical tools: cordless drill/driver, the recommended driver bit for ShadowDeck fasteners, drop saw or circular saw, tape measure, square, string line, spacers (12mm House2Deck), and standard PPE. A nurajack key is handy if using the SuperSpan aluminium system.</p><div class="diagram"><img src="images/ShadowDeck-Fasteners-Screws-2.jpg" alt="Tools" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: ShadowDeck-Fasteners-Screws-2.jpg]'"></div></div><div class="ig-sec" id="layout-example"><h2>3×2 Picture Frame Deck Layout Example</h2><div class="placeholder-note">Placeholder text written by Strand Media from product knowledge &mdash; Darrel to confirm or replace with the full wording from the WordPress site.</div><p>A worked example of a 3m × 2m picture-framed deck showing joist spacing at 400mm centres, board counts, perimeter picture-frame boards and fascia. Use the planning formulae above to adapt to your own dimensions.</p><div class="diagram"><img src="images/Layout.webp" alt="3x2 finished deck layout example" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='200px';this.alt='[image: Layout.webp]'"></div></div>
       <div style="text-align:center;padding:36px 0">
         <a href="contact.html" class="btn">Questions? Contact Us</a>
       </div>
@@ -198,8 +226,8 @@ footer .copy{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-ali
 <div class="wrap">
   <div class="cols">
     <div>
-      <h4>ShadowDeck&trade;</h4>
-      <p style="max-width:380px">The Nail-Free Timber Decking System. Pre-grooved Kwila timber and hidden fasteners for an unbeatable, splinter-free finish. BRANZ Appraised.</p>
+      <h4>ShadowDeck<sup class="tm">™</sup></h4>
+      <p style="max-width:360px">The Nail-Free Timber Decking System. Pre-grooved Kwila timber and hidden fasteners for an unbeatable, splinter-free finish. BRANZ Appraised.</p>
       <div class="social">
         <a href="https://www.facebook.com/shadowdeck" aria-label="Facebook" target="_blank" rel="noopener">f</a>
         <a href="https://pin.it/4yDrW4tse" aria-label="Pinterest" target="_blank" rel="noopener">P</a>
