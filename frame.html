@@ -36,9 +36,9 @@ a{color:inherit;text-decoration:none}
 header{position:sticky;top:0;z-index:1000;background:var(--ink-2)}
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;max-width:1380px;margin:0 auto;gap:16px;flex-wrap:nowrap}
 .brand{display:flex;flex-direction:column;line-height:1;flex-shrink:0}
-.brand img{height:34px;width:auto}
+.brand img{height:28px;width:auto}
 .brand .logo-txt{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.7rem;color:#fff;letter-spacing:1px}
-.brand small{color:rgba(255,255,255,.85);font-size:.65rem;letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+.brand small{color:var(--teal-2);font-size:.65rem;letter-spacing:2px;text-transform:uppercase;margin-top:2px}
 nav{flex:1;display:flex;justify-content:center}
 nav ul{list-style:none;display:flex;gap:20px;align-items:center}
 nav a{color:#d4e8e4;font-family:'Barlow Condensed',sans-serif;font-weight:500;text-transform:uppercase;letter-spacing:.8px;font-size:.95rem;transition:.2s;padding:6px 0;border-bottom:2px solid transparent;white-space:nowrap}
@@ -118,15 +118,15 @@ footer .copy{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-ali
 .calcbox{background:var(--ink-2);color:#e8f0ee;border-left:4px solid var(--teal);padding:32px 34px;border-radius:4px;margin-top:40px}
 .calcbox h3{color:#fff;font-size:1.5rem;margin-bottom:10px}
 .calcbox a{color:var(--teal-2);text-decoration:underline}
-/* packs */
 .packs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:40px}
 .pack-card{background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.09);transition:.3s}
 .pack-card:hover{transform:translateY(-5px)}
-.pack-card img{width:100%;aspect-ratio:1;object-fit:cover}
-.pack-card .pbody{padding:20px}
-.pack-card h3{font-size:1.25rem;color:var(--teal);margin-bottom:10px}
-.pack-card ul{list-style:none;font-size:.9rem;color:#3a4f4a}
-.pack-card li{padding:4px 0;border-bottom:1px solid #eef2f1}
+.pack-card .pack-img{background:#fff;padding:0;aspect-ratio:1/1;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.pack-card .pack-img img{width:100%;height:100%;object-fit:contain}
+.pack-card .pbody{padding:18px}
+.pack-card h3{font-size:1.15rem;color:var(--teal);margin-bottom:10px}
+.pack-card ul{list-style:none;font-size:.88rem;color:#3a4f4a}
+.pack-card li{padding:3px 0;border-bottom:1px solid #eef2f1}
 .pack-card li:last-child{border:none}
 @media(max-width:900px){.cardgrid{grid-template-columns:1fr}.packs-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.packs-grid{grid-template-columns:1fr}}
@@ -135,9 +135,15 @@ footer .copy{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-ali
 .video-wrap{position:relative;padding-bottom:56.25%;height:0;border-radius:4px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.2);margin-top:30px}
 .video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-.tagline{display:flex;gap:30px;flex-wrap:wrap;justify-content:center;margin:30px 0 0}
+.tagline{display:flex;gap:30px;flex-wrap:wrap;justify-content:center;margin:20px 0 40px}
 .tagline span{font-family:"Barlow Condensed";font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--teal);font-size:1.05rem}
-@media(max-width:900px){.split{grid-template-columns:1fr;gap:32px}}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.img-card{position:relative;overflow:hidden;min-height:360px}
+.img-card img{width:100%;height:100%;object-fit:cover;display:block}
+.img-card .caption{position:absolute;bottom:0;left:0;right:0;background:#fff;padding:20px 24px}
+.img-card .caption h3{color:var(--teal);font-size:1.25rem;margin-bottom:6px}
+.img-card .caption p{font-size:.92rem;color:#3a4f4a}
+@media(max-width:900px){.split{grid-template-columns:1fr;gap:32px}.three-col{grid-template-columns:1fr}}
 
 </style>
 </head>
@@ -156,12 +162,12 @@ footer .copy{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-ali
     <ul id="m"><li><a href="about.html">About</a></li><li><a href="products.html">Our Products</a></li><li><a href="frame.html" class="active">Aluminium Framing</a></li><li><a href="installation-guide.html">Installation Guide</a></li><li><a href="contact.html">Contact Us</a></li></ul>
   </nav>
   <div class="nav-cta">
-    <a href="tel:0800742369" class="nav-phone">0800 742 369</a>
+    <a href="tel:0800742369" class="nav-phone">0800 742 369</a> <span style="color:rgba(255,255,255,.3)">|</span> <a href="mailto:info@shadowdeck.co.nz" class="nav-phone" style="font-size:.85rem">info@shadowdeck.co.nz</a>
     <button class="btn" onclick="document.getElementById('quote-modal').classList.add('open')" style="font-size:.88rem;padding:10px 20px">Request Quote</button>
   </div>
 </div>
 </header>
-<div class="modal-overlay" id="quote-modal" onclick="if(event.target===this)this.classList.remove('open')">
+<div class="modal-overlay" id="quote-modal" onclick="if(event.target===this)this.classList.remove('open')">  
   <div class="modal-box">
     <button class="modal-close" onclick="document.getElementById('quote-modal').classList.remove('open')">&times;</button>
     <h3>Request a Quote</h3>
@@ -170,32 +176,56 @@ footer .copy{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-ali
       <input type="text" name="name" required>
       <label>Your Phone <span class="req">*</span></label>
       <input type="tel" name="phone" required>
+      <label>Your Email <span class="req">*</span></label>
+      <input type="email" name="email" required>
       <label>Deck Size</label>
       <input type="text" name="deck_size" placeholder="e.g. 4m x 3m">
-      <input type="hidden" name="_subject" value="Quote Request — ShadowDeck">
+      <label>Preferred Contact Method</label>
+      <select name="contact_preference" style="width:100%;padding:11px 13px;border:1px solid #d0dbd8;border-radius:3px;font-family:Barlow,sans-serif;font-size:.98rem;background:#fafcfb">
+        <option value="">Select...</option>
+        <option value="Phone">Phone</option>
+        <option value="Text">Text</option>
+        <option value="Email">Email</option>
+      </select>
+      <label>Notes / Further Info</label>
+      <textarea name="notes" style="width:100%;padding:11px 13px;border:1px solid #d0dbd8;border-radius:3px;font-family:Barlow,sans-serif;font-size:.98rem;min-height:90px;resize:vertical"></textarea>
+      <input type="hidden" name="_subject" value="Quote Request - ShadowDeck">
       <button type="submit" class="btn" style="width:100%;margin-top:20px">Submit Request</button>
     </form>
   </div>
 </div>
 
-<section class="pagehero" style="background-image:url('images/Deck-100.jpg')">
-  <div class="wrap"><div class="eyebrow">SuperSpan</div><h1>Aluminium Framing</h1></div>
-</section>
-
-<section>
-  <div class="wrap" style="text-align:center">
-    <div class="reveal" style="max-width:520px;margin:0 auto"><img src="images/ShadowDeck-Superspan-Logo.png" alt="ShadowDeck SuperSpan" loading="lazy" onerror="this.style.background='#f0f5f4';this.style.minHeight='120px'"></div>
-    <div class="tagline reveal"><span>&check; Easy Installation</span><span>&check; Low Profile</span><span>&check; Durable &amp; Versatile</span></div>
+<section class="pagehero" style="background-image:url('images/Deck-100.jpg');height:60vh">
+  <div class="wrap">
+    <div style="max-width:400px;margin-bottom:20px"><img src="images/ShadowDeck-Superspan-Logo.png" alt="ShadowDeck SuperSpan" loading="lazy" onerror="this.style.background='#f0f5f4';this.style.minHeight='120px'"></div>
+    <div class="tagline" style="justify-content:flex-start;margin:0">
+      <span>&check; Easy Installation</span><span>&check; Low Profile</span><span>&check; Durable &amp; Versatile</span>
+    </div>
   </div>
 </section>
 
-<section class="alt" style="padding-top:0">
-  <div class="wrap split">
-    <div class="reveal"><img src="images/IMG_3730.png" alt="SuperSpan aluminium subframing" loading="lazy" onerror="this.style.background='#f0f5f4';this.style.minHeight='120px'"></div>
-    <div class="reveal">
-      <div class="eyebrow">Decking Substrate</div>
-      <h2 class="title">A Smarter Substrate</h2>
-      <p class="lead">Finish your deck with tiling and/or timber decking by using our exclusive patented ShadowDeck SuperSpan Aluminium SubFraming System &amp; fasteners.</p>
+<section style="padding:0">
+  <div class="three-col">
+    <div class="img-card reveal">
+      <img src="images/IMG_3730.png" alt="Decking Substrate" loading="lazy" onerror="this.style.background='#f0f5f4';this.style.minHeight='120px'">
+      <div class="caption">
+        <h3>Decking Substrate</h3>
+        <p>Finish your deck with tiling and/or timber decking by using our exclusive Patented ShadowDeck SuperSpan Aluminium SubFraming System &amp; fasteners</p>
+      </div>
+    </div>
+    <div class="img-card reveal">
+      <img src="images/IMG_0931.jpg" alt="Aluminium Framing" loading="lazy" onerror="this.style.background='#f0f5f4';this.style.minHeight='120px'">
+      <div class="caption">
+        <h3>Aluminium Framing</h3>
+        <p>Our unique patented ShadowDeck SuperSpan Aluminium SubFraming System clicks into the Nurajack. Ideal for low profile tile or timber decks</p>
+      </div>
+    </div>
+    <div class="img-card reveal">
+      <img src="images/Deck.jpg" alt="Self Levelling Jacks" loading="lazy" onerror="this.style.background='#f0f5f4';this.style.minHeight='120px'">
+      <div class="caption">
+        <h3>Self Levelling Jacks</h3>
+        <p>We recommend Nurajack self levelling adjustable decking jacks to allow the deck to be adjusted to the level of the interior living space giving superior indoor outdoor flow</p>
+      </div>
     </div>
   </div>
 </section>
@@ -204,7 +234,7 @@ footer .copy{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-ali
   <div class="wrap">
     <div class="reveal section-intro" style="margin:0 auto;text-align:center">
       <div class="eyebrow">How it works</div>
-      <h2 class="title">The SuperSpan System</h2>
+      <h2 class="title">How ShadowDeck<sup class="tm">™</sup> SuperSpan Works</h2>
       <p class="lead" style="margin:0 auto">ShadowDeck<sup class="tm">™</sup> SuperSpan is an innovative aluminium framing system which can be used with decking and tiles. The clever design lets you change from tiles to decking without changing your framing. Just flip the aluminium joist and insert the fasteners for tiles or a nail-free timber solution.</p>
     </div>
     <div class="reveal video-wrap">
