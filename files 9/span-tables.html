@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SuperSpan Span Tables — ShadowDeck™</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--ink-2:#0d2420;--teal:#c8a84b;--teal-2:#a08030;--gold:#c8a84b;--offwhite:#f8f9f7;--border:#dde8e6}
+body{font-family:'Barlow',sans-serif;background:var(--offwhite);color:#1a1a1a}
+/* nav */
+header{position:sticky;top:0;z-index:1000;background:var(--ink-2)}
+.topbar-upper{border-bottom:1px solid rgba(255,255,255,.12)}.topbar-upper-inner{display:flex;align-items:center;justify-content:flex-end;padding:7px 24px;gap:20px;max-width:1200px;margin:0 auto}
+.topbar-upper a{color:rgba(255,255,255,.85);font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:.92rem;letter-spacing:.6px;transition:.2s;text-decoration:none;white-space:nowrap}
+.topbar-upper a:hover{color:#c8a84b}
+.topbar-upper .sep{color:rgba(255,255,255,.35);font-size:.9rem}
+.btn-deck{border:2px solid #c8a84b;color:#c8a84b;background:transparent;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.92rem;letter-spacing:1.5px;text-transform:uppercase;padding:7px 22px;border-radius:3px;cursor:pointer;transition:.2s;text-decoration:none;white-space:nowrap;display:inline-block}
+.btn-deck:hover{background:#c8a84b;color:#1a1a1a}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 24px;gap:16px;max-width:1200px;margin:0 auto}
+.brand{display:flex;flex-direction:column;line-height:1;flex-shrink:0;text-decoration:none}
+.brand img{height:28px;width:auto}
+.brand .logo-txt{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.7rem;color:#fff;letter-spacing:1px}
+.brand small{color:#fff;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+nav{flex:1;display:flex;justify-content:center}
+nav>ul{list-style:none;display:flex;gap:2px;align-items:center;margin:0;padding:0}
+nav a{color:#e8dfc0;font-family:'Barlow Condensed',sans-serif;font-weight:500;text-transform:uppercase;letter-spacing:.8px;font-size:.95rem;transition:.2s;padding:8px 12px;border-bottom:2px solid transparent;white-space:nowrap;display:block;text-decoration:none}
+nav a:hover,nav a.active{color:#fff;border-bottom-color:#c8a84b}
+.has-drop{position:relative}
+.has-drop>a::after{content:' v';font-size:.7rem;opacity:.6}
+.drop{display:none;position:absolute;top:calc(100% + 4px);left:0;background:#0d2420;border:1px solid rgba(255,255,255,.12);border-radius:4px;min-width:230px;padding:6px 0;z-index:300;box-shadow:0 8px 28px rgba(0,0,0,.35)}
+.has-drop:hover .drop{display:block}
+.drop li{list-style:none}
+.drop a{padding:10px 20px;font-size:.88rem;letter-spacing:.5px;border-bottom:none;color:#d4c090;text-transform:none;font-weight:400}
+.drop a:hover{background:rgba(255,255,255,.07);color:#fff;border-bottom:none}
+.drop a.disabled{opacity:.38;pointer-events:none;cursor:not-allowed;font-style:italic}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+.burger span{width:26px;height:2px;background:#fff;transition:.3s}
+/* page */
+.page-hero{background:#1a1a1a;padding:3rem 2rem 2.5rem;text-align:center}
+.page-hero h1{font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:700;color:#fff;letter-spacing:0.02em;margin-bottom:8px}
+.page-hero p{color:rgba(255,255,255,0.65);font-size:15px;max-width:580px;margin:0 auto}
+.badge{display:inline-block;background:#c8a84b;color:#1a1a1a;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:12px}
+.content{max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
+/* filter tabs */
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:2rem}
+.filter-btn{padding:8px 16px;border:1.5px solid var(--border);border-radius:6px;background:#fff;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;color:#5a6b68}
+.filter-btn:hover{border-color:#c8a84b;color:#8a6a20}
+.filter-btn.active{background:#c8a84b;border-color:#c8a84b;color:#1a1a1a}
+/* section */
+.table-section{margin-bottom:2.5rem;display:none}
+.table-section.visible{display:block}
+.section-heading{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;color:#8a6a20;margin-bottom:4px}
+.section-sub{font-size:13px;color:#5a6b68;margin-bottom:16px}
+/* profile tabs */
+.profile-tabs{display:flex;gap:6px;margin-bottom:12px}
+.ptab{padding:6px 14px;border:1.5px solid var(--border);border-radius:4px;background:#fff;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;color:#5a6b68;transition:all .2s}
+.ptab:hover{border-color:#c8a84b}
+.ptab.active{background:#c8a84b;border-color:#c8a84b;color:#1a1a1a}
+/* joist summary table */
+.joist-table{width:100%;border-collapse:collapse;margin-bottom:1.5rem;font-size:13px}
+.joist-table th{background:var(--ink-2);color:#fff;padding:10px 14px;text-align:left;font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:.5px;font-size:12px;text-transform:uppercase}
+.joist-table td{padding:9px 14px;border-bottom:1px solid var(--border);background:#fff}
+.joist-table tr:last-child td{border-bottom:none}
+.joist-table tr:hover td{background:var(--offwhite)}
+/* bearer tables */
+.bearer-panel{display:none}
+.bearer-panel.active{display:block}
+.bearer-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-bottom:1rem}
+.bearer-card{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.bearer-card-head{background:transparent;border:1.5px solid #c8a84b;color:#c8a84b;padding:10px 14px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:.5px}
+.bearer-card table{width:100%;border-collapse:collapse;font-size:12px}
+.bearer-card th{background:var(--offwhite);color:#5a6b68;padding:8px 12px;text-align:left;font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:.3px;font-size:11px;text-transform:uppercase;border-bottom:1px solid var(--border)}
+.bearer-card td{padding:8px 12px;border-bottom:1px solid var(--border);color:#1a1a1a}
+.bearer-card tr:last-child td{border-bottom:none}
+.bearer-card tr:hover td{background:var(--offwhite)}
+/* note box */
+.note-box{background:#fff;border-left:4px solid var(--gold);padding:12px 16px;border-radius:0 6px 6px 0;font-size:13px;color:#5a6b68;margin-bottom:1.5rem;line-height:1.6}
+.note-box strong{color:#1a1a1a}
+/* print */
+.print-btn{background:transparent;border:1.5px solid var(--gold);color:var(--gold);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;padding:8px 20px;border-radius:3px;cursor:pointer;transition:.2s;float:right;margin-bottom:1rem}
+.print-btn:hover{background:#c8a84b;color:#1a1a1a}
+@media print{header,footer,.filter-row,.print-btn{display:none}.table-section{display:block!important}.bearer-panel{display:block!important}}
+/* footer */
+footer{background:var(--ink-2);padding:2rem;text-align:center}.footer-inner{max-width:1200px;margin:0 auto;padding:0 24px}
+footer p{color:rgba(255,255,255,0.4);font-size:13px}
+footer a{color:rgba(255,255,255,0.6);text-decoration:none}
+@media(max-width:960px){
+  .topbar-upper .sep{display:none}
+  .topbar-upper a:not(.btn-deck){display:none}
+  nav>ul{display:none;position:absolute;top:100%;left:0;right:0;background:#0d2420;flex-direction:column;gap:0;padding:8px 0;border-top:1px solid rgba(255,255,255,.1)}
+  nav>ul.open{display:flex}
+  nav{justify-content:flex-end}
+  nav li{width:100%}
+  nav>ul>li>a{display:block;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,.07)}
+  .has-drop>a::after{float:right}
+  .drop{display:none;position:static;background:rgba(0,0,0,.25);border:none;border-radius:0;box-shadow:none;padding:0;min-width:unset}
+  .has-drop.mob-open .drop{display:block}
+  .drop a{padding:11px 34px;font-size:.88rem;border-bottom:1px solid rgba(255,255,255,.05)}
+  .burger{display:flex}
+  .bearer-wrap{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="topbar-upper"><div class="topbar-upper-inner">
+  <a href="tel:0800742369">&#128222;&nbsp;0800 742 369</a>
+  <span class="sep">|</span>
+  <a href="mailto:info@shadowdeck.co.nz">info@shadowdeck.co.nz</a>
+  <span class="sep">|</span>
+  <a href="quote.html" class="btn-deck">Deck Builder</a>
+</div></div>
+<div class="topbar">
+  <a href="index.html" class="brand">
+    <img src="images/shadowdeck-logo-white.png" alt="ShadowDeck" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span class="logo-txt" style="display:none">ShadowDeck</span>
+    <small>Nail Free Timber Decking System</small>
+  </a>
+  <nav>
+    <button class="burger" aria-label="Menu" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+    <ul id="m">
+      <li><a href="index.html">Home</a></li>
+      <li class="has-drop"><a href="products.html">Products</a>
+        <ul class="drop">
+          <li><a href="products.html">Nail-Free Timber Decking</a></li>
+          <li><a href="frame.html">Aluminium Sub-Framing</a></li>
+        </ul>
+      </li>
+      <li class="has-drop"><a href="installation-guide.html">Installation Guides</a>
+        <ul class="drop">
+          <li><a href="installation-guide.html">Timber Decking Guide</a></li>
+          <li><a href="#" class="disabled">Aluminium Guide <em>(coming soon)</em></a></li>
+        </ul>
+      </li>
+      <li class="has-drop"><a href="#" class="active">Resources</a>
+        <ul class="drop">
+          <li><a href="span-tables.html">SuperSpan Span Tables</a></li>
+          <li><a href="ps1-certificate.html">PS1 Engineering Certificate</a></li>
+        </ul>
+      </li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</div>
+</header>
+
+<div class="page-hero">
+  <div class="badge">Technical Reference</div>
+  <h1>SuperSpan™ Aluminium Span Tables</h1>
+  <p>PS1 certified by EQ Struc Limited. For residential and commercial decking applications. All values comply with NZ Building Code (AS/NZS 1170:2002 &amp; AS/NZS 1664:1997).</p>
+</div>
+
+<div class="content">
+  <button class="print-btn" onclick="window.print()">&#128438; Print / Save PDF</button>
+
+  <div class="note-box">
+    <strong>How to read these tables:</strong> Select your load category, then choose your profile size. For joist-only builds, use the Joist Span column. For bearer + joist builds, cross-reference your joist span with the bearer span. Values shown as <strong>simply supported / continuous*</strong>. Minimum back span = 4× overhang. Joist spacing: 450mm centres (400mm for educational facilities).
+  </div>
+
+  <!-- FILTER TABS -->
+  <div class="filter-row">
+    <button class="filter-btn active" onclick="showCategory('res-standard')">Residential Standard<br><small>2.0 kPa</small></button>
+    <button class="filter-btn" onclick="showCategory('res-guide')">Span Table Guide<br><small>2.5 kPa</small></button>
+    <button class="filter-btn" onclick="showCategory('res-high')">High Occupancy<br><small>4.0 kPa</small></button>
+    <button class="filter-btn" onclick="showCategory('com-low')">Commercial Low<br><small>2.5 kPa/2.7 PL</small></button>
+    <button class="filter-btn" onclick="showCategory('com-edu')">Educational<br><small>3.5 kPa</small></button>
+    <button class="filter-btn" onclick="showCategory('com-pod')">Podium/Walkways<br><small>4.5 kPa</small></button>
+    <button class="filter-btn" onclick="showCategory('com-pub')">Public/Trolley<br><small>5.5 kPa</small></button>
+  </div>
+
+  <!-- ── 2.0 kPa RESIDENTIAL STANDARD ── -->
+  <div class="table-section visible" id="res-standard">
+    <div class="section-heading">2.0 kPa / 1.8 PL — Standard Residential</div>
+    <div class="section-sub">Approx 200 kg/m² — light occupancy, private residential use. Joists at 450mm centres.</div>
+    <div class="profile-tabs">
+      <button class="ptab active" onclick="showProfile('res-standard','30')">30×60mm</button>
+      <button class="ptab" onclick="showProfile('res-standard','60')">60×60mm</button>
+      <button class="ptab" onclick="showProfile('res-standard','120')">120×60mm</button>
+    </div>
+    <!-- Joist summary -->
+    <table class="joist-table"><thead><tr><th>Profile</th><th>Joist-only span</th><th>Cantilever</th></tr></thead><tbody>
+      <tr><td>30×60mm</td><td>950mm / 1050mm*</td><td>220mm</td></tr>
+      <tr><td>60×60mm</td><td>1700mm / 1890mm*</td><td>420mm</td></tr>
+      <tr><td>120×60mm</td><td>2990mm / 3300mm*</td><td>770mm</td></tr>
+    </tbody></table>
+    <!-- Bearer panels -->
+    <div class="bearer-panel active" id="res-standard-30">
+      <div class="bearer-wrap">
+        <div class="bearer-card"><div class="bearer-card-head">30×60mm — Bearer Spans</div>
+          <table><thead><tr><th>Joist span</th><th>Bearer span</th><th>Cantilever</th></tr></thead><tbody>
+            <tr><td>600mm</td><td>970mm / 1300mm*</td><td>220mm</td></tr>
+            <tr><td>1000mm</td><td>820mm / 1090mm*</td><td>220mm</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+    <div class="bearer-panel" id="res-standard-60">
+      <div class="bearer-wrap">
+        <div class="bearer-card"><div class="bearer-card-head">60×60mm — Bearer Spans</div>
+          <table><thead><tr><th>Joist span</th><th>Bearer span</th><th>Cantilever</th></tr></thead><tbody>
+            <tr><td>600mm</td><td>1780mm / 2390mm*</td><td>420mm</td></tr>
+            <tr><td>1000mm</td><td>1500mm / 2010mm*</td><td>420mm</td></tr>
+            <tr><td>1200mm</td><td>1410mm / 1900mm*</td><td>420mm</td></tr>
+            <tr><td>1500mm</td><td>1310mm / 1760mm*</td><td>420mm</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+    <div class="bearer-panel" id="res-standard-120">
+      <div class="bearer-wrap">
+        <div class="bearer-card"><div class="bearer-card-head">120×60mm — Bearer Spans</div>
+          <table><thead><tr><th>Joist span</th><th>Bearer span</th><th>Cantilever</th></tr></thead><tbody>
+            <tr><td>600mm</td><td>3270mm / 4390mm*</td><td>770mm</td></tr>
+            <tr><td>1000mm</td><td>2760mm / 3700mm*</td><td>770mm</td></tr>
+            <tr><td>1200mm</td><td>2590mm / 3480mm*</td><td>770mm</td></tr>
+            <tr><td>1500mm</td><td>2410mm / 3230mm*</td><td>770mm</td></tr>
+            <tr><td>1900mm</td><td>2230mm / 2980mm*</td><td>740mm</td></tr>
+            <tr><td>2100mm</td><td>2150mm / 2890mm*</td><td>710mm</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 2.5 kPa SPAN TABLE GUIDE ── -->
+  <div class="table-section" id="res-guide">
+    <div class="section-heading">2.5 kPa / 1.8 PL — Span Table Guide (Standard Residential)</div>
+    <div class="section-sub">~3 people per m². Joists at 450mm centres.</div>
+    <div class="profile-tabs">
+      <button class="ptab active" onclick="showProfile('res-guide','30')">30×60mm</button>
+      <button class="ptab" onclick="showProfile('res-guide','60')">60×60mm</button>
+      <button class="ptab" onclick="showProfile('res-guide','120')">120×60mm</button>
+    </div>
+    <table class="joist-table"><thead><tr><th>Profile</th><th>Joist-only span</th><th>Cantilever</th></tr></thead><tbody>
+      <tr><td>30×60mm</td><td>700mm / 800mm*</td><td>250mm</td></tr>
+      <tr><td>60×60mm</td><td>1150mm / 1300mm*</td><td>350mm</td></tr>
+      <tr><td>120×60mm</td><td>2000mm / 2200mm*</td><td>550mm</td></tr>
+    </tbody></table>
+    <div class="bearer-panel active" id="res-guide-30">
+      <div class="bearer-wrap">
+        <div class="bearer-card"><div class="bearer-card-head">30×60mm — Bearer Spans</div>
+          <table><thead><tr><th>Joist span</th><th>Bearer span</th><th>Cantilever</th></tr></thead><tbody>
+            <tr><td>600mm</td><td>750mm / 875mm</td><td>250mm</td></tr>
+            <tr><td>1000mm</td><td>680mm / 800mm</td><td>250mm</td></tr>
+            <tr><td>1200mm</td><td>680mm / 800mm</td><td>250mm</td></tr>
+            <tr><td>1500mm</td><td>680mm / 800mm</td><td>185mm</td></tr>
+            <tr><td>1900mm</td><td>680mm / 800mm</td><td>185mm</td></tr>
+            <tr><td>2100mm</td><td>620mm / 800mm</td><td>185mm</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+    <div class="bearer-panel" id="res-guide-60">
+      <div class="bearer-wrap">
+        <div class="bearer-card"><div class="bearer-card-head">60×60mm — Bearer Spans</div>
+          <table><thead><tr><th>Joist span</th><th>Bearer span</th><th>Cantilever</th></tr></thead><tbody>
+            <tr><td>600mm</td><td>1150mm / 1300mm</td><td>350mm</td></tr>
+            <tr><td>1000mm</td><td>1100mm / 1250mm</td><td>350mm</td></tr>
+            <tr><td>1200mm</td><td>1100mm / 1250mm</td><td>350mm</td></tr>
+            <tr><td>1500mm</td><td>1050mm / 1200mm</td><td>300mm</td></tr>
+            <tr><td>1900mm</td><td>1000mm / 1150mm</td><td>300mm</td></tr>
+            <tr><td>2100mm</td><td>950mm / 1100mm</td><td>300mm</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+    <div class="bearer-panel" id="res-guide-120">
+      <div class="bearer-wrap">
+        <div class="bearer-card"><div class="bearer-card-head">120×60mm — Bearer Spans</div>
+          <table><thead><tr><th>Joist span</th><th>Bearer span</th><th>Cantilever</th></tr></thead><tbody>
+            <tr><td>600mm</td><td>2000mm / 2200mm</td><td>550mm</td></tr>
+            <tr><td>1000mm</td><td>1900mm / 2100mm</td><td>550mm</td></tr>
+            <tr><td>1200mm</td><td>1800mm / 2000mm</td><td>550mm</td></tr>
+            <tr><td>1500mm</td><td>1700mm / 1900mm</td><td>500mm</td></tr>
+            <tr><td>1900mm</td><td>1600mm / 1800mm</td><td>500mm</td></tr>
+            <tr><td>2100mm</td><td>1500mm / 1700mm</td><td>500mm</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4.0 kPa HIGH OCCUPANCY ── -->
+  <div class="table-section" id="res-high">
+    <div class="section-heading">4.0 kPa / 1.8 PL — Higher Occupancy Loading</div>
+    <div class="section-sub">Commercial load — balconies/roof decks. Approx 400 kg/m². Joists at 450mm centres.</div>
+    <div class="profile-tabs">
+      <button class="ptab active" onclick="showProfile('res-high','30')">30×60mm</button>
+      <button class="ptab" onclick="showProfile('res-high','60')">60×60mm</button>
+      <button class="ptab" onclick="showProfile('res-high','120')">120×60mm</button>
+    </div>
+    <table class="joist-table"><thead><tr><th>Profile</th><th>Joist-only span</th><th>Cantilever</th></tr></thead><tbody>
+      <tr><td>30×60mm</td><td>870mm / 1050mm*</td><td>220mm</td></tr>
+      <tr><td>60×60mm</td><td>1600mm / 1890mm*</td><td>420mm</td></tr>
+      <tr><td>120×60mm</td><td>2940mm / 3300mm*</td><td>770mm</td></tr>
+    </tbody></table>
+    <div class="bearer-panel active" id="res-high-30">
+      <div class="bearer-wrap">
+        <div class="bearer-card"><div class="bearer-card-head">30×60mm — Bearer Spans</div>
+          <table><thead><tr><th>Joist span</th><th>Bearer span</th><th>Cantilever</th></tr></thead><tbody>
+            <tr><td>600mm</td><td>790mm / 1060mm*</td><td>220mm</td></tr>
+            <tr><td>1000mm</td><td>670mm / 890mm*</td><td>220mm</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+    <div class="bearer-panel" id="res-high-60">
+      <div class="bearer-wrap">
+        <div class="bearer-card"><div class="bearer-card-head">60×60mm — Bearer Spans</div>
+          <table><thead><tr><th>Joist span</th><th>Bearer span</th><th>Cantilever</th></tr></thead><tbody>
+            <tr><td>600mm</td><td>1450mm / 1950mm*</td><td>420mm</td></tr>
+            <tr><td>1000mm</td><td>1230mm / 1650mm*</td><td>410mm</td></tr>
+            <tr><td>1200mm</td><td>1150mm / 1550mm*</td><td>380mm</td></tr>
+            <tr><td>1500mm</td><td>1070mm / 1440mm*</td><td>350mm</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+    <div class="bearer-panel" id="res-high-120">
+      <div class="bearer-wrap">
+        <div class="bearer-card"><div class="bearer-card-head">120×60mm — Bearer Spans</div>
+          <table><thead><tr><th>Joist span</th><th>Bearer span</th><th>Cantilever</th></tr></thead><tbody>
+            <tr><td>600mm</td><td>2670mm / 3580mm*</td><td>770mm</td></tr>
+            <tr><td>1000mm</td><td>2250mm / 3020mm*</td><td>750mm</td></tr>
+            <tr><td>1200mm</td><td>2120mm / 2840mm*</td><td>700mm</td></tr>
+            <tr><td>1500mm</td><td>1970mm / 2640mm*</td><td>650mm</td></tr>
+            <tr><td>1900mm</td><td>1810mm / 2390mm*</td><td>600mm</td></tr>
+            <tr><td>2100mm</td><td>1720mm / 2280mm*</td><td>570mm</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 2.5 kPa COMMERCIAL LOW ── -->
+  <div class="table-section" id="com-low">
+    <div class="section-heading">2.5 kPa / 2.7 PL — Standard Low Height Deck</div>
+    <div class="section-sub">~250 kg/m². Joists at 450mm centres.</div>
+    <div class="profile-tabs">
+      <button class="ptab active" onclick="showProfile('com-low','30')">30×60mm</button>
+      <button class="ptab" onclick="showProfile('com-low','60')">60×60mm</button>
+      <button class="ptab" onclick="showProfile('com-low','120')">120×60mm</button>
+    </div>
+    <table class="joist-table"><thead><tr><th>Profile</th><th>Joist-only span</th><th>Cantilever</th></tr></thead><tbody>
+      <tr><td>30×60mm</td><td>950mm / 1050mm*</td><td>190mm</td></tr>
+      <tr><td>60×60mm</td><td>1700mm / 1890mm*</td><td>360mm</td></tr>
+      <tr><td>120×60mm</td><td>2990mm / 3300mm*</td><td>670mm</td></tr>
+    </tbody></table>
+    <div class="bearer-panel active" id="com-low-30">
+      <div class="bearer-wrap">
+        <div class="bearer-card"><div class="bearer-card-head">30×60mm — Bearer Spans</div>
+          <table><thead><tr><th>Joist span</th><th>Bearer span</th><th>Cantilever</th></tr></thead><tbody>
+            <tr><td>600mm</td><td>910mm / 1220mm*</td><td>190mm</td></tr>
+            <tr><td>1000mm</td><td>770mm / 1030mm*</td><td>190mm</td></tr>
+            <tr><td>1200mm</td><td>700mm / 850mm*</td><td>190mm (guide)</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+    <div class="bearer-panel" id="com-low-60">
+      <div class="bearer-wrap">
+        <div class="bearer-card"><div class="bearer-card-head">60×60mm — Bearer Spans</div>
+          <table><thead><tr><th>Joist span</th><th>Bearer span</th><th>Cantilever</th></tr></thead><tbody>
+            <tr><td>600mm</td><td>1670mm / 2240mm*</td><td>360mm</td></tr>
+            <tr><td>1000mm</td><td>1410mm / 1890mm*</td><td>360mm</td></tr>
+            <tr><td>1200mm</td><td>1330mm / 1780mm*</td><td>360mm</td></tr>
+            <tr><td>1500mm</td><td>1230mm / 1650mm*</td><td>360mm</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+    <div class="bearer-panel" id="com-low-120">
+      <div class="bearer-wrap">
+        <div class="bearer-card"><div class="bearer-card-head">120×60mm — Bearer Spans</div>
+          <table><thead><tr><th>Joist span</th><th>Bearer span</th><th>Cantilever</th></tr></thead><tbody>
+            <tr><td>600mm</td><td>3070mm / 4120mm*</td><td>670mm</td></tr>
+            <tr><td>1000mm</td><td>2590mm / 3470mm*</td><td>670mm</td></tr>
+            <tr><td>1200mm</td><td>2440mm / 3270mm*</td><td>670mm</td></tr>
+            <tr><td>1500mm</td><td>2260mm / 3030mm*</td><td>670mm</td></tr>
+            <tr><td>1900mm</td><td>2090mm / 2800mm*</td><td>670mm</td></tr>
+            <tr><td>2100mm</td><td>2020mm / 2710mm*</td><td>670mm</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3.5 kPa EDUCATIONAL ── -->
+  <div class="table-section" id="com-edu">
+    <div class="section-heading">3.5 kPa / 2.7 PL — Educational Facilities</div>
+    <div class="section-sub">~350 kg/m². Joists at 400mm centres.</div>
+    <div class="profile-tabs">
+      <button class="ptab active" onclick="showProfile('com-edu','30')">30×60mm</button>
+      <button class="ptab" onclick="showProfile('com-edu','60')">60×60mm</button>
+      <button class="ptab" onclick="showProfile('com-edu','120')">120×60mm</button>
+    </div>
+    <table class="joist-table"><thead><tr><th>Profile</th><th>Joist-only span</th><th>Cantilever</th></tr></thead><tbody>
+      <tr><td>30×60mm</td><td>940mm / 1060mm*</td><td>190mm</td></tr>
+      <tr><td>60×60mm</td><td>1710mm / 1900mm*</td><td>360mm</td></tr>
+      <tr><td>120×60mm</td><td>3000mm / 3310mm*</td><td>670mm</td></tr>
+    </tbody></table>
+    <div class="bearer-panel active" id="com-edu-30">
+      <div class="bearer-wrap">
+        <div class="bearer-card"><div class="bearer-card-head">30×60mm — Bearer Spans</div>
+          <table><thead><tr><th>Joist span</th><th>Bearer span</th><th>Cantilever</th></tr></thead><tbody>
+            <tr><td>600mm</td><td>820mm / 1100mm*</td><td>190mm</td></tr>
+            <tr><td>1000mm</td><td>690mm / 930mm*</td><td>190mm</td></tr>
+            <tr><td>1200mm</td><td>700mm / 800mm*</td><td>190mm</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+    <div class="bearer-panel" id="com-edu-60">
+      <div class="bearer-wrap">
+        <div class="bearer-card"><div class="bearer-card-head">60×60mm — Bearer Spans</div>
+          <table><thead><tr><th>Joist span</th><th>Bearer span</th><th>Cantilever</th></tr></thead><tbody>
+            <tr><td>600mm</td><td>1510mm / 2030mm*</td><td>360mm</td></tr>
+            <tr><td>1000mm</td><td>1280mm / 1710mm*</td><td>360mm</td></tr>
+            <tr><td>1200mm</td><td>1200mm / 1610mm*</td><td>360mm</td></tr>
+            <tr><td>1500mm</td><td>1110mm / 1500mm*</td><td>360mm</td></tr>
+            <tr><td>1900mm</td><td>1030mm / 1380mm*</td><td>340mm</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+    <div class="bearer-panel" id="com-edu-120">
+      <div class="bearer-wrap">
+        <div class="bearer-card"><div class="bearer-card-head">120×60mm — Bearer Spans</div>
+          <table><thead><tr><th>Joist span</th><th>Bearer span</th><th>Cantilever</th></tr></thead><tbody>
+            <tr><td>600mm</td><td>2780mm / 3730mm*</td><td>670mm</td></tr>
+            <tr><td>1000mm</td><td>2340mm / 3140mm*</td><td>670mm</td></tr>
+            <tr><td>1200mm</td><td>2210mm / 2960mm*</td><td>670mm</td></tr>
+            <tr><td>1500mm</td><td>2050mm / 2750mm*</td><td>670mm</td></tr>
+            <tr><td>1900mm</td><td>1890mm / 2540mm*</td><td>630mm</td></tr>
+            <tr><td>2100mm</td><td>1830mm / 2420mm*</td><td>610mm</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4.5 kPa PODIUM ── -->
+  <div class="table-section" id="com-pod">
+    <div class="section-heading">4.5 kPa / 3.6 PL — Podium Decks & Walkways</div>
+    <div class="section-sub">Joists at 450mm centres.</div>
+    <div class="profile-tabs">
+      <button class="ptab active" onclick="showProfile('com-pod','30')">30×60mm</button>
+      <button class="ptab" onclick="showProfile('com-pod','60')">60×60mm</button>
+      <button class="ptab" onclick="showProfile('com-pod','120')">120×60mm</button>
+    </div>
+    <table class="joist-table"><thead><tr><th>Profile</th><th>Joist-only span</th><th>Cantilever</th></tr></thead><tbody>
+      <tr><td>30×60mm</td><td>840mm / 1020mm*</td><td>140mm</td></tr>
+      <tr><td>60×60mm</td><td>1540mm / 1890mm*</td><td>330mm</td></tr>
+      <tr><td>120×60mm</td><td>2840mm / 3300mm*</td><td>610mm</td></tr>
+    </tbody></table>
+    <div class="bearer-panel active" id="com-pod-30">
+      <div class="bearer-wrap">
+        <div class="bearer-card"><div class="bearer-card-head">30×60mm — Bearer Spans</div>
+          <table><thead><tr><th>Joist span</th><th>Bearer span</th><th>Cantilever</th></tr></thead><tbody>
+            <tr><td>600mm</td><td>760mm / 1020mm*</td><td>140mm</td></tr>
+            <tr><td>1000mm</td><td>640mm / 860mm*</td><td>140mm</td></tr>
+            <tr><td>1200mm</td><td>610mm / 700mm*</td><td>140mm</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+    <div class="bearer-panel" id="com-pod-60">
+      <div class="bearer-wrap">
+        <div class="bearer-card"><div class="bearer-card-head">60×60mm — Bearer Spans</div>
+          <table><thead><tr><th>Joist span</th><th>Bearer span</th><th>Cantilever</th></tr></thead><tbody>
+            <tr><td>600mm</td><td>1400mm / 1880mm*</td><td>330mm</td></tr>
+            <tr><td>1000mm</td><td>1180mm / 1590mm*</td><td>330mm</td></tr>
+            <tr><td>1200mm</td><td>1110mm / 1490mm*</td><td>330mm</td></tr>
+            <tr><td>1500mm</td><td>1030mm / 1390mm*</td><td>330mm</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+    <div class="bearer-panel" id="com-pod-120">
+      <div class="bearer-wrap">
+        <div class="bearer-card"><div class="bearer-card-head">120×60mm — Bearer Spans</div>
+          <table><thead><tr><th>Joist span</th><th>Bearer span</th><th>Cantilever</th></tr></thead><tbody>
+            <tr><td>600mm</td><td>2580mm / 3460mm*</td><td>610mm</td></tr>
+            <tr><td>1000mm</td><td>2170mm / 2910mm*</td><td>610mm</td></tr>
+            <tr><td>1200mm</td><td>2040mm / 2740mm*</td><td>610mm</td></tr>
+            <tr><td>1500mm</td><td>1900mm / 2540mm*</td><td>610mm</td></tr>
+            <tr><td>1900mm</td><td>1710mm / 2260mm*</td><td>570mm</td></tr>
+            <tr><td>2100mm</td><td>1630mm / 2160mm*</td><td>540mm</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 5.5 kPa PUBLIC ── -->
+  <div class="table-section" id="com-pub">
+    <div class="section-heading">5.5 kPa / 5.0 PL — Public Areas with Trolley Access</div>
+    <div class="section-sub">Disability walkways. Joists at 450mm centres.</div>
+    <div class="profile-tabs">
+      <button class="ptab active" onclick="showProfile('com-pub','30')">30×60mm</button>
+      <button class="ptab" onclick="showProfile('com-pub','60')">60×60mm</button>
+      <button class="ptab" onclick="showProfile('com-pub','120')">120×60mm</button>
+    </div>
+    <table class="joist-table"><thead><tr><th>Profile</th><th>Joist-only span</th><th>Cantilever</th></tr></thead><tbody>
+      <tr><td>30×60mm</td><td>730mm / 870mm*</td><td>100mm</td></tr>
+      <tr><td>60×60mm</td><td>1450mm / 1890mm*</td><td>290mm</td></tr>
+      <tr><td>120×60mm</td><td>2670mm / 3300mm*</td><td>540mm</td></tr>
+    </tbody></table>
+    <div class="bearer-panel active" id="com-pub-30">
+      <div class="bearer-wrap">
+        <div class="bearer-card"><div class="bearer-card-head">30×60mm — Bearer Spans</div>
+          <table><thead><tr><th>Joist span</th><th>Bearer span</th><th>Cantilever</th></tr></thead><tbody>
+            <tr><td>600mm</td><td>720mm / 960mm*</td><td>100mm</td></tr>
+            <tr><td>1000mm</td><td>—</td><td>—</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+    <div class="bearer-panel" id="com-pub-60">
+      <div class="bearer-wrap">
+        <div class="bearer-card"><div class="bearer-card-head">60×60mm — Bearer Spans</div>
+          <table><thead><tr><th>Joist span</th><th>Bearer span</th><th>Cantilever</th></tr></thead><tbody>
+            <tr><td>600mm</td><td>1320mm / 1770mm*</td><td>290mm</td></tr>
+            <tr><td>1000mm</td><td>1110mm / 1490mm*</td><td>290mm</td></tr>
+            <tr><td>1200mm</td><td>1050mm / 1400mm*</td><td>290mm</td></tr>
+            <tr><td>1500mm</td><td>970mm / 1300mm*</td><td>290mm</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+    <div class="bearer-panel" id="com-pub-120">
+      <div class="bearer-wrap">
+        <div class="bearer-card"><div class="bearer-card-head">120×60mm — Bearer Spans</div>
+          <table><thead><tr><th>Joist span</th><th>Bearer span</th><th>Cantilever</th></tr></thead><tbody>
+            <tr><td>600mm</td><td>2420mm / 3250mm*</td><td>540mm</td></tr>
+            <tr><td>1000mm</td><td>2040mm / 2740mm*</td><td>540mm</td></tr>
+            <tr><td>1200mm</td><td>1920mm / 2580mm*</td><td>540mm</td></tr>
+            <tr><td>1500mm</td><td>1750mm / 2310mm*</td><td>540mm</td></tr>
+            <tr><td>1900mm</td><td>1560mm / 2060mm*</td><td>520mm</td></tr>
+            <tr><td>2100mm</td><td>1490mm / 1970mm*</td><td>490mm</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-box" style="margin-top:2rem">
+    <strong>* Continuous Span.</strong> Simply supported span is the lower value. Minimum back span = 4× overhang length. These tables are general design guidance only. Site-specific engineering may be required. PS1 certification available on request — contact ShadowDeck on <strong>0800 742 369</strong>. Designed to NZ Building Code (AS/NZS 1170:2002, AS/NZS 1664:1997). Certified by EQ Struc Limited, Rodney Stokes CPEng 186730.
+  </div>
+</div>
+
+<footer>
+<div class="footer-inner">
+  <p>© 2026 Robust Limited. All rights reserved. | <a href="contact.html">Contact Us</a> | <a href="index.html">Home</a></p>
+  <p style="margin-top:6px">Powered by <a href="https://strandmedia.co.nz">Strand Media Ltd</a></p>
+</div>
+</footer>
+
+<script>
+function toggleMobileMenu(){document.getElementById("m").classList.toggle("open");}
+document.querySelectorAll(".has-drop > a").forEach(function(a){
+  a.addEventListener("click",function(e){
+    if(window.innerWidth<=960){e.preventDefault();this.parentElement.classList.toggle("mob-open");}
+  });
+});
+function showCategory(id){
+  document.querySelectorAll('.table-section').forEach(s=>s.classList.remove('visible'));
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('visible');
+  event.target.closest('.filter-btn').classList.add('active');
+}
+function showProfile(section, profile){
+  // Deactivate all bearer panels in this section
+  document.querySelectorAll('#'+section+' .bearer-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById(section+'-'+profile).classList.add('active');
+  // Update ptab active state
+  document.querySelectorAll('#'+section+' .ptab').forEach(t=>t.classList.remove('active'));
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PS1 Engineering Certificate — ShadowDeck™</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--ink-2:#0d2420;--teal:#c8a84b;--teal-2:#a08030;--gold:#c8a84b;--offwhite:#f8f9f7;--border:#dde8e6}
+body{font-family:'Barlow',sans-serif;background:var(--offwhite);color:#1a1a1a}
+header{position:sticky;top:0;z-index:1000;background:var(--ink-2)}
+.topbar-upper{border-bottom:1px solid rgba(255,255,255,.12)}.topbar-upper-inner{display:flex;align-items:center;justify-content:flex-end;padding:7px 24px;gap:20px;max-width:1200px;margin:0 auto}
+.topbar-upper a{color:rgba(255,255,255,.85);font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:.92rem;letter-spacing:.6px;transition:.2s;text-decoration:none;white-space:nowrap}
+.topbar-upper a:hover{color:#c8a84b}
+.topbar-upper .sep{color:rgba(255,255,255,.35);font-size:.9rem}
+.btn-deck{border:2px solid #c8a84b;color:#c8a84b;background:transparent;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.92rem;letter-spacing:1.5px;text-transform:uppercase;padding:7px 22px;border-radius:3px;cursor:pointer;transition:.2s;text-decoration:none;white-space:nowrap;display:inline-block}
+.btn-deck:hover{background:#c8a84b;color:#1a1a1a}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 24px;gap:16px;max-width:1200px;margin:0 auto}
+.brand{display:flex;flex-direction:column;line-height:1;flex-shrink:0;text-decoration:none}
+.brand img{height:28px;width:auto}
+.brand .logo-txt{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.7rem;color:#fff;letter-spacing:1px}
+.brand small{color:#fff;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+nav{flex:1;display:flex;justify-content:center}
+nav>ul{list-style:none;display:flex;gap:2px;align-items:center;margin:0;padding:0}
+nav a{color:#e8dfc0;font-family:'Barlow Condensed',sans-serif;font-weight:500;text-transform:uppercase;letter-spacing:.8px;font-size:.95rem;transition:.2s;padding:8px 12px;border-bottom:2px solid transparent;white-space:nowrap;display:block;text-decoration:none}
+nav a:hover,nav a.active{color:#fff;border-bottom-color:#c8a84b}
+.has-drop{position:relative}
+.has-drop>a::after{content:' v';font-size:.7rem;opacity:.6}
+.drop{display:none;position:absolute;top:calc(100% + 4px);left:0;background:#0d2420;border:1px solid rgba(255,255,255,.12);border-radius:4px;min-width:230px;padding:6px 0;z-index:300;box-shadow:0 8px 28px rgba(0,0,0,.35)}
+.has-drop:hover .drop{display:block}
+.drop li{list-style:none}
+.drop a{padding:10px 20px;font-size:.88rem;letter-spacing:.5px;border-bottom:none;color:#d4c090;text-transform:none;font-weight:400}
+.drop a:hover{background:rgba(255,255,255,.07);color:#fff;border-bottom:none}
+.drop a.disabled{opacity:.38;pointer-events:none;cursor:not-allowed;font-style:italic}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+.burger span{width:26px;height:2px;background:#fff;transition:.3s}
+/* page */
+.page-hero{background:#1a1a1a;padding:3rem 2rem 2.5rem;text-align:center}
+.page-hero h1{font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:700;color:#fff;letter-spacing:0.02em;margin-bottom:8px}
+.page-hero p{color:rgba(255,255,255,0.65);font-size:15px;max-width:580px;margin:0 auto}
+.badge{display:inline-block;background:#c8a84b;color:#1a1a1a;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:12px}
+.content{max-width:860px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
+.print-btn{background:transparent;border:1.5px solid var(--gold);color:var(--gold);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;padding:8px 20px;border-radius:3px;cursor:pointer;transition:.2s;float:right;margin-bottom:1rem}
+.print-btn:hover{background:#c8a84b;color:#1a1a1a}
+/* cert card */
+.cert-card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1.5rem}
+.cert-header{background:var(--ink-2);padding:1.5rem 2rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.cert-header-left h2{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;color:#fff;letter-spacing:.5px;margin-bottom:4px}
+.cert-header-left p{color:rgba(255,255,255,.6);font-size:13px}
+.cert-job{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:4px;padding:6px 14px;text-align:right}
+.cert-job span{display:block;color:rgba(255,255,255,.5);font-size:10px;letter-spacing:1.5px;text-transform:uppercase}
+.cert-job strong{color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:18px}
+/* fields grid */
+.fields-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;padding:1.5rem 2rem}
+@media(max-width:600px){.fields-grid{grid-template-columns:1fr;padding:1rem}}
+.field-row{padding:10px 0;border-bottom:1px solid var(--border);grid-column:1/-1}
+.field-row.half{grid-column:auto;padding:10px 16px 10px 0}
+.field-label{font-size:11px;font-weight:600;color:#8a9b98;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
+.field-val{font-size:14px;color:#1a1a1a;line-height:1.5}
+.field-val.emphasis{font-weight:600;color:#8a6a20}
+/* section divider */
+.cert-section{padding:1.25rem 2rem;border-top:1px solid var(--border);background:var(--offwhite)}
+.cert-section h3{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:#8a6a20;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+.cert-section p,.cert-section li{font-size:13px;color:#3a4f4a;line-height:1.7;margin-bottom:6px}
+.cert-section ul{padding-left:1.2rem}
+/* table inside cert */
+.cert-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.cert-table th{background:var(--ink-2);color:#fff;padding:8px 14px;text-align:left;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:11px;letter-spacing:.5px;text-transform:uppercase}
+.cert-table td{padding:8px 14px;border-bottom:1px solid var(--border);background:#fff}
+.cert-table tr:last-child td{border-bottom:none}
+/* stamp */
+.stamp-row{padding:1.5rem 2rem;border-top:1px solid var(--border);display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.stamp-box{border:2px solid #c8a84b;border-radius:6px;padding:12px 20px;min-width:200px}
+.stamp-box .stamp-name{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:#8a6a20;letter-spacing:.5px}
+.stamp-box .stamp-role{font-size:12px;color:#5a6b68;margin-top:2px}
+.stamp-box .stamp-date{font-size:12px;color:#5a6b68;margin-top:6px}
+.stamp-meta{font-size:12px;color:#5a6b68;line-height:1.8}
+/* note */
+.note-box{background:#fff;border-left:4px solid var(--gold);padding:12px 16px;border-radius:0 6px 6px 0;font-size:13px;color:#5a6b68;margin-bottom:1.5rem;line-height:1.6}
+.note-box strong{color:#1a1a1a}
+/* DFR section */
+.dfr-card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1.5rem}
+.dfr-card-head{background:transparent;border:1.5px solid #c8a84b;color:#c8a84b;padding:14px 20px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;letter-spacing:.5px}
+.dfr-body{padding:1.25rem 1.5rem}
+.dfr-body h4{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:#8a6a20;margin:1rem 0 6px}
+.dfr-body h4:first-child{margin-top:0}
+.dfr-body p,.dfr-body li{font-size:13px;color:#3a4f4a;line-height:1.7;margin-bottom:4px}
+.dfr-body ul{padding-left:1.2rem;margin-bottom:8px}
+.kv-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1rem}
+@media(max-width:500px){.kv-grid{grid-template-columns:1fr}}
+.kv{background:var(--offwhite);border-radius:6px;padding:10px 14px}
+.kv-label{font-size:11px;color:#8a9b98;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+.kv-val{font-size:14px;color:#1a1a1a;font-weight:500}
+@media print{header,footer,.print-btn{display:none}body{background:#fff}}
+footer{background:var(--ink-2);padding:2rem;text-align:center}.footer-inner{max-width:1200px;margin:0 auto;padding:0 24px}
+footer p{color:rgba(255,255,255,0.4);font-size:13px}
+footer a{color:rgba(255,255,255,0.6);text-decoration:none}
+@media(max-width:960px){
+  .topbar-upper .sep{display:none}
+  .topbar-upper a:not(.btn-deck){display:none}
+  nav>ul{display:none;position:absolute;top:100%;left:0;right:0;background:#0d2420;flex-direction:column;gap:0;padding:8px 0;border-top:1px solid rgba(255,255,255,.1)}
+  nav>ul.open{display:flex}
+  nav{justify-content:flex-end}
+  nav li{width:100%}
+  nav>ul>li>a{display:block;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,.07)}
+  .has-drop>a::after{float:right}
+  .drop{display:none;position:static;background:rgba(0,0,0,.25);border:none;border-radius:0;box-shadow:none;padding:0;min-width:unset}
+  .has-drop.mob-open .drop{display:block}
+  .drop a{padding:11px 34px;font-size:.88rem;border-bottom:1px solid rgba(255,255,255,.05)}
+  .burger{display:flex}
+  .cert-header{flex-direction:column}
+  .fields-grid{grid-template-columns:1fr}
+  .field-row.half{grid-column:1/-1;padding-right:0}
+  .stamp-row{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="topbar-upper"><div class="topbar-upper-inner">
+  <a href="tel:0800742369">&#128222;&nbsp;0800 742 369</a>
+  <span class="sep">|</span>
+  <a href="mailto:info@shadowdeck.co.nz">info@shadowdeck.co.nz</a>
+  <span class="sep">|</span>
+  <a href="quote.html" class="btn-deck">Deck Builder</a>
+</div></div>
+<div class="topbar">
+  <a href="index.html" class="brand">
+    <img src="images/shadowdeck-logo-white.png" alt="ShadowDeck" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span class="logo-txt" style="display:none">ShadowDeck</span>
+    <small>Nail Free Timber Decking System</small>
+  </a>
+  <nav>
+    <button class="burger" aria-label="Menu" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+    <ul id="m">
+      <li><a href="index.html">Home</a></li>
+      <li class="has-drop"><a href="products.html">Products</a>
+        <ul class="drop">
+          <li><a href="products.html">Nail-Free Timber Decking</a></li>
+          <li><a href="frame.html">Aluminium Sub-Framing</a></li>
+        </ul>
+      </li>
+      <li class="has-drop"><a href="installation-guide.html">Installation Guides</a>
+        <ul class="drop">
+          <li><a href="installation-guide.html">Timber Decking Guide</a></li>
+          <li><a href="#" class="disabled">Aluminium Guide <em>(coming soon)</em></a></li>
+        </ul>
+      </li>
+      <li class="has-drop"><a href="#" class="active">Resources</a>
+        <ul class="drop">
+          <li><a href="span-tables.html">SuperSpan Span Tables</a></li>
+          <li><a href="ps1-certificate.html">PS1 Engineering Certificate</a></li>
+        </ul>
+      </li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</div>
+</header>
+
+<div class="page-hero">
+  <div class="badge">Engineering Certification</div>
+  <h1>PS1 Producer Statement — Design</h1>
+  <p>Structural engineering certification for ShadowDeck™ SuperSpan aluminium profiles. Issued by EQ Struc Limited, certified to NZ Building Code.</p>
+</div>
+
+<div class="content">
+  <button class="print-btn" onclick="window.print()">&#128438; Print / Save PDF</button>
+
+  <div class="note-box">
+    <strong>What is a PS1?</strong> A Producer Statement – Design (PS1) is issued by a qualified independent engineer to provide Building Consent Authorities with the reasonable grounds needed to issue a Building Consent, without duplicating the design review. This PS1 covers the structural design of ShadowDeck™ SuperSpan aluminium profiles used as joists and bearers in deck and floor structures, throughout New Zealand.
+  </div>
+
+  <!-- PRODUCER STATEMENT CARD -->
+  <div class="cert-card">
+    <div class="cert-header">
+      <div class="cert-header-left">
+        <h2>Producer Statement — PS1 Design</h2>
+        <p>Building Code Clause B1 — Structure</p>
+      </div>
+      <div class="cert-job">
+        <span>Job Number</span>
+        <strong>34842</strong>
+      </div>
+    </div>
+
+    <div class="fields-grid">
+      <div class="field-row half">
+        <div class="field-label">Issued by (Engineering Design Firm)</div>
+        <div class="field-val emphasis">EQ Struc Limited</div>
+      </div>
+      <div class="field-row half">
+        <div class="field-label">Building Code Clause</div>
+        <div class="field-val emphasis">B1 — Structure</div>
+      </div>
+      <div class="field-row half">
+        <div class="field-label">Issued to (Owner/Developer)</div>
+        <div class="field-val">Shadow Deck / Smarter Products Limited</div>
+      </div>
+      <div class="field-row half">
+        <div class="field-label">To be supplied to</div>
+        <div class="field-val">Local Building Authority (Building Consent Authority)</div>
+      </div>
+      <div class="field-row half">
+        <div class="field-label">In respect of</div>
+        <div class="field-val">ShadowDeck™ SuperSpan aluminium profiles utilised as joists and bearers in deck and floor structures</div>
+      </div>
+      <div class="field-row half">
+        <div class="field-label">Location</div>
+        <div class="field-val">Throughout New Zealand</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">Extent of engagement</div>
+        <div class="field-val">Structural design of ShadowDeck™ profiles utilised as joists and bearers — Part only, as specified in the Schedule.</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">Compliance basis</div>
+        <div class="field-val">Compliance documents issued by the Ministry of Business, Innovation &amp; Employment — Verification method B1/VM1</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">Design assumptions requiring site verification</div>
+        <div class="field-val">N/A — all proprietary products must meet their performance specification requirements.</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">Construction monitoring level</div>
+        <div class="field-val">CM1</div>
+      </div>
+    </div>
+
+    <div class="cert-section">
+      <h3>Engineer's declaration</h3>
+      <p>I believe on reasonable grounds that:</p>
+      <ul>
+        <li>The building, if constructed in accordance with the drawings, specifications, and other documents provided or listed in the Schedule, will comply with the relevant provisions of the Building Code; and</li>
+        <li>The persons who have undertaken the design have the necessary competency to do so.</li>
+      </ul>
+    </div>
+
+    <div class="cert-section">
+      <h3>Schedule — Referenced Documents</h3>
+      <table class="cert-table">
+        <thead><tr><th>Section</th><th>Document</th><th>Revision</th><th>Reviewed by</th></tr></thead>
+        <tbody>
+          <tr><td>1.0</td><td>Span Tables</td><td>A</td><td>RTS</td></tr>
+          <tr><td>2.0</td><td>PS1 Producer Statement</td><td>A</td><td>RTS</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="stamp-row">
+      <div class="stamp-box">
+        <div class="stamp-name">Rodney Stokes</div>
+        <div class="stamp-role">Director / Principal Engineer</div>
+        <div class="stamp-role">BE, CPEng NZ &amp; AU, IntPE, RPEQ, NER, VBA</div>
+        <div class="stamp-role">CPEng No. 186730</div>
+        <div class="stamp-date">Digitally signed 26/03/2026</div>
+      </div>
+      <div class="stamp-meta">
+        <strong>On behalf of:</strong> EQ Struc Limited<br>
+        <strong>Date:</strong> 26/03/2026<br>
+        <strong>ACE New Zealand member:</strong> Yes<br>
+        <strong>Professional Indemnity Insurance:</strong> Min. NZ$200,000<br>
+        <strong>Qualifications:</strong> BE Civil and Structural
+      </div>
+    </div>
+  </div>
+
+  <!-- DESIGN FEATURES REPORT -->
+  <div class="dfr-card">
+    <div class="dfr-card-head">Design Features Report — ShadowDeck Joist &amp; Bearer Floor System</div>
+    <div class="dfr-body">
+
+      <h4>1. Objective</h4>
+      <p>This Design Features Report (DFR) defines the structure's design criteria and records key decisions. It outlines design loading, material properties, design standards, assumptions, and other relevant considerations, and defines the calculation procedure and checking principles.</p>
+
+      <h4>2. Scope</h4>
+      <p>Design of ShadowDeck™ SuperSpan aluminium profiles (30×60mm, 60×60mm, 120×60mm) as joists and bearers in deck and floor structures throughout New Zealand.</p>
+
+      <h4>3. Design Standards</h4>
+      <ul>
+        <li>NZ Building Code — Importance Level 2 (AS/NZS 1170.0:2002)</li>
+        <li>Structural loading: AS/NZS 1170:2002</li>
+        <li>Aluminium structures: AS/NZS 1664:1997</li>
+        <li>Aluminium durability/surface treatment: AS/NZS 2312:2014</li>
+      </ul>
+
+      <h4>4. Design Loads</h4>
+      <div class="kv-grid">
+        <div class="kv"><div class="kv-label">Minimum superimposed dead load</div><div class="kv-val">0.40 kPa</div></div>
+        <div class="kv"><div class="kv-label">Live load range</div><div class="kv-val">2.0 kPa – 5.5 kPa</div></div>
+        <div class="kv"><div class="kv-label">Earthquake zone</div><div class="kv-val">Zone 1</div></div>
+        <div class="kv"><div class="kv-label">Proximity to fault</div><div class="kv-val">&gt;20km</div></div>
+        <div class="kv"><div class="kv-label">Snow/ice loads</div><div class="kv-val">Not significant (sub-alpine &lt;900m)</div></div>
+        <div class="kv"><div class="kv-label">Wind loads</div><div class="kv-val">Hold-down fixings to be reviewed by structural engineer for height/shape</div></div>
+      </div>
+
+      <h4>5. Design Methodology</h4>
+      <ul>
+        <li>Prepared based on reviewed drawings and client-specific demands</li>
+        <li>Joists and bearers designed as a continuous beam over at least three spans</li>
+        <li>Point load related to imposed action — maximum area of action defined</li>
+      </ul>
+
+      <h4>6. Durability</h4>
+      <p>No acceptable solution is available for structural aluminium. Protection is provided through surface treatment as a minimum, with reference to AS/NZS 2312:2014.</p>
+
+      <h4>7. Construction Monitoring</h4>
+      <p>Design is based on verification of specific design aspects of construction, as agreed by owner or developer. All geotechnical values are based on the assumption of good ground.</p>
+
+      <h4>8. Limitations</h4>
+      <p>This document is issued for the party that commissioned it and for a specific purpose related only to the captioned project. EQ Struc Limited accepts no responsibility for consequences of this document being relied upon by any other party or used for any other purpose. Total maximum liability is limited to NZ$200,000.</p>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <strong>Need a site-specific PS1?</strong> Engineering certification for your specific project can be provided based on site requirements and complexity. Price on application. Contact ShadowDeck on <strong>0800 742 369</strong> or <a href="mailto:info@shadowdeck.co.nz">info@shadowdeck.co.nz</a> to discuss.
+  </div>
+</div>
+
+<footer>
+<div class="footer-inner">
+  <p>© 2026 Robust Limited. All rights reserved. | <a href="contact.html">Contact Us</a> | <a href="index.html">Home</a></p>
+  <p style="margin-top:6px">Powered by <a href="https://strandmedia.co.nz">Strand Media Ltd</a></p>
+</div>
+</footer>
+
+<script>
+function toggleMobileMenu(){document.getElementById("m").classList.toggle("open");}
+document.querySelectorAll(".has-drop > a").forEach(function(a){
+  a.addEventListener("click",function(e){
+    if(window.innerWidth<=960){e.preventDefault();this.parentElement.classList.toggle("mob-open");}
+  });
+});
+</script>
+</body>
+</html>

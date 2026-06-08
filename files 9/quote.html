@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deck Builder — ShadowDeck™</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#c8a84b;
+  --teal-mid:#a08030;
+  --teal-light:#fdf6e3;
+  --teal-accent:#c8a84b;
+  --gold:#c8a84b;
+  --white:#ffffff;
+  --off-white:#f8f9f7;
+  --border:#dde8e6;
+  --text:#1a1a1a;
+  --text-muted:#5a6b68;
+  --text-light:#8a9b98;
+  --danger:#c0392b;
+  --font:'Barlow',sans-serif;
+  --font-condensed:'Barlow Condensed',sans-serif;
+}
+body{font-family:var(--font);background:var(--off-white);color:var(--text);min-height:100vh}
+
+/* NAV */
+nav{background:#1a1a1a;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;position:sticky;top:0;z-index:100}
+.nav-logo{display:flex;flex-direction:column;line-height:1}
+.nav-logo span:first-child{font-family:var(--font-condensed);font-size:22px;font-weight:700;color:#fff;letter-spacing:0.02em}
+.nav-logo span:last-child{font-size:10px;color:rgba(255,255,255,0.6);letter-spacing:0.08em;text-transform:uppercase}
+.nav-links{display:flex;gap:1.5rem;align-items:center}
+.nav-links a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:14px;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--gold);color:#8a6a20!important;padding:8px 16px;border-radius:4px;font-weight:600!important}
+.nav-phone{color:rgba(255,255,255,0.7);font-size:13px}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:0.3s}
+.mobile-menu{display:none;position:absolute;top:70px;left:0;right:0;background:#1a1a1a;padding:1rem 2rem;flex-direction:column;gap:0.75rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:15px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.1)}
+
+/* HERO */
+.page-hero{background:#1a1a1a;padding:3rem 2rem 2.5rem;text-align:center}
+.page-hero h1{font-family:var(--font-condensed);font-size:42px;font-weight:700;color:#fff;letter-spacing:0.02em;margin-bottom:8px}
+.page-hero p{color:rgba(255,255,255,0.7);font-size:16px;max-width:520px;margin:0 auto}
+.badge{display:inline-block;background:var(--gold);color:#8a6a20;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:12px}
+
+/* PROGRESS */
+.progress-wrap{background:#fff;border-bottom:1px solid var(--border);padding:0 2rem;overflow-x:auto}
+.progress-inner{display:flex;max-width:900px;margin:0 auto}
+.prog-step{flex:1;padding:14px 8px;text-align:center;position:relative;cursor:pointer;min-width:80px;transition:0.2s}
+.prog-step::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:transparent;transition:0.2s}
+.prog-step.active::after{background:#1a1a1a}
+.prog-step.done::after{background:#c8a84b}
+.prog-num{width:26px;height:26px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--text-light);margin:0 auto 4px;transition:0.2s}
+.prog-step.active .prog-num{border-color:#c8a84b;background:transparent;border:1.5px solid #c8a84b;color:#c8a84b}
+.prog-step.done .prog-num{border-color:#c8a84b;background:#c8a84b;color:#fff}
+.prog-label{font-size:11px;font-weight:500;color:var(--text-light);font-family:var(--font-condensed);letter-spacing:0.04em;text-transform:uppercase}
+.prog-step.active .prog-label{color:#8a6a20}
+.prog-step.done .prog-label{color:#c8a84b}
+
+/* MAIN CONTENT */
+.builder-wrap{max-width:900px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.step-panel{display:none}
+.step-panel.active{display:block}
+.step-title{font-family:var(--font-condensed);font-size:28px;font-weight:700;color:#8a6a20;margin-bottom:6px;letter-spacing:0.01em}
+.step-desc{font-size:15px;color:var(--text-muted);margin-bottom:2rem;line-height:1.6}
+
+/* OPTION CARDS */
+.option-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+.option-grid.three{grid-template-columns:1fr 1fr 1fr}
+.option-grid.four{grid-template-columns:1fr 1fr}
+@media(max-width:600px){.option-grid,.option-grid.three,.option-grid.four{grid-template-columns:1fr}}
+.opt-card{background:#fff;border:2px solid var(--border);border-radius:10px;padding:1.25rem;cursor:pointer;transition:all 0.2s;position:relative}
+.opt-card:hover{border-color:#c8a84b;background:#fdf6e3}
+.opt-card.selected{border-color:#c8a84b;background:#fdf6e3}
+.opt-card.selected::after{content:'✓';position:absolute;top:10px;right:12px;color:#8a6a20;font-weight:700;font-size:16px}
+.opt-icon{font-size:28px;margin-bottom:10px}
+.opt-title{font-family:var(--font-condensed);font-size:17px;font-weight:700;color:#8a6a20;margin-bottom:4px;letter-spacing:0.01em}
+.opt-desc{font-size:13px;color:var(--text-muted);line-height:1.5}
+.opt-badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-top:6px;letter-spacing:0.05em;text-transform:uppercase}
+.opt-badge.ps1{background:#fdf6e3;color:#8a6a20}
+.opt-badge.price{background:#f5f0e8;color:#7a5c1e}
+.opt-badge.poa{background:#f0f0f0;color:#666}
+
+/* INPUTS */
+.field-group{margin-bottom:1.5rem}
+.field-label{font-size:13px;font-weight:600;color:var(--text);margin-bottom:8px;display:block;letter-spacing:0.02em}
+.field-hint{font-size:12px;color:var(--text-light);margin-top:4px}
+.input-row{display:flex;gap:1rem;align-items:flex-end}
+.input-wrap{flex:1}
+.input-sep{font-size:20px;color:var(--text-light);padding-bottom:10px;flex-shrink:0}
+input[type=number],input[type=text],input[type=email],input[type=tel],select,textarea{
+  width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:8px;
+  font-family:var(--font);font-size:15px;color:var(--text);background:#fff;
+  transition:border-color 0.2s;outline:none
+}
+input[type=number]:focus,input[type=text]:focus,input[type=email]:focus,input[type=tel]:focus,select:focus,textarea:focus{border-color:#c8a84b}
+textarea{resize:vertical;min-height:80px}
+.area-display{background:#fdf6e3;border:1.5px solid #c8a84b;border-radius:8px;padding:12px 16px;font-family:var(--font-condensed);font-size:20px;font-weight:700;color:#8a6a20;text-align:center;margin-top:0.75rem}
+.area-display span{font-size:13px;font-weight:400;color:#a08030;margin-left:6px}
+
+/* TOGGLE */
+.toggle-group{display:flex;gap:10px;margin-bottom:1rem}
+.toggle-btn{flex:1;padding:10px;border:1.5px solid var(--border);border-radius:8px;background:#fff;font-family:var(--font);font-size:14px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:all 0.2s}
+.toggle-btn.selected{border-color:#c8a84b;background:#fdf6e3;color:#8a6a20;font-weight:600}
+.toggle-section{background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin-top:0.75rem}
+.toggle-section-title{font-family:var(--font-condensed);font-size:15px;font-weight:700;color:#8a6a20;margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.04em}
+
+/* STEP NUMBER SELECTOR */
+.num-selector{display:flex;align-items:center;gap:12px}
+.num-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border);background:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#8a6a20;font-weight:600;transition:all 0.2s}
+.num-btn:hover{border-color:#c8a84b;background:#fdf6e3}
+.num-val{font-family:var(--font-condensed);font-size:28px;font-weight:700;color:#8a6a20;min-width:40px;text-align:center}
+
+/* INFO BOX */
+.info-box{background:#fdf6e3;border-left:4px solid #c8a84b;border-radius:0 8px 8px 0;padding:12px 16px;margin:1rem 0;font-size:13px;color:#5a4a20;line-height:1.6}
+.info-box strong{color:#8a6a20}
+.warning-box{background:#fef9ec;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:1rem 0;font-size:13px;color:#7a5c1e;line-height:1.6}
+
+/* SUB-OPTION */
+.sub-option{background:var(--off-white);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem;margin-top:0.75rem}
+.sub-option-label{font-size:12px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px}
+
+/* NAVIGATION BUTTONS */
+.nav-btns{display:flex;gap:1rem;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.btn{padding:12px 28px;border-radius:8px;font-family:var(--font);font-size:15px;font-weight:600;cursor:pointer;transition:all 0.2s;border:none;letter-spacing:0.02em}
+.btn-primary{background:transparent;border:1.5px solid #c8a84b;color:#c8a84b}
+.btn-primary:hover{background:#a08030}
+.btn-secondary{background:#fff;color:#8a6a20;border:1.5px solid var(--border)}
+.btn-secondary:hover{border-color:#c8a84b;background:#fdf6e3}
+.btn-back{background:transparent;color:var(--text-muted);border:none;padding:12px 0;font-size:14px}
+.btn-back:hover{color:#8a6a20}
+.btn-gold{background:var(--gold);color:#8a6a20}
+.btn-gold:hover{background:#b8942e}
+
+/* RESULTS */
+.results-hero{background:#1a1a1a;border-radius:12px;padding:1.5rem 2rem;margin-bottom:1.5rem;color:#fff}
+.results-hero h2{font-family:var(--font-condensed);font-size:28px;font-weight:700;margin-bottom:4px}
+.results-hero p{color:rgba(255,255,255,0.7);font-size:14px}
+.metrics-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:1.5rem}
+@media(max-width:520px){.metrics-row{grid-template-columns:1fr 1fr}}
+.metric{background:#fff;border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center}
+.metric-label{font-size:12px;color:var(--text-light);font-weight:500;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
+.metric-val{font-family:var(--font-condensed);font-size:28px;font-weight:700;color:#8a6a20}
+.metric-unit{font-size:13px;color:var(--text-muted)}
+.results-section{background:#fff;border:1px solid var(--border);border-radius:10px;margin-bottom:1rem;overflow:hidden}
+.results-section-header{background:var(--off-white);padding:12px 16px;border-bottom:1px solid var(--border);font-family:var(--font-condensed);font-size:14px;font-weight:700;color:#8a6a20;text-transform:uppercase;letter-spacing:0.05em}
+.line-item{display:flex;justify-content:space-between;align-items:flex-start;padding:10px 16px;border-bottom:1px solid var(--border);gap:12px}
+.line-item:last-child{border-bottom:none}
+.line-name{font-size:14px;color:var(--text);font-weight:500}
+.line-detail{font-size:12px;color:var(--text-light);margin-top:2px}
+.line-price{font-size:14px;font-weight:700;color:#8a6a20;white-space:nowrap;text-align:right}
+.line-poa{font-size:13px;font-weight:600;color:var(--text-muted);font-style:italic}
+.totals-block{background:#fff;border:2px solid #c8a84b;border-radius:10px;padding:1.25rem 1.5rem;margin-top:1rem}
+.total-row{display:flex;justify-content:space-between;padding:6px 0;font-size:14px}
+.total-row.subtotal{color:var(--text-muted)}
+.total-row.gst{color:var(--text-muted)}
+.total-row.grand{font-size:20px;font-weight:700;color:#8a6a20;border-top:1px solid var(--border);padding-top:12px;margin-top:6px;font-family:var(--font-condensed)}
+.disclaimer{font-size:12px;color:var(--text-light);line-height:1.6;padding:1rem;background:var(--off-white);border-radius:8px;margin-top:1rem}
+.cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
+@media(max-width:520px){.cta-grid{grid-template-columns:1fr}}
+.cta-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.25rem;text-align:center}
+.cta-card h4{font-family:var(--font-condensed);font-size:16px;font-weight:700;color:#8a6a20;margin-bottom:6px}
+.cta-card p{font-size:13px;color:var(--text-muted);margin-bottom:12px;line-height:1.5}
+.nurajack-note{background:#fff;border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;margin-top:1rem}
+
+/* FORM */
+.quote-form{background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin-top:1.5rem}
+.quote-form h3{font-family:var(--font-condensed);font-size:20px;font-weight:700;color:#8a6a20;margin-bottom:1rem}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:520px){.form-grid{grid-template-columns:1fr}}
+.form-field{margin-bottom:1rem}
+.form-field label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px}
+.form-field.full{grid-column:1/-1}
+.form-submit{background:transparent;border:1.5px solid #c8a84b;color:#c8a84b;border:none;padding:14px 32px;border-radius:8px;font-family:var(--font);font-size:16px;font-weight:700;cursor:pointer;width:100%;margin-top:0.5rem;transition:background 0.2s}
+.form-submit:hover{background:#a08030}
+.success-msg{background:#fdf6e3;border:1px solid #c8a84b;border-radius:8px;padding:1rem;text-align:center;color:#8a6a20;font-weight:600;display:none}
+
+/* FOOTER */
+footer{background:#1a1a1a;padding:2rem;text-align:center;margin-top:4rem}
+footer p{color:rgba(255,255,255,0.5);font-size:13px}
+footer a{color:rgba(255,255,255,0.7);text-decoration:none}
+
+/* PRINT */
+@media print{nav,footer,.nav-btns,.cta-grid,.quote-form,.progress-wrap,.page-hero{display:none}
+.builder-wrap{padding:0}.results-hero{background:#1a1a1a!important;-webkit-print-color-adjust:exact}}
+
+@media(max-width:768px){
+  .hamburger{display:flex}
+  .nav-links,.nav-phone{display:none}
+  .page-hero h1{font-size:32px}
+  .builder-wrap{padding:1.5rem 1rem 3rem}
+  .prog-label{display:none}
+  .prog-num{width:22px;height:22px;font-size:11px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span>ShadowDeck™</span>
+    <span>Nail free timber decking system</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="products.html">Our Products</a>
+    <a href="frame.html">Aluminium Framing</a>
+    <a href="installation-guide.html">Installation Guide</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="quote.html" class="nav-cta">Deck Builder</a>
+  </div>
+  <div class="nav-phone">0800 742 369</div>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="products.html">Our Products</a>
+  <a href="frame.html">Aluminium Framing</a>
+  <a href="installation-guide.html">Installation Guide</a>
+  <a href="contact.html">Contact Us</a>
+  <a href="quote.html">Deck Builder</a>
+</div>
+
+<div class="page-hero">
+  <div class="badge">Instant estimate</div>
+  <h1>ShadowDeck™ Deck Builder</h1>
+  <p>Configure your deck step by step and get an indicative materials estimate instantly.</p>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <div class="prog-step active" id="prog-1" onclick="goToStep(1)">
+      <div class="prog-num">1</div>
+      <div class="prog-label">Dimensions</div>
+    </div>
+    <div class="prog-step" id="prog-2" onclick="goToStep(2)">
+      <div class="prog-num">2</div>
+      <div class="prog-label">Support</div>
+    </div>
+    <div class="prog-step" id="prog-3" onclick="goToStep(3)">
+      <div class="prog-num">3</div>
+      <div class="prog-label">Framing</div>
+    </div>
+    <div class="prog-step" id="prog-4" onclick="goToStep(4)">
+      <div class="prog-num">4</div>
+      <div class="prog-label">Decking</div>
+    </div>
+    <div class="prog-step" id="prog-5" onclick="goToStep(5)">
+      <div class="prog-num">5</div>
+      <div class="prog-label">Finishing</div>
+    </div>
+    <div class="prog-step" id="prog-6" onclick="goToStep(6)">
+      <div class="prog-num">6</div>
+      <div class="prog-label">Results</div>
+    </div>
+  </div>
+</div>
+
+<div class="builder-wrap">
+
+  <!-- STEP 1: DIMENSIONS -->
+  <div class="step-panel active" id="step-1">
+    <div class="step-title">What size is your deck?</div>
+    <div class="step-desc">Enter the overall length and width of your deck in metres. We'll calculate everything from there.</div>
+    <div class="field-group">
+      <label class="field-label">Deck length × width</label>
+      <div class="input-row">
+        <div class="input-wrap">
+          <input type="number" id="deckLength" placeholder="Length e.g. 6" min="0.5" max="50" step="0.1" oninput="updateArea()">
+          <div class="field-hint">metres</div>
+        </div>
+        <div class="input-sep">×</div>
+        <div class="input-wrap">
+          <input type="number" id="deckWidth" placeholder="Width e.g. 4" min="0.5" max="50" step="0.1" oninput="updateArea()">
+          <div class="field-hint">metres</div>
+        </div>
+      </div>
+      <div class="area-display" id="areaDisplay" style="display:none">
+        <span id="areaVal">0</span> m² <span id="areaNote"></span>
+      </div>
+    </div>
+    <div class="info-box"><strong>Tip:</strong> Measure from the outside edge of your framing, not your floor space. If your deck is L-shaped, measure the largest rectangle for now — you can adjust quantities with Darrel when you request a quote.</div>
+    <div class="nav-btns">
+      <button class="btn btn-primary" onclick="nextStep(1)">Next — Choose support system →</button>
+    </div>
+  </div>
+
+  <!-- STEP 2: SUPPORT -->
+  <div class="step-panel" id="step-2">
+    <div class="step-title">How will your deck be supported?</div>
+    <div class="step-desc">The support system determines your deck height and whether Nurajack pedestals are included in your estimate.</div>
+    <div class="option-grid">
+      <div class="opt-card" id="opt-support-nurajack" onclick="selectOption('support','nurajack',this)">
+        <div class="opt-icon">⬛</div>
+        <div class="opt-title">Nurajack pedestals</div>
+        <div class="opt-desc">Height-adjustable aluminium pedestals sitting on concrete, waterproof membrane, or compacted ground. No in-ground posts required. Fast and clean.</div>
+        <span class="opt-badge ps1">Pedestal qty calculated</span>
+      </div>
+      <div class="opt-card" id="opt-support-timber" onclick="selectOption('support','timber',this)">
+        <div class="opt-icon">🪵</div>
+        <div class="opt-title">Timber posts</div>
+        <div class="opt-desc">Traditional H4 treated timber posts concreted into the ground. Suitable for elevated decks and sloped sites. Post supply and installation by your builder.</div>
+        <span class="opt-badge poa">Installation quote required</span>
+      </div>
+    </div>
+    <div id="nurajack-info" style="display:none">
+      <div class="info-box"><strong>Nurajack pedestals</strong> are available directly from ShadowDeck. Height range: 28mm–550mm. Self-levelling head protects membranes. Pricing on request — we'll include the estimated qty in your results.</div>
+    </div>
+    <div id="timber-info" style="display:none">
+      <div class="info-box"><strong>Timber posts</strong> are supplied and installed by your builder. ShadowDeck supplies the framing and decking system. We'll include an installation quote request in your results.</div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn btn-back" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-primary" onclick="nextStep(2)">Next — Choose framing →</button>
+    </div>
+  </div>
+
+  <!-- STEP 3: FRAMING -->
+  <div class="step-panel" id="step-3">
+    <div class="step-title">What type of framing?</div>
+    <div class="step-desc">The framing sits between your support system and the decking boards. Choose aluminium for longevity and PS1 certification, or timber if your builder is supplying the frame.</div>
+
+    <label class="field-label">Framing material</label>
+    <div class="option-grid three" style="margin-bottom:1.5rem">
+      <div class="opt-card" id="opt-frame-timber" onclick="selectFraming('timber',this)">
+        <div class="opt-title">Timber framing</div>
+        <div class="opt-desc">H3/H4 treated pine joists and bearers. Supplied and installed by your builder. Most common for posts-in-ground builds.</div>
+        <span class="opt-badge poa">Builder supply</span>
+      </div>
+      <div class="opt-card" id="opt-frame-econospan" onclick="selectFraming('econospan',this)">
+        <div class="opt-title">EconoSpan aluminium</div>
+        <div class="opt-desc">30mm or 60mm aluminium profile. Lightweight, durable, no rot. Competitive pricing. No PS1 engineering certificate.</div>
+        <span class="opt-badge price">From $80/lm</span>
+      </div>
+      <div class="opt-card" id="opt-frame-superspan" onclick="selectFraming('superspan',this)">
+        <div class="opt-title">SuperSpan aluminium</div>
+        <div class="opt-desc">30mm, 60mm or 120mm profile. PS1 certified by EQ Struc. Required for building consent applications and elevated decks.</div>
+        <span class="opt-badge ps1">PS1 certified</span>
+      </div>
+    </div>
+
+    <!-- Profile selection (alum only) -->
+    <div id="profile-section" style="display:none">
+      <label class="field-label">Profile size</label>
+      <div class="option-grid" id="profile-options" style="margin-bottom:1.5rem"></div>
+    </div>
+
+    <!-- Layout selection (alum only) -->
+    <div id="layout-section" style="display:none">
+      <label class="field-label">Framing layout</label>
+      <div class="option-grid" style="margin-bottom:1rem">
+        <div class="opt-card" id="opt-layout-joist" onclick="selectLayout('joist',this)">
+          <div class="opt-title">Joist only</div>
+          <div class="opt-desc">Joists run directly between supports. Lower profile, more Nurajack pedestals. Ideal for low-clearance builds over concrete or membrane.</div>
+          <span class="opt-badge ps1">Lower profile</span>
+        </div>
+        <div class="opt-card" id="opt-layout-bearer" onclick="selectLayout('bearer',this)">
+          <div class="opt-title">Bearer + joist</div>
+          <div class="opt-desc">Bearers span between supports, joists sit on top. More height but significantly fewer Nurajack pedestals. Better for uneven or sloped ground.</div>
+          <span class="opt-badge price">Fewer pedestals</span>
+        </div>
+      </div>
+      <div id="layout-info" class="info-box" style="display:none"></div>
+    </div>
+
+    <div class="nav-btns">
+      <button class="btn btn-back" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-primary" onclick="nextStep(3)">Next — Choose decking →</button>
+    </div>
+  </div>
+
+  <!-- STEP 4: DECKING -->
+  <div class="step-panel" id="step-4">
+    <div class="step-title">Choose your decking profile</div>
+    <div class="step-desc">All profiles are premium Kwila hardwood, pre-grooved for the ShadowDeck™ hidden fastener system. Priced at $16.80/lm.</div>
+    <div class="option-grid">
+      <div class="opt-card" id="opt-profile-domed" onclick="selectOption('deckprofile','domed',this)">
+        <div class="opt-title">140×21mm Domed</div>
+        <div class="opt-desc">Our most popular profile. Domed top sheds water naturally. Grooved both sides for fast nail-free fixing. Best overall performance.</div>
+        <span class="opt-badge ps1">Most popular</span>
+      </div>
+      <div class="opt-card" id="opt-profile-flat" onclick="selectOption('deckprofile','flat',this)">
+        <div class="opt-title">140×21mm Flat</div>
+        <div class="opt-desc">Traditional flat finish. Same hidden fastener system. 140mm wide boards give a clean, classic look. Best-in-class flat deck finish.</div>
+        <span class="opt-badge price">$16.80/lm</span>
+      </div>
+    </div>
+    <div class="info-box" style="margin-top:1rem"><strong>Coverage:</strong> 7.7 lineal metres covers 1m² of deck (includes 10% wastage allowance). One trade pack covers every 12m².</div>
+    <div class="nav-btns">
+      <button class="btn btn-back" onclick="prevStep(4)">← Back</button>
+      <button class="btn btn-primary" onclick="nextStep(4)">Next — Finishing options →</button>
+    </div>
+  </div>
+
+  <!-- STEP 5: FINISHING -->
+  <div class="step-panel" id="step-5">
+    <div class="step-title">Finishing options</div>
+    <div class="step-desc">Add picture framing, stairs, and extras to complete your estimate.</div>
+
+    <!-- Picture framing -->
+    <div class="field-group">
+      <label class="field-label">Picture framing</label>
+      <div class="option-grid four">
+        <div class="opt-card" id="opt-pf-none" onclick="selectPictureFrame('none',this)">
+          <div class="opt-title">None</div>
+          <div class="opt-desc">Square cut ends. Board ends visible on the sides of the deck.</div>
+        </div>
+        <div class="opt-card" id="opt-pf-square" onclick="selectPictureFrame('square',this)">
+          <div class="opt-title">Square end cap</div>
+          <div class="opt-desc">2 sides capped with a border board so board ends are not visible. T-shaped fasteners used. Common on house-attached decks.</div>
+        </div>
+        <div class="opt-card" id="opt-pf-three" onclick="selectPictureFrame('three',this)">
+          <div class="opt-title">3-side picture frame</div>
+          <div class="opt-desc">Picture frame on 3 sides. House wall forms the 4th side. Includes border board + fascia riser.</div>
+        </div>
+        <div class="opt-card" id="opt-pf-four" onclick="selectPictureFrame('four',this)">
+          <div class="opt-title">Full 4-side frame</div>
+          <div class="opt-desc">Complete picture frame on all 4 sides. Border board + fascia riser on full perimeter. Premium finish.</div>
+        </div>
+      </div>
+      <!-- Profile choice for 3/4 side -->
+      <div id="pf-profile-section" style="display:none;margin-top:1rem">
+        <label class="field-label">Border board profile</label>
+        <div class="toggle-group">
+          <button class="toggle-btn selected" id="pfp-bullnose" onclick="selectPFProfile('bullnose',this)">Bull nose (rounded edge)</button>
+          <button class="toggle-btn" id="pfp-standard" onclick="selectPFProfile('standard',this)">Standard picture frame</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- House spacer -->
+    <div class="field-group">
+      <label class="field-label">House-to-deck spacer</label>
+      <div class="toggle-group">
+        <button class="toggle-btn" id="hs-yes" onclick="selectToggle('housespacer','yes','hs-yes','hs-no')">Yes — deck attached to house</button>
+        <button class="toggle-btn selected" id="hs-no" onclick="selectToggle('housespacer','no','hs-yes','hs-no')">No — freestanding deck</button>
+      </div>
+      <div id="hs-info" style="display:none">
+        <div class="info-box">Creates a clean 12mm gap between the house and your first decking board. 1 pack includes 20 spacers (spaced between joists on the ribbon plate).</div>
+      </div>
+    </div>
+
+    <!-- Stairs -->
+    <div class="field-group">
+      <label class="field-label">Stairs</label>
+      <div class="toggle-group">
+        <button class="toggle-btn" id="stairs-yes" onclick="selectToggle('stairs','yes','stairs-yes','stairs-no');toggleStairs(true)">Yes — include stairs</button>
+        <button class="toggle-btn selected" id="stairs-no" onclick="selectToggle('stairs','no','stairs-yes','stairs-no');toggleStairs(false)">No stairs</button>
+      </div>
+      <div id="stairs-section" style="display:none;margin-top:1rem">
+        <div class="toggle-section">
+          <div class="toggle-section-title">Number of steps</div>
+          <div class="num-selector">
+            <button class="num-btn" onclick="changeSteps(-1)">−</button>
+            <div class="num-val" id="stepsVal">2</div>
+            <button class="num-btn" onclick="changeSteps(1)">+</button>
+          </div>
+          <div class="field-hint" style="margin-top:8px">Stair width: 1200mm. Each step = 1× tread board + 1× back board + 1× fascia riser.</div>
+          <div style="margin-top:1rem">
+            <label class="field-label">Tread board profile</label>
+            <div class="toggle-group">
+              <button class="toggle-btn selected" id="st-bullnose" onclick="selectStairProfile('bullnose','st-bullnose','st-standard')">Bull nose (recommended)</button>
+              <button class="toggle-btn" id="st-standard" onclick="selectStairProfile('standard','st-bullnose','st-standard')">Standard</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deck oil -->
+    <div class="field-group">
+      <label class="field-label">UV Extreme Kwila Oil</label>
+      <div class="toggle-group">
+        <button class="toggle-btn" id="oil-yes" onclick="selectToggle('oil','yes','oil-yes','oil-no')">Yes — add Kwila oil</button>
+        <button class="toggle-btn selected" id="oil-no" onclick="selectToggle('oil','no','oil-yes','oil-no')">No thanks</button>
+      </div>
+      <div class="field-hint" style="margin-top:6px">Commercial grade German nano technology. 3–5 year UV protection depending on sun exposure.</div>
+    </div>
+
+    <div class="nav-btns">
+      <button class="btn btn-back" onclick="prevStep(5)">← Back</button>
+      <button class="btn btn-gold" onclick="buildResults()">Calculate my estimate →</button>
+    </div>
+  </div>
+
+  <!-- STEP 6: RESULTS -->
+  <div class="step-panel" id="step-6">
+    <div class="results-hero">
+      <h2>Your indicative estimate</h2>
+      <p>Indicative materials pricing excl. GST. All prices NZD RRP — subject to confirmation.</p>
+    </div>
+
+    <div class="metrics-row" id="metrics-row"></div>
+    <div id="results-body"></div>
+
+    <div class="totals-block" id="totals-block"></div>
+
+    <div class="disclaimer">This is an indicative estimate for materials only. Pricing excludes installation, delivery, site preparation, and consenting costs. All prices are NZD RRP excl. GST. Nurajack pedestal pricing is available on request. Contact ShadowDeck on <strong>0800 742 369</strong> or <strong>info@shadowdeck.co.nz</strong> to confirm your quote.</div>
+
+    <div class="cta-grid" id="cta-grid"></div>
+
+    <!-- Quote form -->
+    <div class="quote-form" id="quote-form">
+      <h3>Request a formal quote</h3>
+      <form id="formspree-form" action="https://formspree.io/f/mqeoeddl" method="POST" onsubmit="handleSubmit(event)">
+        <div class="form-grid">
+          <div class="form-field">
+            <label>Your name *</label>
+            <input type="text" name="name" required placeholder="Full name">
+          </div>
+          <div class="form-field">
+            <label>Phone *</label>
+            <input type="tel" name="phone" required placeholder="e.g. 021 123 456">
+          </div>
+          <div class="form-field">
+            <label>Email *</label>
+            <input type="email" name="email" required placeholder="your@email.com">
+          </div>
+          <div class="form-field">
+            <label>Region</label>
+            <select name="region">
+              <option value="">Select region</option>
+              <option>Northland</option><option>Auckland</option><option>Waikato</option>
+              <option>Bay of Plenty</option><option>Gisborne</option><option>Hawkes Bay</option>
+              <option>Taranaki</option><option>Manawatu-Whanganui</option><option>Wellington</option>
+              <option>Tasman</option><option>Nelson</option><option>Marlborough</option>
+              <option>West Coast</option><option>Canterbury</option><option>Otago</option><option>Southland</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label>Additional notes</label>
+            <textarea name="notes" placeholder="Any other details about your project..."></textarea>
+          </div>
+        </div>
+        <input type="hidden" name="deck_configuration" id="hidden-config">
+        <input type="hidden" name="_subject" value="ShadowDeck Deck Builder Quote Request">
+        <button type="submit" class="form-submit">Send quote request →</button>
+      </form>
+      <div class="success-msg" id="success-msg">✓ Quote request sent! Darrel will be in touch within 1–2 business days.</div>
+    </div>
+
+    <div class="nav-btns">
+      <button class="btn btn-back" onclick="prevStep(6)">← Edit selections</button>
+      <button class="btn btn-secondary" onclick="window.print()">🖨 Print / save as PDF</button>
+    </div>
+  </div>
+
+</div><!-- end builder-wrap -->
+
+<footer>
+<div class="footer-inner">
+  <p>© 2026 Robust Limited. All rights reserved. | <a href="contact.html">Contact Us</a> | <a href="index.html">Home</a></p>
+  <p style="margin-top:6px">Powered by <a href="https://strandmedia.co.nz">Strand Media Ltd</a></p>
+</div>
+</footer>
+
+<script>
+// ============================================================
+// STATE
+// ============================================================
+const state = {
+  step: 1,
+  length: 0,
+  width: 0,
+  area: 0,
+  support: null,       // 'nurajack' | 'timber'
+  framing: null,       // 'timber' | 'econospan' | 'superspan'
+  framingProfile: null, // '30' | '60' | '120'
+  framingLayout: null,  // 'joist' | 'bearer'
+  deckProfile: null,    // 'domed' | 'flat'
+  pictureFrame: null,   // 'none' | 'square' | 'three' | 'four'
+  pfProfile: 'bullnose',// 'bullnose' | 'standard'
+  housespacer: 'no',
+  stairs: 'no',
+  stepsCount: 2,
+  stairProfile: 'bullnose',
+  oil: 'no'
+};
+
+// Pricing
+const P = {
+  timber_lm: 16.80,
+  fascia_lm: 16.80,
+  econospan_30: 80,
+  econospan_60: 100,
+  superspan_30: 120,
+  superspan_60: 140,
+  superspan_120: 168,
+  pack_3: 5,
+  pack_6: 5,
+  pack_12: 5,
+  tshape: 5,
+  housespacer: 5,
+  buttjoint: 5,
+  wrench: 5,
+  oil: 5
+};
+
+// Span table data (PS1 certified, 2.5kPa residential, continuous span)
+// joist-only span in metres (continuous), bearer span in metres (continuous)
+const SPANS = {
+  superspan: {
+    '30': { joistSpan: 1.05, bearerSpan: 4.39 },
+    '60': { joistSpan: 1.89, bearerSpan: 3.70 },
+    '120': { joistSpan: 3.30, bearerSpan: 4.39 }
+  },
+  econospan: {
+    '30': { joistSpan: 0.95, bearerSpan: 3.50 },
+    '60': { joistSpan: 1.70, bearerSpan: 3.20 }
+  }
+};
+
+// ============================================================
+// NAV
+// ============================================================
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// ============================================================
+// STEP NAVIGATION
+// ============================================================
+function goToStep(n){
+  if(n > state.step) return; // can only go back
+  showStep(n);
+}
+
+function nextStep(current){
+  if(!validateStep(current)) return;
+  showStep(current+1);
+}
+
+function prevStep(current){
+  showStep(current-1);
+}
+
+function showStep(n){
+  document.querySelectorAll('.step-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('step-'+n).classList.add('active');
+  // update progress
+  for(let i=1;i<=6;i++){
+    const el=document.getElementById('prog-'+i);
+    el.classList.remove('active','done');
+    if(i===n) el.classList.add('active');
+    else if(i<n) el.classList.add('done');
+  }
+  state.step=n;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function validateStep(n){
+  if(n===1){
+    const l=parseFloat(document.getElementById('deckLength').value);
+    const w=parseFloat(document.getElementById('deckWidth').value);
+    if(!l||!w||l<=0||w<=0){alert('Please enter your deck length and width.');return false;}
+    if(l*w>200){alert('Maximum deck size is 200m². For larger projects, please contact us directly.');return false;}
+    state.length=l; state.width=w; state.area=parseFloat((l*w).toFixed(2));
+    return true;
+  }
+  if(n===2){if(!state.support){alert('Please select a support system.');return false;}return true;}
+  if(n===3){
+    if(!state.framing){alert('Please select a framing type.');return false;}
+    if(state.framing!=='timber'&&!state.framingProfile){alert('Please select a profile size.');return false;}
+    if(state.framing!=='timber'&&!state.framingLayout){alert('Please select a framing layout.');return false;}
+    return true;
+  }
+  if(n===4){if(!state.deckProfile){alert('Please select a decking profile.');return false;}return true;}
+  if(n===5){if(!state.pictureFrame){alert('Please select a picture framing option.');return false;}return true;}
+  return true;
+}
+
+// ============================================================
+// STEP 1
+// ============================================================
+function updateArea(){
+  const l=parseFloat(document.getElementById('deckLength').value)||0;
+  const w=parseFloat(document.getElementById('deckWidth').value)||0;
+  const d=document.getElementById('areaDisplay');
+  if(l>0&&w>0){
+    const a=(l*w).toFixed(1);
+    document.getElementById('areaVal').textContent=a;
+    const lm=(l*w*7.7).toFixed(1);
+    document.getElementById('areaNote').textContent='≈ '+lm+' lm of decking';
+    d.style.display='block';
+    state.length=l;state.width=w;state.area=parseFloat(a);
+  } else {d.style.display='none';}
+}
+
+// ============================================================
+// STEP 2
+// ============================================================
+function selectOption(group,val,el){
+  // deselect siblings
+  const parent=el.closest('.option-grid')||el.parentNode;
+  parent.querySelectorAll('.opt-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  state[group]=val;
+  // show/hide info
+  if(group==='support'){
+    document.getElementById('nurajack-info').style.display=val==='nurajack'?'block':'none';
+    document.getElementById('timber-info').style.display=val==='timber'?'block':'none';
+  }
+}
+
+// ============================================================
+// STEP 3
+// ============================================================
+function selectFraming(val,el){
+  document.querySelectorAll('#step-3 > .option-grid .opt-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  state.framing=val;
+  state.framingProfile=null;
+  state.framingLayout=null;
+  const ps=document.getElementById('profile-section');
+  const ls=document.getElementById('layout-section');
+  if(val==='timber'){ps.style.display='none';ls.style.display='none';}
+  else{
+    ps.style.display='block';
+    const po=document.getElementById('profile-options');
+    po.innerHTML='';
+    po.querySelectorAll('.opt-card').forEach(c=>c.classList.remove('selected'));
+    const profiles = val==='econospan'
+      ? [{id:'30',label:'30×60mm',desc:'Ultra-low profile from 30mm clearance. Best for on-concrete or membrane builds.',price:'$80/lm'}
+        ,{id:'60',label:'60×60mm',desc:'Standard profile. Good balance of span and height. Most versatile option.',price:'$100/lm'}]
+      : [{id:'30',label:'30×60mm',desc:'Ultra-low profile. PS1 certified. Ideal for low-clearance builds.',price:'$120/lm'}
+        ,{id:'60',label:'60×60mm',desc:'Standard profile. PS1 certified. Best all-round span and height.',price:'$140/lm'}
+        ,{id:'120',label:'120×60mm',desc:'High-span profile. PS1 certified. Longer bearer spans, fewer supports.',price:'$168/lm'}];
+    profiles.forEach(p=>{
+      const d=document.createElement('div');
+      d.className='opt-card';
+      d.innerHTML=`<div class="opt-title">${p.label}</div><div class="opt-desc">${p.desc}</div><span class="opt-badge price">${p.price}</span>`;
+      d.onclick=()=>selectProfile(p.id,d);
+      po.appendChild(d);
+    });
+    ls.style.display='none';
+  }
+}
+
+function selectProfile(val,el){
+  document.getElementById('profile-options').querySelectorAll('.opt-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  state.framingProfile=val;
+  document.getElementById('layout-section').style.display='block';
+  document.getElementById('layout-info').style.display='none';
+}
+
+function selectLayout(val,el){
+  document.querySelectorAll('#layout-section .option-grid .opt-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  state.framingLayout=val;
+  const info=document.getElementById('layout-info');
+  info.style.display='block';
+  const spans=SPANS[state.framing]?.[state.framingProfile];
+  if(spans){
+    if(val==='joist'){
+      info.innerHTML=`<strong>Joist only:</strong> ${state.framingProfile}×60mm joists span up to ${spans.joistSpan*1000}mm between supports. Joists at 450mm centres. More Nurajack pedestals but lower overall profile height.`;
+    } else {
+      info.innerHTML=`<strong>Bearer + joist:</strong> Bearers span up to ${spans.bearerSpan*1000}mm between Nurajacks. Joists sit on bearers at 450mm centres. Significantly fewer pedestals but adds the bearer profile height.`;
+    }
+  }
+}
+
+// ============================================================
+// STEP 4
+// ============================================================
+// handled by selectOption()
+
+// ============================================================
+// STEP 5
+// ============================================================
+function selectPictureFrame(val,el){
+  document.querySelectorAll('#step-5 .option-grid.four .opt-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  state.pictureFrame=val;
+  const pp=document.getElementById('pf-profile-section');
+  pp.style.display=(val==='three'||val==='four')?'block':'none';
+}
+
+function selectPFProfile(val,el){
+  document.getElementById('pfp-bullnose').classList.remove('selected');
+  document.getElementById('pfp-standard').classList.remove('selected');
+  el.classList.add('selected');
+  state.pfProfile=val;
+}
+
+function selectToggle(stateKey,val,yesId,noId){
+  document.getElementById(yesId).classList.toggle('selected',val==='yes');
+  document.getElementById(noId).classList.toggle('selected',val==='no');
+  state[stateKey]=val;
+  if(stateKey==='housespacer'){
+    document.getElementById('hs-info').style.display=val==='yes'?'block':'none';
+  }
+}
+
+function toggleStairs(show){
+  document.getElementById('stairs-section').style.display=show?'block':'none';
+}
+
+function changeSteps(d){
+  state.stepsCount=Math.max(1,Math.min(10,state.stepsCount+d));
+  document.getElementById('stepsVal').textContent=state.stepsCount;
+}
+
+function selectStairProfile(val,yesId,noId){
+  document.getElementById(yesId).classList.toggle('selected',val==='bullnose');
+  document.getElementById(noId).classList.toggle('selected',val==='standard');
+  state.stairProfile=val;
+}
+
+// ============================================================
+// RESULTS BUILDER
+// ============================================================
+function buildResults(){
+  if(!validateStep(5)) return;
+  showStep(6);
+
+  const L=state.length, W=state.width, A=state.area;
+  const lm=A*7.7;
+
+  // Trade pack mix
+  const packs=calcPacks(A);
+
+  // Framing calculations
+  let framingItems=[];
+  let nurajackCount=0;
+  if(state.framing!=='timber'){
+    const spans=SPANS[state.framing]?.[state.framingProfile]||{joistSpan:1.0,bearerSpan:2.0};
+    const priceKey=state.framing==='econospan'?`econospan_${state.framingProfile}`:`superspan_${state.framingProfile}`;
+    const lmRate=P[priceKey]||0;
+    const joistRows=Math.ceil(W/0.45)+2;
+    const joistLm=joistRows*L;
+    if(state.framingLayout==='joist'){
+      const peds=joistRows*Math.ceil(L/spans.joistSpan);
+      nurajackCount=peds;
+      framingItems.push({name:`${state.framing==='econospan'?'EconoSpan':'SuperSpan'} ${state.framingProfile}×60mm aluminium joists`,detail:`${joistRows} rows × ${L}m = ${joistLm.toFixed(1)} lm @ $${lmRate}/lm`,price:joistLm*lmRate});
+    } else {
+      const bearerRows=Math.ceil(W/spans.bearerSpan)+2;
+      const bearerLm=bearerRows*L;
+      const peds=bearerRows*Math.ceil(L/spans.bearerSpan);
+      nurajackCount=peds;
+      const totalAlumLm=joistLm+bearerLm;
+      framingItems.push({name:`${state.framing==='econospan'?'EconoSpan':'SuperSpan'} ${state.framingProfile}×60mm aluminium joists`,detail:`${joistRows} rows × ${L}m = ${joistLm.toFixed(1)} lm`,price:joistLm*lmRate});
+      framingItems.push({name:`${state.framing==='econospan'?'EconoSpan':'SuperSpan'} ${state.framingProfile}×60mm aluminium bearers`,detail:`${bearerRows} rows × ${L}m = ${bearerLm.toFixed(1)} lm @ $${lmRate}/lm`,price:bearerLm*lmRate});
+    }
+  }
+
+  // Picture framing
+  let pfItems=[];
+  let perimeterSides=0;
+  if(state.pictureFrame==='square'){
+    const pfLm=2*W;
+    pfItems.push({name:`140×21mm ${state.pfProfile==='bullnose'?'bull nose':'picture frame'} border board`,detail:`2 sides × ${W}m = ${pfLm.toFixed(1)} lm @ $${P.timber_lm}/lm`,price:pfLm*P.timber_lm});
+    pfItems.push({name:'T-shaped fastener pack (100×)',detail:'For border board fixing',price:P.tshape});
+  } else if(state.pictureFrame==='three'){
+    const pfLm=(2*L)+W;
+    const fasciaLm=pfLm;
+    pfItems.push({name:`140×21mm ${state.pfProfile==='bullnose'?'bull nose':'picture frame'} border board`,detail:`3 sides (${L}m + ${L}m + ${W}m) = ${pfLm.toFixed(1)} lm @ $${P.timber_lm}/lm`,price:pfLm*P.timber_lm});
+    pfItems.push({name:'180×19mm fascia board (riser/edge)',detail:`${fasciaLm.toFixed(1)} lm @ $${P.fascia_lm}/lm`,price:fasciaLm*P.fascia_lm});
+    pfItems.push({name:'T-shaped fastener pack (100×)',detail:'For border board fixing',price:P.tshape});
+  } else if(state.pictureFrame==='four'){
+    const perim=2*(L+W);
+    pfItems.push({name:`140×21mm ${state.pfProfile==='bullnose'?'bull nose':'picture frame'} border board`,detail:`Full perimeter = ${perim.toFixed(1)} lm @ $${P.timber_lm}/lm`,price:perim*P.timber_lm});
+    pfItems.push({name:'180×19mm fascia board (riser/edge)',detail:`${perim.toFixed(1)} lm @ $${P.fascia_lm}/lm`,price:perim*P.fascia_lm});
+    pfItems.push({name:'T-shaped fastener pack (100×)',detail:'For border board fixing',price:P.tshape});
+  }
+
+  // Butt joint (if length >5.4m)
+  let buttItems=[];
+  if(L>5.4){
+    buttItems.push({name:'Butt-joint top-up pack',detail:'Required for deck length over 5.4m — 25× 80mm fasteners, 25× 100mm biscuits, 50× SPAX',price:P.buttjoint});
+  }
+
+  // Stairs
+  let stairItems=[];
+  if(state.stairs==='yes'){
+    const sw=1.2;
+    const treadLm=state.stepsCount*sw*2;
+    const riserLm=state.stepsCount*sw;
+    stairItems.push({name:`140×21mm ${state.stairProfile==='bullnose'?'bull nose':'standard'} tread boards`,detail:`${state.stepsCount} steps × 2 boards × ${sw}m = ${treadLm.toFixed(1)} lm @ $${P.timber_lm}/lm`,price:treadLm*P.timber_lm});
+    stairItems.push({name:'180×19mm fascia riser boards',detail:`${state.stepsCount} steps × ${sw}m = ${riserLm.toFixed(1)} lm @ $${P.fascia_lm}/lm`,price:riserLm*P.fascia_lm});
+  }
+
+  // Extras
+  let extraItems=[];
+  if(state.housespacer==='yes') extraItems.push({name:'12mm House-2-Deck spacer pack (20×)',detail:'Spaced between joists on ribbon plate',price:P.housespacer});
+  extraItems.push({name:'ShadowDeck™ Deck Wrench',detail:'Essential installation tool',price:P.wrench});
+  if(state.oil==='yes') extraItems.push({name:'UV Extreme Kwila Oil',detail:'Commercial grade, 3–5 year UV protection',price:P.oil});
+
+  // Totals
+  const deckCost=lm*P.timber_lm;
+  const packCost=packs.reduce((s,p)=>s+p.price,0);
+  const frameCost=framingItems.reduce((s,i)=>s+i.price,0);
+  const pfCost=pfItems.reduce((s,i)=>s+i.price,0);
+  const buttCost=buttItems.reduce((s,i)=>s+i.price,0);
+  const stairCost=stairItems.reduce((s,i)=>s+i.price,0);
+  const extraCost=extraItems.reduce((s,i)=>s+i.price,0);
+  const subtotal=deckCost+packCost+frameCost+pfCost+buttCost+stairCost+extraCost;
+  const gst=subtotal*0.15;
+  const total=subtotal+gst;
+
+  // Metrics
+  document.getElementById('metrics-row').innerHTML=`
+    <div class="metric"><div class="metric-label">Deck area</div><div class="metric-val">${A.toFixed(1)}</div><div class="metric-unit">m²</div></div>
+    <div class="metric"><div class="metric-label">Decking timber</div><div class="metric-val">${lm.toFixed(0)}</div><div class="metric-unit">lineal metres</div></div>
+    <div class="metric"><div class="metric-label">${state.support==='nurajack'?'Nurajacks':'Support'}</div><div class="metric-val">${state.support==='nurajack'?nurajackCount:'POA'}</div><div class="metric-unit">${state.support==='nurajack'?'pedestals':'timber posts'}</div></div>
+  `;
+
+  // Build results HTML
+  let html='';
+
+  // Decking section
+  html+=section('Kwila decking boards',[
+    {name:`140×21mm ${state.deckProfile==='domed'?'domed':'flat'} decking — ${A.toFixed(1)}m²`,detail:`${lm.toFixed(1)} lm (area × 7.7 incl. 10% wastage) @ $${P.timber_lm}/lm`,price:deckCost}
+  ]);
+
+  // Fastener packs
+  html+=section('Fastener trade packs',packs.map(p=>({name:p.name,detail:p.detail,price:p.price})));
+
+  // Framing
+  if(state.framing==='timber'){
+    html+=section('Framing',[{name:'Timber framing',detail:'H3/H4 treated pine joists supplied by builder — not included in this estimate',price:null,poa:true}]);
+  } else {
+    html+=section('Aluminium framing',framingItems);
+  }
+
+  // Picture framing
+  if(state.pictureFrame!=='none') html+=section('Picture framing',pfItems);
+
+  // Butt joint
+  if(buttItems.length) html+=section('Butt-joint components',buttItems);
+
+  // Stairs
+  if(stairItems.length) html+=section(`Stairs (${state.stepsCount} step${state.stepsCount>1?'s':''})`,stairItems);
+
+  // Extras
+  html+=section('Extras & accessories',extraItems);
+
+  // Nurajack note
+  if(state.support==='nurajack'){
+    html+=`<div class="nurajack-note"><strong>Nurajack pedestals — ${nurajackCount} required</strong><br><span style="font-size:13px;color:var(--text-muted)">Pricing on request. ShadowDeck can supply Nurajack pedestals directly. Height range 28mm–550mm with self-levelling head. Click "Request pedestal pricing" below.</span></div>`;
+  }
+
+  document.getElementById('results-body').innerHTML=html;
+
+  // Totals
+  document.getElementById('totals-block').innerHTML=`
+    <div class="total-row subtotal"><span>Subtotal excl. GST</span><span>$${subtotal.toFixed(2)}</span></div>
+    <div class="total-row gst"><span>GST (15%)</span><span>$${gst.toFixed(2)}</span></div>
+    <div class="total-row grand"><span>Total incl. GST</span><span>$${total.toFixed(2)}</span></div>
+  `;
+
+  // CTAs
+  let ctaHtml=`<div class="cta-card"><h4>📋 Formal quote</h4><p>Fill in your details below and Darrel will confirm pricing and arrange supply.</p></div>`;
+  if(state.support==='nurajack') ctaHtml+=`<div class="cta-card"><h4>⬛ Pedestal pricing</h4><p>Request pricing for ${nurajackCount} Nurajack pedestals from ShadowDeck.</p><button class="btn btn-secondary" onclick="scrollToForm()" style="width:100%">Request pedestal pricing →</button></div>`;
+  if(state.support==='timber') ctaHtml+=`<div class="cta-card"><h4>🪵 Installation quote</h4><p>Get a quote for timber post installation from an approved ShadowDeck installer.</p><button class="btn btn-secondary" style="width:100%">Request installation quote →</button></div>`;
+  document.getElementById('cta-grid').innerHTML=ctaHtml;
+
+  // Config summary for form
+  const config=buildConfigSummary(lm,packs,nurajackCount,subtotal,gst,total);
+  document.getElementById('hidden-config').value=config;
+}
+
+function section(title,items){
+  let rows=items.map(i=>`
+    <div class="line-item">
+      <div><div class="line-name">${i.name}</div><div class="line-detail">${i.detail||''}</div></div>
+      <div>${i.poa?'<span class="line-poa">Builder supply</span>':'<span class="line-price">$'+i.price.toFixed(2)+'</span>'}</div>
+    </div>`).join('');
+  return `<div class="results-section"><div class="results-section-header">${title}</div>${rows}</div>`;
+}
+
+function calcPacks(area){
+  let remaining=area;
+  const packs=[];
+  const n12=Math.floor(remaining/12); if(n12>0){packs.push({name:`12m² trade pack × ${n12}`,detail:`${n12}× pack: 250 fasteners, 25 butt-joint, 25 biscuits, 300 SPAX screws each`,price:n12*P.pack_12});remaining-=n12*12;}
+  const n6=Math.floor(remaining/6); if(n6>0){packs.push({name:`6m² trade pack × ${n6}`,detail:`${n6}× pack: 120 fasteners, 10 butt-joint, 12 biscuits, 150 SPAX screws each`,price:n6*P.pack_6});remaining-=n6*6;}
+  const n3=Math.ceil(remaining/3); if(n3>0&&remaining>0){packs.push({name:`3m² trade pack × ${n3}`,detail:`${n3}× pack: 60 fasteners, 5 butt-joint, 6 biscuits, 75 SPAX screws each`,price:n3*P.pack_3});}
+  return packs;
+}
+
+function buildConfigSummary(lm,packs,nurajacks,sub,gst,total){
+  return `
+SHADOWDECK DECK BUILDER — CONFIGURATION SUMMARY
+================================================
+Deck size: ${state.length}m × ${state.width}m = ${state.area}m²
+Decking timber: ${lm.toFixed(1)} lineal metres (${state.deckProfile} profile)
+Support system: ${state.support==='nurajack'?'Nurajack pedestals':'Timber posts'}
+Framing: ${state.framing} ${state.framingProfile?state.framingProfile+'×60mm':''} ${state.framingLayout||''}
+Picture framing: ${state.pictureFrame}
+House-to-deck spacer: ${state.housespacer}
+Stairs: ${state.stairs==='yes'?state.stepsCount+' steps':'No stairs'}
+Nurajack count: ${nurajacks||'N/A'}
+Kwila oil: ${state.oil}
+Subtotal (excl. GST): $${sub.toFixed(2)}
+GST (15%): $${gst.toFixed(2)}
+Total (incl. GST): $${total.toFixed(2)}
+Note: Indicative materials estimate only.
+  `.trim();
+}
+
+function scrollToForm(){
+  document.getElementById('quote-form').scrollIntoView({behavior:'smooth'});
+}
+
+async function handleSubmit(e){
+  e.preventDefault();
+  const form=e.target;
+  const data=new FormData(form);
+  try{
+    const r=await fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}});
+    if(r.ok){
+      form.style.display='none';
+      document.getElementById('success-msg').style.display='block';
+    } else { alert('Something went wrong. Please email info@shadowdeck.co.nz directly.'); }
+  } catch(err){ alert('Something went wrong. Please call 0800 742 369.'); }
+}
+</script>
+<script>
+function toggleMobileMenu(){document.getElementById("m").classList.toggle("open");}
+document.querySelectorAll(".has-drop > a").forEach(function(a){
+  a.addEventListener("click",function(e){
+    if(window.innerWidth<=960){e.preventDefault();this.parentElement.classList.toggle("mob-open");}
+  });
+});
+</script>
+</body>
+</html>

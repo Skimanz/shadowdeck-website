@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About | ShadowDeck<sup class="tm">™</sup> Nail-Free Timber Decking</title>
+<meta name="description" content="ShadowDeck - Nail-Free Timber Decking System. Pre-grooved Kwila timber and hidden fasteners for a sleek, splinter-free, long-lasting deck. BRANZ Appraised.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== ShadowDeck shared styles ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#1a2a27;
+  --ink-2:#1e2e2a;
+  --teal:#c8a84b;
+  --teal-2:#a08030;
+  --sand:#ffffff;
+  --offwhite:#f4f7f6;
+  --line:rgba(255,255,255,.1);
+  --timber:#c8a84b;
+  --timber-2:#a08030;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',-apple-system,sans-serif;color:var(--ink);background:#fff;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Barlow Condensed',sans-serif;font-weight:600;line-height:1.1;letter-spacing:.3px;text-transform:none}
+.tm{font-size:.52em;vertical-align:super;line-height:0;font-weight:inherit}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.btn{display:inline-block;background:#c8a84b;color:#1a1a1a;font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;font-size:.95rem;padding:11px 26px;border-radius:3px;transition:.25s;border:none;cursor:pointer}
+.btn:hover{background:#c8a84b;color:#1a1a1a;transform:translateY(-2px)}
+.btn-ghost{background:transparent;border:1.5px solid #c8a84b;color:#c8a84b}
+.btn-ghost:hover{background:transparent;border:1.5px solid #c8a84b;color:#c8a84b}
+
+/* nav */
+header{position:sticky;top:0;z-index:1000;background:var(--ink-2)}
+.topbar-upper{border-bottom:1px solid rgba(255,255,255,.12)}.topbar-upper-inner{display:flex;align-items:center;justify-content:flex-end;padding:7px 24px;gap:20px;max-width:1200px;margin:0 auto}
+.topbar-upper a{color:rgba(255,255,255,.85);font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:.92rem;letter-spacing:.6px;transition:.2s;text-decoration:none;white-space:nowrap}
+.topbar-upper a:hover{color:#c8a84b}
+.topbar-upper .sep{color:rgba(255,255,255,.35);font-size:.9rem}
+.btn-deck{border:2px solid #c8a84b;color:#c8a84b;background:transparent;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.92rem;letter-spacing:1.5px;text-transform:uppercase;padding:7px 22px;border-radius:3px;cursor:pointer;transition:.2s;text-decoration:none;white-space:nowrap;display:inline-block}
+.btn-deck:hover{background:#c8a84b;color:#1a1a1a}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 24px;gap:16px;max-width:1200px;margin:0 auto}
+.brand{display:flex;flex-direction:column;line-height:1;flex-shrink:0;text-decoration:none}
+.brand img{height:28px;width:auto}
+.brand .logo-txt{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.7rem;color:#fff;letter-spacing:1px}
+.brand small{color:#fff;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+nav{flex:1;display:flex;justify-content:center}
+nav>ul{list-style:none;display:flex;gap:2px;align-items:center;margin:0;padding:0}
+nav a{color:#e8dfc0;font-family:'Barlow Condensed',sans-serif;font-weight:500;text-transform:uppercase;letter-spacing:.8px;font-size:.95rem;transition:.2s;padding:8px 12px;border-bottom:2px solid transparent;white-space:nowrap;display:block;text-decoration:none}
+nav a:hover,nav a.active{color:#fff;border-bottom-color:#c8a84b}
+.has-drop{position:relative}
+.has-drop>a::after{content:' v';font-size:.7rem;opacity:.6}
+.drop{display:none;position:absolute;top:calc(100% + 4px);left:0;background:#0d2420;border:1px solid rgba(255,255,255,.12);border-radius:4px;min-width:230px;padding:6px 0;z-index:300;box-shadow:0 8px 28px rgba(0,0,0,.35)}
+.has-drop:hover .drop{display:block}
+.drop li{list-style:none}
+.drop a{padding:10px 20px;font-size:.88rem;letter-spacing:.5px;border-bottom:none;color:#d4c090;text-transform:none;font-weight:400}
+.drop a:hover{background:rgba(255,255,255,.07);color:#fff;border-bottom:none}
+.drop a.disabled{opacity:.38;pointer-events:none;cursor:not-allowed;font-style:italic}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+.burger span{width:26px;height:2px;background:#fff;transition:.3s}
+@media(max-width:960px){
+  .topbar-upper .sep{display:none}
+  .topbar-upper a:not(.btn-deck){display:none}
+  nav>ul{display:none;position:absolute;top:100%;left:0;right:0;background:#0d2420;flex-direction:column;gap:0;padding:8px 0;border-top:1px solid rgba(255,255,255,.1)}
+  nav>ul.open{display:flex}
+  nav{justify-content:flex-end}
+  nav li{width:100%}
+  nav>ul>li>a{display:block;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,.07)}
+  .has-drop>a::after{float:right}
+  .drop{display:none;position:static;background:rgba(0,0,0,.25);border:none;border-radius:0;box-shadow:none;padding:0;min-width:unset}
+  .has-drop.mob-open .drop{display:block}
+  .drop a{padding:11px 34px;font-size:.88rem;border-bottom:1px solid rgba(255,255,255,.05)}
+  .burger{display:flex}
+  h2.title{font-size:2rem}
+  footer .cols{grid-template-columns:1fr;gap:24px}
+  section{padding:56px 0}
+}
+
+/* sections */
+section{padding:80px 0}
+.alt{background:var(--offwhite)}
+.eyebrow{color:#c8a84b;font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:3px;font-size:.9rem;margin-bottom:10px}
+h2.title{font-size:2.4rem;margin-bottom:20px;color:var(--ink)}
+.lead{font-size:1.1rem;color:#3a4f4a;max-width:760px}
+
+/* cards */
+.card{background:#fff;border-radius:4px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.08);transition:.3s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-5px);box-shadow:0 12px 36px rgba(0,0,0,.13)}
+.card .ph{aspect-ratio:4/3;background:#fff;overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover}
+.card .body{padding:22px;flex:1;display:flex;flex-direction:column}
+.card h3{font-size:1.25rem;margin-bottom:8px;color:var(--ink)}
+.card p{font-size:.95rem;color:#3a4f4a}
+
+/* profile cards — small centred diagrams */
+.profile-card .ph{aspect-ratio:unset;height:150px;background:#fff;display:flex;align-items:center;justify-content:center;padding:16px;border-bottom:1px solid #e8efee}
+.profile-card .ph img{max-height:118px;width:auto;object-fit:contain}
+.profile-card h3{color:#8a6a20;font-size:1.05rem}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:.65s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* quote modal */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:9999;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:6px;padding:38px;max-width:460px;width:100%;position:relative}
+.modal-close{position:absolute;top:14px;right:18px;background:none;border:none;font-size:1.6rem;cursor:pointer;color:#888;line-height:1}
+.modal-box h3{font-family:'Barlow Condensed';font-size:1.9rem;margin-bottom:20px;color:var(--ink)}
+.modal-box label{display:block;font-family:'Barlow Condensed';font-weight:600;text-transform:uppercase;letter-spacing:1px;font-size:.88rem;margin:14px 0 5px;color:var(--ink)}
+.modal-box input,.modal-box select{width:100%;padding:11px 13px;border:1px solid #d0dbd8;border-radius:3px;font-family:'Barlow';font-size:.98rem;background:#fafcfb}
+.modal-box input:focus{outline:none;border-color:#c8a84b}
+.req{color:#c8a84b}
+
+/* footer */
+footer{background:var(--ink-2);color:#b8a070;padding:56px 0 24px}.footer-inner{max-width:1200px;margin:0 auto;padding:0 24px}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
+footer h4{color:#fff;font-size:1.2rem;margin-bottom:14px}
+footer a{color:#b8a070;transition:.2s}footer a:hover{color:#c8a84b}
+footer .social{display:flex;gap:12px;margin-top:14px}
+footer .social a{width:36px;height:36px;border:1px solid rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:.25s}
+footer .social a:hover{background:#c8a84b;border-color:#c8a84b;color:#1a1a1a}
+footer .copy{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-align:center;font-size:.85rem;color:#6a8f89}
+
+@media(max-width:960px){
+  nav ul{display:none;position:absolute;top:100%;left:0;right:0;background:var(--ink-2);flex-direction:column;gap:0;padding:10px 0}
+  nav ul.open{display:flex}
+  nav{justify-content:flex-end}
+  nav li{width:100%}nav a{display:block;padding:13px 24px;border-bottom:1px solid rgba(255,255,255,.07)}
+  .burger{display:flex}
+  .nav-phone{display:none}
+  h2.title{font-size:2rem}
+  footer .cols{grid-template-columns:1fr;gap:24px}
+  section{padding:56px 0}
+}
+
+
+.pagehero{height:46vh;min-height:340px;background-size:cover;background-position:center;position:relative;display:flex;align-items:flex-end}
+.pagehero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.7))}
+.pagehero .wrap{position:relative;z-index:2;padding-bottom:46px}
+.pagehero h1{color:#fff;font-size:clamp(2.4rem,5vw,4rem)}
+.pagehero .eyebrow{color:var(--timber-2)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.ticks{list-style:none;margin:24px 0}
+.ticks li{padding:8px 0 8px 34px;position:relative;font-size:1.1rem}
+.ticks li::before{content:"\2713";position:absolute;left:0;color:var(--timber);font-weight:700;font-size:1.2rem}
+@media(max-width:900px){.split{grid-template-columns:1fr;gap:32px}}
+
+</style>
+</head>
+<body>
+<header>
+<div class="topbar-upper"><div class="topbar-upper-inner">
+  <a href="tel:0800742369">&#128222;&nbsp;0800 742 369</a>
+  <span class="sep">|</span>
+  <a href="mailto:info@shadowdeck.co.nz">info@shadowdeck.co.nz</a>
+  <span class="sep">|</span>
+  <a href="quote.html" class="btn-deck">Deck Builder</a>
+</div></div>
+<div class="topbar">
+  <a href="index.html" class="brand">
+    <img src="images/shadowdeck-logo-white.png" alt="ShadowDeck" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span class="logo-txt" style="display:none">ShadowDeck</span>
+    <small>Nail Free Timber Decking System</small>
+  </a>
+  <nav>
+    <button class="burger" aria-label="Menu" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="m">
+      <li><a href="index.html" >Home</a></li>
+      <li class="has-drop">
+        <a href="products.html" >Products</a>
+        <ul class="drop">
+          <li><a href="products.html">Nail-Free Timber Decking</a></li>
+          <li><a href="frame.html">Aluminium Sub-Framing</a></li>
+        </ul>
+      </li>
+      <li class="has-drop">
+        <a href="installation-guide.html" >Installation Guides</a>
+        <ul class="drop">
+          <li><a href="installation-guide.html">Timber Decking Guide</a></li>
+          <li><a href="#" class="disabled">Aluminium Guide <em>(coming soon)</em></a></li>
+        </ul>
+      </li>
+      <li class="has-drop">
+        <a href="#" >Resources</a>
+        <ul class="drop">
+          <li><a href="resources/superspan-span-tables.pdf" target="_blank">SuperSpan Span Tables</a></li>
+          <li><a href="resources/ps1-certificate.pdf" target="_blank">PS1 Engineering Certificate</a></li>
+        </ul>
+      </li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html" >Contact</a></li>
+    </ul>
+  </nav>
+</div>
+</header>
+
+
+<section class="pagehero" style="background-image:url('images/IMG_3730.png')">
+  <div class="wrap"><div class="eyebrow">About</div><h1>The Story Behind ShadowDeck<sup class="tm">™</sup></h1></div>
+</section>
+
+<section>
+  <div class="wrap split">
+    <div class="reveal">
+      <div class="eyebrow">Simply the best on the market</div>
+      <h2 class="title">Nail Free. Unbeatable Finish.</h2>
+      <p class="lead">ShadowDeck<sup class="tm">™</sup> is a "Nail Free Timber Decking System" which gives an unbeatable finish with natural hardwood timber. Simply the best on the marketplace and BRANZ Appraised.</p>
+      <ul class="ticks">
+        <li>Safe on toes</li><li>Easy to install</li><li>Gives a superior finish</li><li>Longer lasting</li>
+      </ul>
+      <a href="contact.html" class="btn">Get Started Today</a>
+    </div>
+    <div class="reveal"><img src="images/IMG_3537.jpg" alt="ShadowDeck finished deck" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='220px';this.alt='[image: IMG_3537.jpg]'"></div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap split">
+    <div class="reveal">
+      <div class="eyebrow">Our origin</div>
+      <h2 class="title">How ShadowDeck<sup class="tm">™</sup> Came to Life</h2>
+      <p class="lead">ShadowDeck<sup class="tm">™</sup> was born from the vision of Darrel, a passionate entrepreneur with a love for outdoor living and a desire to create a decking system that was both beautiful and built to last. Frustrated by the limitations of traditional timber decking &mdash; which often showed unsightly nails and screws and was prone to warping and splitting &mdash; Darrel set out to find a better solution.</p>
+      <p class="lead" style="margin-top:16px;color:#3a4f4a">After years of research, development, and collaboration with industry experts, ShadowDeck<sup class="tm">™</sup> was created. The result is a nail-free timber decking system that provides a sleek, durable, and long-lasting finish, while allowing the timber to naturally expand and contract with the seasons.</p>
+      <p class="lead" style="margin-top:16px">Today, Darrel's vision has transformed into a product that's redefining outdoor spaces, offering homeowners and builders alike a smarter, more sophisticated way to enjoy timber decking. Founder Darrel Grace is a veteran of 26 years within the New Zealand building industry, with extensive experience and knowledge of the building trades both here and internationally &mdash; having worked as far afield as London, Japan, Australia and the USA.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap split">
+    <div class="reveal"><img src="images/IMG_0931.jpg" alt="ShadowDeck boards" loading="lazy" onerror="this.style.background='#d8cdbd';this.style.minHeight='220px';this.alt='[image: IMG_0931.jpg]'"></div>
+    <div class="reveal">
+      <div class="eyebrow">About the system</div>
+      <h2 class="title">About ShadowDeck<sup class="tm">™</sup></h2>
+      <ul class="ticks">
+        <li>Revolutionary nail-free timber decking system designed for performance, durability, and style</li>
+        <li>Uses pre-grooved timber and hidden fasteners to create a sleek, seamless finish without visible nails or screws</li>
+        <li>Allows timber to naturally expand and contract, preventing warping and splitting over time</li>
+        <li>High-quality, low-maintenance decking option that enhances the beauty and longevity of your outdoor space</li>
+      </ul>
+    </div>
+    <div class="reveal"><img src="images/IMG_3537.jpg" alt="ShadowDeck finished deck" loading="lazy" style="border-radius:4px"></div>
+  </div>
+</section>
+
+<footer>
+<div class="footer-inner">
+<div class="wrap">
+  <div class="cols">
+    <div>
+      <h4>ShadowDeck<sup class="tm">™</sup></h4>
+      <p style="max-width:360px">The Nail-Free Timber Decking System. Pre-grooved Kwila timber and hidden fasteners for an unbeatable, splinter-free finish. BRANZ Appraised.</p>
+      <div class="social">
+        <a href="https://www.facebook.com/shadowdeck" aria-label="Facebook" target="_blank" rel="noopener">f</a>
+        <a href="https://pin.it/4yDrW4tse" aria-label="Pinterest" target="_blank" rel="noopener">P</a>
+        <a href="https://www.instagram.com/shadow_deck/" aria-label="Instagram" target="_blank" rel="noopener">ig</a>
+      </div>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <p><a href="about.html">About</a></p>
+      <p><a href="products.html">Our Products</a></p>
+      <p><a href="frame.html">Aluminium Framing</a></p>
+      <p><a href="installation-guide.html">Installation Guide</a></p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p><a href="tel:0800742369">0800 742 369</a></p>
+      <p>Tech: <a href="tel:+6421415632">+64 21 415 632</a></p>
+      <p><a href="mailto:info@shadowdeck.co.nz">info@shadowdeck.co.nz</a></p>
+      <p><a href="https://archipro.co.nz/professional/shadowdeck" target="_blank" rel="noopener">ArchiPro</a></p>
+    </div>
+  </div>
+  <div class="copy">&copy; 2026 Smarter Products Limited. All rights reserved. Powered by Strand Media Ltd.</div>
+</div>
+</div>
+</footer>
+<script>
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
