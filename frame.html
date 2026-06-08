@@ -27,8 +27,8 @@ h1,h2,h3,h4{font-family:'Barlow Condensed',sans-serif;font-weight:600;line-heigh
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
-.btn{display:inline-block;background:#c8a84b;color:#1a1a1a;font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;font-size:.95rem;padding:11px 26px;border-radius:3px;transition:.25s;border:none;cursor:pointer}
-.btn:hover{background:#c8a84b;color:#1a1a1a;color:#1a1a1a;transform:translateY(-2px)}
+.btn{display:inline-block;background:transparent;color:#c8a84b;border:2px solid #c8a84b;font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;font-size:.95rem;padding:11px 26px;border-radius:3px;transition:.25s;cursor:pointer}
+.btn:hover{background:#c8a84b;color:#1a1a1a;transform:translateY(-2px)}
 
 .btn-ghost:hover{background:transparent;border:1.5px solid #c8a84b;color:#c8a84b}
 
@@ -39,13 +39,13 @@ header{position:sticky;top:0;z-index:1000;background:var(--ink-2)}
 .topbar-upper a:hover{color:#c8a84b}
 .topbar-upper .sep{color:rgba(255,255,255,.35);font-size:.9rem}
 .btn-deck{border:2px solid #c8a84b;color:#c8a84b;background:transparent;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.92rem;letter-spacing:1.5px;text-transform:uppercase;padding:7px 22px;border-radius:3px;cursor:pointer;transition:.2s;text-decoration:none;white-space:nowrap;display:inline-block}
-.btn-deck:hover{background:#c8a84b;color:#1a1a1a}
+.btn-deck:hover{background:#c8a84b;color:#1a1a1a;text-decoration:none}
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 24px;gap:16px;max-width:1200px;margin:0 auto}
 .brand{display:flex;flex-direction:column;line-height:1;flex-shrink:0;text-decoration:none}
 .brand img{height:28px;width:auto}
 .brand .logo-txt{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.7rem;color:#fff;letter-spacing:1px}
-.brand small{color:#fff;font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;margin-top:2px;display:block;max-width:120px;line-height:1.3}
-nav{flex:1;display:flex;justify-content:center}
+.brand small{color:#fff;font-size:.58rem;letter-spacing:1.2px;text-transform:uppercase;margin-top:2px;display:block;white-space:nowrap;line-height:1.2}
+nav{flex:1;display:flex;justify-content:flex-end}
 nav>ul{list-style:none;display:flex;gap:2px;align-items:center;margin:0;padding:0}
 nav a{color:#e8dfc0;font-family:'Barlow Condensed',sans-serif;font-weight:500;text-transform:uppercase;letter-spacing:.8px;font-size:.95rem;transition:.2s;padding:8px 12px;border-bottom:2px solid transparent;white-space:nowrap;display:block;text-decoration:none}
 nav a:hover,nav a.active{color:#fff;border-bottom-color:#c8a84b}
@@ -182,7 +182,7 @@ footer .copy{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-ali
   <span class="sep">|</span>
   <a href="mailto:info@shadowdeck.co.nz">info@shadowdeck.co.nz</a>
   <span class="sep">|</span>
-  <a href="quote.html" class="btn-deck">Deck Builder</a>
+  <a href="quote.html" class="btn-deck" style="color:#c8a84b">Deck Builder</a>
 </div></div>
 <div class="topbar">
   <a href="index.html" class="brand">
