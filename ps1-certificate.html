@@ -11,13 +11,13 @@
 :root{--ink-2:#0d2420;--teal:#c8a84b;--teal-2:#a08030;--gold:#c8a84b;--offwhite:#f8f9f7;--border:#dde8e6}
 body{font-family:'Barlow',sans-serif;background:var(--offwhite);color:#1a1a1a}
 header{position:sticky;top:0;z-index:1000;background:var(--ink-2)}
-.topbar-upper{display:flex;align-items:center;justify-content:flex-end;padding:7px 24px;border-bottom:1px solid rgba(255,255,255,.08);gap:16px}
+.topbar-upper{border-bottom:1px solid rgba(255,255,255,.08)}.topbar-upper-inner{display:flex;align-items:center;justify-content:flex-end;padding:7px 24px;gap:16px;max-width:1380px;margin:0 auto}
 .topbar-upper a{color:#a08030;font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:.88rem;letter-spacing:.5px;transition:.2s;text-decoration:none;white-space:nowrap}
 .topbar-upper a:hover{color:#fff}
 .topbar-upper .sep{color:rgba(255,255,255,.25);font-size:.8rem}
 .btn-deck{border:1.5px solid #c8a84b;color:#c8a84b;background:transparent;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;padding:6px 18px;border-radius:3px;cursor:pointer;transition:.2s;text-decoration:none;white-space:nowrap;display:inline-block}
 .btn-deck:hover{background:#c8a84b;color:#0d2420}
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 24px;gap:16px}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 24px;gap:16px;max-width:1380px;margin:0 auto}
 .brand{display:flex;flex-direction:column;line-height:1;flex-shrink:0;text-decoration:none}
 .brand img{height:28px;width:auto}
 .brand .logo-txt{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.7rem;color:#fff;letter-spacing:1px}
@@ -94,7 +94,7 @@ nav a:hover,nav a.active{color:#fff;border-bottom-color:#c8a84b}
 .kv-label{font-size:11px;color:#8a9b98;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
 .kv-val{font-size:14px;color:#1a1a1a;font-weight:500}
 @media print{header,footer,.print-btn{display:none}body{background:#fff}}
-footer{background:var(--ink-2);padding:2rem;text-align:center}
+footer{background:var(--ink-2);padding:2rem;text-align:center}.footer-inner{max-width:1380px;margin:0 auto}
 footer p{color:rgba(255,255,255,0.4);font-size:13px}
 footer a{color:rgba(255,255,255,0.6);text-decoration:none}
 @media(max-width:960px){
@@ -120,13 +120,13 @@ footer a{color:rgba(255,255,255,0.6);text-decoration:none}
 <body>
 
 <header>
-<div class="topbar-upper">
+<div class="topbar-upper"><div class="topbar-upper-inner">
   <a href="tel:0800742369">&#128222;&nbsp;0800 742 369</a>
   <span class="sep">|</span>
   <a href="mailto:info@shadowdeck.co.nz">info@shadowdeck.co.nz</a>
   <span class="sep">|</span>
   <a href="quote.html" class="btn-deck">Deck Builder</a>
-</div>
+</div></div>
 <div class="topbar">
   <a href="index.html" class="brand">
     <img src="images/shadowdeck-logo-white.png" alt="ShadowDeck" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
@@ -322,8 +322,10 @@ footer a{color:rgba(255,255,255,0.6);text-decoration:none}
 </div>
 
 <footer>
+<div class="footer-inner">
   <p>© 2026 Robust Limited. All rights reserved. | <a href="contact.html">Contact Us</a> | <a href="index.html">Home</a></p>
   <p style="margin-top:6px">Powered by <a href="https://strandmedia.co.nz">Strand Media Ltd</a></p>
+</div>
 </footer>
 
 <script>
