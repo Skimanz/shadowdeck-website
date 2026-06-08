@@ -28,8 +28,8 @@ img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
 .btn{display:inline-block;background:#c8a84b;color:#1a1a1a;font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;font-size:.95rem;padding:11px 26px;border-radius:3px;transition:.25s;border:none;cursor:pointer}
-.btn:hover{background:#c8a84b;color:#1a1a1a;transform:translateY(-2px)}
-.btn-ghost{background:transparent;border:1.5px solid #c8a84b;color:#c8a84b}
+.btn:hover{background:#c8a84b;color:#1a1a1a;color:#1a1a1a;transform:translateY(-2px)}
+
 .btn-ghost:hover{background:transparent;border:1.5px solid #c8a84b;color:#c8a84b}
 
 /* nav */
@@ -44,7 +44,7 @@ header{position:sticky;top:0;z-index:1000;background:var(--ink-2)}
 .brand{display:flex;flex-direction:column;line-height:1;flex-shrink:0;text-decoration:none}
 .brand img{height:28px;width:auto}
 .brand .logo-txt{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.7rem;color:#fff;letter-spacing:1px}
-.brand small{color:#fff;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+.brand small{color:#fff;font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;margin-top:2px;display:block;max-width:120px;line-height:1.3}
 nav{flex:1;display:flex;justify-content:center}
 nav>ul{list-style:none;display:flex;gap:2px;align-items:center;margin:0;padding:0}
 nav a{color:#e8dfc0;font-family:'Barlow Condensed',sans-serif;font-weight:500;text-transform:uppercase;letter-spacing:.8px;font-size:.95rem;transition:.2s;padding:8px 12px;border-bottom:2px solid transparent;white-space:nowrap;display:block;text-decoration:none}
@@ -186,7 +186,7 @@ footer .copy{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-ali
 </div></div>
 <div class="topbar">
   <a href="index.html" class="brand">
-    <img src="images/shadowdeck-logo-white.png" alt="ShadowDeck" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <img src="images/shadowdeck-logo-white.png" alt="ShadowDeck" style="height:22px;width:auto;image-rendering:-webkit-optimize-contrast" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
     <span class="logo-txt" style="display:none">ShadowDeck</span>
     <small>Nail Free Timber Decking System</small>
   </a>
@@ -196,6 +196,7 @@ footer .copy{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-ali
     </button>
     <ul id="m">
       <li><a href="index.html" >Home</a></li>
+      <li><a href="about.html" >About</a></li>
       <li class="has-drop">
         <a href="products.html" class="active">Products</a>
         <ul class="drop">
@@ -204,20 +205,15 @@ footer .copy{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-ali
         </ul>
       </li>
       <li class="has-drop">
-        <a href="installation-guide.html" >Installation Guides</a>
+        <a href="javascript:void(0)" >Resources</a>
         <ul class="drop">
+          <li><a href="projects.html">Recent Projects</a></li>
           <li><a href="installation-guide.html">Timber Decking Guide</a></li>
-          <li><a href="#" class="disabled">Aluminium Guide <em>(coming soon)</em></a></li>
+          <li><a href="javascript:void(0)" class="disabled">Aluminium Guide <em>(coming soon)</em></a></li>
+          <li><a href="span-tables.html">SuperSpan Span Tables</a></li>
+          <li><a href="ps1-certificate.html">PS1 Engineering Certificate</a></li>
         </ul>
       </li>
-      <li class="has-drop">
-        <a href="#" >Resources</a>
-        <ul class="drop">
-          <li><a href="resources/superspan-span-tables.pdf" target="_blank">SuperSpan Span Tables</a></li>
-          <li><a href="resources/ps1-certificate.pdf" target="_blank">PS1 Engineering Certificate</a></li>
-        </ul>
-      </li>
-      <li><a href="about.html" >About</a></li>
       <li><a href="contact.html" >Contact</a></li>
     </ul>
   </nav>
@@ -330,7 +326,7 @@ footer .copy{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-ali
       <p><a href="https://archipro.co.nz/professional/shadowdeck" target="_blank" rel="noopener">ArchiPro</a></p>
     </div>
   </div>
-  <div class="copy">&copy; 2026 Smarter Products Limited. All rights reserved. Powered by Strand Media Ltd.</div>
+  <div class="copy">&copy; 2026 Smarter Products Limited. All rights reserved. Powered by <a href="https://strandmedia.co.nz" target="_blank" rel="noopener">Strand Media Ltd</a>.</div>
 </div>
 </div>
 </footer>
