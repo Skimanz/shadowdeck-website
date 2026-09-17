@@ -148,7 +148,8 @@ footer .copy{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-ali
 .pagehero{height:38vh;min-height:280px;background-size:cover;background-position:center;position:relative;display:flex;align-items:flex-end}
 .pagehero .wrap{position:relative;z-index:2;padding-bottom:40px}
 .pagehero h1{color:#fff;font-size:clamp(2.4rem,5vw,3.8rem)}
-.pagehero .eyebrow{color:var(--timber-2)}
+.pagehero::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.65);pointer-events:none}
+.pagehero .eyebrow{color:#c8a84b}
 .c-layout{display:grid;grid-template-columns:1fr 1.3fr;gap:50px;align-items:start}
 .c-info p{margin-bottom:14px;font-size:1.08rem}
 .c-info .big{font-family:'Barlow Condensed';font-size:2rem;color:var(--timber);font-weight:700}
