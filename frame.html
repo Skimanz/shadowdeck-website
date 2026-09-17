@@ -280,7 +280,7 @@ header{position:sticky;padding-top:0}header .topbar{max-width:none;padding-left:
       <p class="lead" style="margin:0 auto">ShadowDeck<sup class="tm">™</sup> SuperSpan is an innovative aluminium framing system which can be used with decking and tiles. The clever design lets you change from tiles to decking without changing your framing. Just flip the aluminium joist and insert the fasteners for tiles or a nail-free timber solution.</p>
     </div>
     <div class="reveal video-wrap">
-      <div class="yt-lazy" data-id="NmCtPm3Jlbc" style="position:relative;width:100%;padding-bottom:56.25%;cursor:pointer;background:#000;border-radius:4px;overflow:hidden"><img src="https://img.youtube.com/vi/NmCtPm3Jlbc/maxresdefault.jpg" alt="Play SuperSpan video" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;opacity:.85"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><div style="width:72px;height:72px;background:rgba(200,168,75,.9);border-radius:50%;display:flex;align-items:center;justify-content:center"><div style="width:0;height:0;border-top:14px solid transparent;border-bottom:14px solid transparent;border-left:22px solid #fff;margin-left:5px"></div></div></div></div>
+      <video controls playsinline preload="metadata" aria-label="SuperSpan aluminium framing video" style="position:absolute;inset:0;width:100%;height:100%;background:#000"><source src="videos/aluminium-framing.mp4" type="video/mp4">Your browser does not support video playback. <a href="videos/aluminium-framing.mp4">Download the framing video</a>.</video>
     </div>
   </div>
 </section>
@@ -350,7 +350,7 @@ header{position:sticky;padding-top:0}header .topbar{max-width:none;padding-left:
 const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
-<script>document.querySelectorAll(".yt-lazy").forEach(function(el){el.addEventListener("click",function(){var id=el.dataset.id;el.innerHTML="<iframe style="position:absolute;inset:0;width:100%;height:100%;border:0" src="https://www.youtube.com/embed/"+id+"?autoplay=1" allowfullscreen allow="autoplay"></iframe>";});});</script>
+
 <script>
 function toggleMobileMenu(){document.getElementById("m").classList.toggle("open");}
 document.querySelectorAll(".has-drop > a").forEach(function(a){
