@@ -246,9 +246,9 @@ footer a{color:rgba(255,255,255,0.7);text-decoration:none}
   .prog-num{width:22px;height:22px;font-size:11px}
 }
 
-.brand .brand-logo{width:220px;max-width:100%;height:auto;filter:brightness(0) invert(1)}
-.brand small{font-size:.65rem;letter-spacing:1.1px;margin-top:6px}
-@media(max-width:600px){.brand .brand-logo{width:190px}.brand small{font-size:.56rem}}
+.brand{width:220px}.brand .brand-logo{width:100%;max-width:100%;height:auto;filter:brightness(0) invert(1)}
+.brand small{font-size:.65rem;letter-spacing:1.1px;margin-top:6px;width:100%;text-align:justify;text-align-last:justify}
+@media(max-width:600px){.brand{width:190px}.brand .brand-logo{width:100%}.brand small{font-size:.56rem}}
 </style>
 </head>
 <body>
@@ -257,7 +257,7 @@ footer a{color:rgba(255,255,255,0.7);text-decoration:none}
 <div class="topbar-upper"><div class="topbar-upper-inner">
   <a href="tel:0800742369">&#128222;&nbsp;0800 742 369</a>
   <span class="sep">|</span>
-  <a href="mailto:info@shadowdeck.co.nz">info@shadowdeck.co.nz</a>
+  <a href="mailto:sales@shadowdeck.co.nz">sales@shadowdeck.co.nz</a>
   <span class="sep">|</span>
   <a href="quote.html" class="btn-deck" style="color:#c8a84b">Deck Builder</a>
 </div></div>
@@ -572,7 +572,7 @@ footer a{color:rgba(255,255,255,0.7);text-decoration:none}
 
     <div class="totals-block" id="totals-block"></div>
 
-    <div class="disclaimer">This is an indicative estimate for materials only. Pricing excludes installation, delivery, site preparation, and consenting costs. All prices are NZD RRP excl. GST. Nurajack pedestal pricing is available on request. Contact ShadowDeck on <strong>0800 742 369</strong> or <strong>info@shadowdeck.co.nz</strong> to confirm your quote.</div>
+    <div class="disclaimer">This is an indicative estimate for materials only. Pricing excludes installation, delivery, site preparation, and consenting costs. All prices are NZD RRP excl. GST. Nurajack pedestal pricing is available on request. Contact ShadowDeck on <strong>0800 742 369</strong> or <strong>sales@shadowdeck.co.nz</strong> to confirm your quote.</div>
 
     <div class="cta-grid" id="cta-grid"></div>
 
@@ -1124,7 +1124,7 @@ async function handleSubmit(e){
     if(r.ok){
       form.style.display='none';
       document.getElementById('success-msg').style.display='block';
-    } else { alert('Something went wrong. Please email info@shadowdeck.co.nz directly.'); }
+    } else { alert('Something went wrong. Please email sales@shadowdeck.co.nz directly.'); }
   } catch(err){ alert('Something went wrong. Please call 0800 742 369.'); }
 }
 </script>
