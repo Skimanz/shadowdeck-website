@@ -2,7 +2,7 @@
 <html lang="en-NZ">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" type="image/png" sizes="128x128" href="/favicon-white-s-smooth.png">
+<link rel="icon" href="/favicon.ico?v=white-5" sizes="any"><link rel="apple-touch-icon" href="/favicon-white-s-smooth.png">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aluminium Framing | ShadowDeck<sup class="tm">™</sup> SuperSpan System</title>
@@ -175,9 +175,9 @@ footer .copy{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-ali
 .tagline{display:flex;gap:30px;flex-wrap:wrap;justify-content:center;margin:20px 0 40px}
 .tagline span{font-family:"Barlow Condensed";font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#8a6a20;font-size:1.05rem}
 .three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
-.img-card{position:relative;overflow:hidden;min-height:360px}
-.img-card img{width:100%;height:100%;object-fit:cover;display:block}
-.img-card .caption{position:absolute;bottom:0;left:0;right:0;background:#fff;padding:20px 24px}
+.img-card{position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:0}
+.img-card img{width:100%;height:260px;object-fit:cover;object-position:center;display:block;flex-shrink:0}
+.img-card .caption{position:static;background:#fff;padding:20px 24px;flex:1}
 .img-card .caption h3{color:#8a6a20;font-size:1.25rem;margin-bottom:6px}
 .img-card .caption p{font-size:.92rem;color:#454545}
 @media(max-width:900px){.split{grid-template-columns:1fr;gap:32px}.three-col{grid-template-columns:1fr}}
