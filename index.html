@@ -182,8 +182,9 @@ header{position:sticky;padding-top:0}header .topbar{max-width:none;padding-left:
 .brand small{font-size:.56rem;line-height:1.25;letter-spacing:.7px;text-align:left;text-align-last:left;margin-top:4px}
 @media(max-width:600px){.brand small{font-size:.47rem;letter-spacing:.35px}}
 .superspan-spotlight{background:#ffd400;color:#111;padding:22px 0}.superspan-spotlight .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}.superspan-spotlight strong{display:block;font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,3vw,2.7rem);line-height:1.05;text-transform:uppercase}.superspan-spotlight p{margin:4px 0 0;color:#292929}.superspan-spotlight a{display:inline-block;background:#111;color:#fff;text-decoration:none;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:1px;padding:14px 22px;border-radius:3px;white-space:nowrap}.superspan-spotlight a:hover,.superspan-spotlight a:focus-visible{background:#333}@media(max-width:700px){.superspan-spotlight .wrap{flex-direction:column;align-items:flex-start}.superspan-spotlight a{white-space:normal}}
-nav>ul>li.featured-framing>a{background:#ffd400;color:#111;font-weight:700;border-radius:3px;border-bottom-color:#ffd400;padding:8px 12px}nav>ul>li.featured-framing>a:hover,nav>ul>li.featured-framing>a:focus-visible{background:#ffe35a;color:#111;border-bottom-color:#ffe35a}
-@media(max-width:900px){nav>ul>li.featured-framing>a{margin:8px 16px;text-align:center;padding:12px 16px}}
+
+.hero h1.hero-brand-heading{max-width:none;display:flex;align-items:baseline;gap:.25em;flex-wrap:wrap}
+.hero-brand-heading img{display:inline-block;width:6.2em;max-width:100%;height:auto;filter:drop-shadow(0 2px 20px rgba(0,0,0,.4))}
 </style>
 </head>
 <body>
@@ -206,12 +207,13 @@ nav>ul>li.featured-framing>a{background:#ffd400;color:#111;font-weight:700;borde
       <span></span><span></span><span></span>
     </button>
     <ul id="m">
-      <li class="featured-framing"><a href="frame.html">Aluminium Framing</a></li>
+      
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="about.html" >About</a></li>
       <li class="has-drop">
         <a href="products.html" >Products</a>
         <ul class="drop">
+          <li><a href="frame.html">Aluminium Framing</a></li>
           <li><a href="products.html#decking">Decking</a></li>
           <li><a href="products.html#fasteners">ShadowDeck Fasteners &amp; Spacer</a></li>
           <li><a href="products.html#decking-oil">Decking Oil</a></li>
@@ -242,7 +244,7 @@ nav>ul>li.featured-framing>a{background:#ffd400;color:#111;font-weight:700;borde
   <div class="slide" style="background-image:url('images/IMG_0635.jpg')"></div>
   <div class="hero-inner">
     <div class="wrap">
-      <h1>Welcome to ShadowDeck<sup class="tm">™</sup></h1>
+      <h1 class="hero-brand-heading"><span>Welcome to</span><img src="images/shadowdeck-logo-original-white.png" alt="ShadowDeck"></h1>
       <p style='color:#fff'>Nail Free Timber Decking System</p>
       <a href="contact.html" class="btn">Request a Quote</a>
     </div>
@@ -251,6 +253,8 @@ nav>ul>li.featured-framing>a{background:#ffd400;color:#111;font-weight:700;borde
 </section>
 
 <section class="superspan-spotlight"><div class="wrap"><div><strong>SuperSpan Aluminium Framing System</strong><p>Discover the lightweight sub-framing system for decking and tiles.</p></div><a href="frame.html">Explore Aluminium Framing →</a></div></section>
+
+<section style="background:#000;color:#fff"><div class="wrap split"><div><img src="images/IMG_3730.png" alt="ShadowDeck SuperSpan framing project" loading="lazy" style="width:100%;height:320px;object-fit:cover;border-radius:4px"></div><div><div class="eyebrow">SuperSpan</div><h2 class="title" style="color:#fff">Aluminium Framing</h2><p style="margin-bottom:24px;color:#ddd">Explore ShadowDeck SuperSpan aluminium sub-framing for timber decking and tiles. See the framing profiles, adjustable supports and components that make up the system.</p><a class="btn" href="frame.html">Explore Aluminium Framing</a></div></div></section>
 
 <section>
   <div class="wrap split">
@@ -285,7 +289,7 @@ nav>ul>li.featured-framing>a{background:#ffd400;color:#111;font-weight:700;borde
 
 
 
-<section style="background:#000;color:#fff"><div class="wrap split"><div><img src="images/IMG_3730.png" alt="ShadowDeck SuperSpan framing project" loading="lazy" style="width:100%;height:320px;object-fit:cover;border-radius:4px"></div><div><div class="eyebrow">SuperSpan</div><h2 class="title" style="color:#fff">Aluminium Framing</h2><p style="margin-bottom:24px;color:#ddd">Explore ShadowDeck SuperSpan aluminium sub-framing for timber decking and tiles. See the framing profiles, adjustable supports and components that make up the system.</p><a class="btn" href="frame.html">Explore Aluminium Framing</a></div></div></section>
+
 <section class="cta-band" style="background-image:linear-gradient(rgba(22,20,18,.5),rgba(22,20,18,.5)),url('images/IMG_3537.jpg');background-size:cover;background-position:center">
   <div class="wrap reveal">
     <h2>Ready to Transform Your Outdoor Space?</h2>
